@@ -6,6 +6,9 @@ import methodOverride from 'method-override';
 import { v4 as uuidv4 } from 'uuid';
 import session from 'express-session';
 
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
 const app = express();
@@ -77,6 +80,8 @@ app.use(session({
   resave: false,
   saveUninitialized: true,
 }));
+
+
 
 // Make currentUser and ADMIN_USERNAME available in all EJS templates
 app.use((req, res, next) => {
