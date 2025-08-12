@@ -6,13 +6,15 @@ import methodOverride from 'method-override';
 import { v4 as uuidv4 } from 'uuid';
 import session from 'express-session';
 
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
+
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
 const app = express();
 const port = 3000;
+
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
 // Static posts (fixed content)
 const blogPosts = [
