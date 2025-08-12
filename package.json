@@ -2,10 +2,8 @@
   "name": "twishcare",
   "type": "module",
   "scripts": {
-    "start": "node index.js",
-},
-
-{
+    "start": "node index.js"
+  },
   "dependencies": {
     "body-parser": "^2.2.0",
     "ejs": "^3.1.10",
