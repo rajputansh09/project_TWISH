@@ -1,0 +1,625 @@
+header {
+    background-color: #2C3930;
+    padding: 20px;
+    text-align: center;
+    font-family: 'Inter', sans-serif;
+    box-shadow: 0 2px 4px rgba(134, 112, 112, 0.3);
+
+
+    }
+
+.form-signin {
+max-width: 330px;
+padding: 1rem;
+margin: auto;
+margin-top: 20%;
+}
+
+.navbar-nav {
+
+display: flex;
+justify-content: end;
+align-items: end;
+
+}
+
+
+.card-image {
+    padding: 0;
+
+}
+
+.logoimage {
+  margin-left: 5px;  
+  width: 50px;          /* Adjust size as needed */
+  height: auto;
+  border-radius: 50%;    /* Makes it round */
+  border: 3px solid #3F4F44; /* Green border highlight */
+  box-shadow: 0 0 8px rgba(134, 112, 112, 0.3); /* Soft glowing shadow */
+  padding: 5px;          /* Space between border and image */
+  background-color: #3F4F44; /* Optional: background inside border */
+}
+
+.carousel-item {
+  border: 5px solid #A27B5C; /* Green border highlight */
+  box-shadow: 0 0 15px #A27B5C; /* Soft glowing shadow */
+  padding: 5px;          /* Space between border and image */
+
+}
+
+#carouselExampleIndicators {
+  border: 3px solid #2C3930
+; /* Green border highlight */
+  box-shadow: 0 0 12px #A27B5C;
+  padding: 5px;          /* Space between border and image */
+  background-color: white; /* Optional: background inside border */
+}
+
+.card-image {
+  border: 3px solid #A27B5C; /* Green border highlight */
+  box-shadow: 0 0 15px white;
+  padding: 5px;          /* Space between border and image */
+  background-color: #A27B5C; /* Optional: background inside border */
+   
+}
+
+
+
+.card {
+  border: 3px solid white;; /* Green border highlight */
+  box-shadow: 0 4px 12px #A27B5C; /* Soft glowing shadow */
+  padding: 5px;          /* Space between border and image */
+  background-color: white; /* Optional: background inside border */
+    
+}
+
+
+
+.calmImage {
+    padding: 5px; 
+    border: 5px solid #2C3930 ;
+    box-shadow: 0 4px 12px #2C3930;
+    margin-top: 25px;
+    background-color: white;
+}
+
+#brandName {
+  margin-left: 20px;
+  margin-top: 10px;
+}
+
+.highlight-line {
+  border: none;
+  border-bottom: 4px solid white;
+  box-shadow: 0 2px 5px rgba(134, 112, 112, 0.3);
+  height: 0;
+  margin: 2rem 0;
+}
+
+
+h1, h2, h3, h4, h5 {
+  font-family: "Lora", serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-weight: bold;
+}
+
+
+
+body {
+  font-family: "Merriweather", serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  background-color: #2C3930;
+  color: #2C3930;
+}
+
+.btn {
+    background-color: #2C3930;  
+    border-color: 2px solid white;
+    color: white;                   /* Gentle contrast */
+    border: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 500;
+    box-shadow: 0 4px 10px #3F4F44; /* Soft warm contrast */
+    transition: all 0.3s ease;
+  }
+
+
+
+.btn:hover {
+    color: white;
+    background-color: #3F4F44;
+    box-shadow: 0 6px 20px #2C3930; /* Stronger contrast */
+    transform: translateY(-2px);      /* Subtle lift */
+  }
+
+.btn:focus {
+    outline: none;
+    box-shadow: 0 6px 20px #2C3930; /* Stronger contrast */
+  }
+
+
+
+
+  /* --- NAVBAR STYLES --- */
+
+.navbar {
+  padding: 0.6rem 1.2rem;
+  font-family: 'Lora', serif; /* calming, readable font */
+  background-color: #3F4F44;
+  box-shadow: 0 2px 5px #2C3930;
+  border-bottom: 4px solid #A27B5C;
+}
+
+/* Logo image round and smooth */
+.logoimage {
+  border-radius: 50%;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  width: 48px;
+  height: 48px;
+  object-fit: cover;
+}
+
+/* Logo hover glow effect */
+.navbar-brand:hover .logoimage {
+  box-shadow: 0 0 10px #A27B5C;
+  transform: scale(1.05);
+}
+
+/* Brand name beside logo */
+#brandName {
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin-left: 8px;
+  color: #A27B5C;
+  margin-bottom: 0;
+  display: flex;
+  align-items: center;
+  font-family: 'Merriweather', serif;
+}
+
+/* Hover brand name text */
+#brandName:hover {
+  color:  #A27B5C;
+}
+
+.navbar .nav-link,
+#brandName {
+  cursor: pointer;
+}
+
+/* Nav links base */
+.navbar .nav-link {
+  color: black;
+  font-weight: 500;
+  margin: 0 0.5rem;
+  transition: color 0.3s ease, transform 0.2s ease;
+  margin: 0 0.8rem;
+}
+
+/* Hover effect for nav links */
+.navbar .nav-link:hover {
+  color: #A27B5C;
+  transform: translateY(-1px);
+  text-shadow: 0 0 4px rgba(221, 184, 146, 0.2);
+}
+
+/* Active page style */
+.navbar .nav-link.active {
+  color: #A27B5C;
+  font-weight: 600;
+}
+
+.navbar.sticky-nav {
+  background-color: white;
+  backdrop-filter: blur(3px);
+  transition: background-color 0.3s ease;
+}
+
+
+/* --- CAROUSEL CAPTIONS --- */
+.carousel-caption {
+  background: rgb(220, 215, 201);
+  padding: 1.5rem 2rem;
+  border-radius: 12px;
+  max-width: 500px;
+  margin: 0 auto 2rem auto;
+  color: #A27B5C;
+  box-shadow: 0 4px 12px white;
+  text-align: center;
+}
+
+.carousel-caption h5 {
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+  font-family: 'Merriweather', serif;
+}
+
+.carousel-caption p {
+  font-family: 'Merriweather', serif;
+  font-size: 1.2rem;
+  font-style: italic;
+  color: #A27B5C;
+}
+
+
+.bordered-container {
+  position: relative;
+  padding-bottom: 2rem; /* extra space for visual gap */
+}
+
+.bordered-container::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 3px;
+  background-color: #A27B5C;
+  transform: translateY(70px); /* shifts it further below */
+}
+
+
+
+
+/* --- FOOTER STYLES --- */
+
+
+footer {
+  width: 100%;
+  margin: 0;
+  padding: 2rem 0;
+  background-color: #2C3930; /* Or any color you want */
+}
+
+
+
+.custom-footer {
+
+  padding: 2rem 1rem;
+  font-family: 'Lora', serif;
+  color: white;
+  box-shadow: 0 -2px 6px #A27B5C;
+  margin-top: 3rem;
+  width: 100%;
+  border-color: #A27B5C;
+}
+
+.linkFooterColor {
+  color: white;
+  font-weight: bold;
+}
+
+
+
+.footer-link {
+  color: white;
+  font-weight: 500;
+  margin: 0 1rem;
+  text-decoration: white;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.footer-link:hover {
+  color: white;
+  transform: translateY(-1px);
+  text-shadow: 0 0 4px white;
+}
+
+.footer-note {
+  font-size: 0.9rem;
+  color: black;
+  font-family: 'Merriweather', serif;
+  background-color: white;
+}
+
+
+/* HERO SECTION BACKGROUND ANIMATION */
+.hero-section {
+  background: linear-gradient(135deg, #2C3930, #A27B5C, #DCD7C9, #A27B5C, #2C3930);
+  background-size: 300% 300%;
+  animation: gradientFlow 20s ease-in-out infinite;
+  color: #F4F1EB;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  padding: 4rem 2rem;
+    box-shadow: 0 4px 12px white;
+}
+
+@keyframes gradientFlow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+
+
+
+
+/*----- Services -----*/
+
+
+ .titleService {
+  font-family: 'Merriweather', serif;
+  font-weight: 600;
+  color: #A27B5C;
+}
+
+.servicesText {
+  font-family: 'Lora', serif;
+  color: white;
+}
+
+
+
+.btn-success {
+  background-color: #A27B5C;
+}
+
+.btn-success:hover {
+  background-color: #A27B5C;
+  box-shadow: 0 4px 12px white;
+}
+
+.heading-with-price {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.heading-with-price h2 {
+  margin: 0;
+}
+
+.session-info {
+  text-align: right;
+}
+
+.session-info .price {
+  font-weight: bold;
+  font-size: 1.1rem;
+  color: #DCD7C9;
+}
+
+.session-info .time {
+  font-size: 0.9rem;
+  color: #DCD7C9; /* lighter color for subtle look */
+}
+
+.photoShadow {
+  box-shadow: 0 0 12px white;
+}
+
+
+
+
+/*---- Signup----- */
+
+.logoimageSignup {
+  border-radius: 50%;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  width: 48px;
+  height: 48px;
+  object-fit: cover;
+  color: black;
+  
+  margin-left: 5px;  
+  width: 50px;          /* Adjust size as needed */
+  height: auto;
+  border-radius: 50%;    /* Makes it round */
+  border: 3px solid black; /* Green border highlight */
+  box-shadow: 0 4px 12px white; /* Soft glowing shadow */
+  padding: 5px;          /* Space between border and image */
+  background-color: white; /* Optional: background inside border */
+}
+
+.logoimageSignup:hover {
+  box-shadow: 0 0 10px #A27B5C;
+  transform: scale(1.05);
+}
+
+/*----- Note for Cards -----*/
+.consultation-note {
+  text-align: center;
+  box-shadow: 0 0 12px white;
+  border: 4px solid  white;
+  padding: 1.5rem 2rem;
+  border-radius: 12px;
+  max-width: 600px;
+  font-style: italic;
+  color: #A27B5C;  /* subtle gray */
+  margin-bottom: 1.5rem;
+  font-size: 1.1rem;
+  margin-left: auto;
+  margin-right: auto;
+  letter-spacing: 0.03em;
+  background-color: #DCD7C9;
+}
+
+
+
+
+
+
+/*------- Blog ---------*/
+
+
+
+.topBar {
+  background-color: white;
+  font-family: 'Lora', serif;
+  border-bottom: 4px solid #A27B5C;
+}
+
+
+
+.blogBtn {
+  color: black;
+  background-color: #DCD7C9;
+}
+
+.blogBtn:hover {
+  background-color: #3F4F44;
+  color: white;
+  box-shadow: 0 0px 20px #2C3930;
+}
+
+.subscribeBlog {
+  color: black;
+  display: flex;
+  justify-content:flex-start;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.subscribeBlog:hover {
+  text-shadow: 0 0px 20px #A27B5C;
+  color: #2C3930;
+  font-size: large;
+
+}
+
+.blogPostTitle {
+
+  border: 4px solid #A27B5C;
+  box-shadow: 0 0px 16px white;
+}
+
+.Boxdiv {
+    display: grid;
+    height: 430px;
+    width: 1500px;
+    grid-template-columns: 100px 100px 100px 100px 100px 100px 100px 100px 100px 100px 100px 100px 100px;
+    grid-template-rows:  100px 100px 100px 100px 100px 100px 100px 100px 100px 100px 100px 100px;
+}    
+
+.headBox {
+  grid-area: 1/ 1/ 1/ 5;
+  color: black;
+  text-align: left;
+
+  
+}
+
+.paraBox {
+  grid-area: 2/ 1 / 5 /5;
+  text-align: left;
+  font-size: 1.3rem;
+  color: white;
+}
+
+.imgBox {
+  grid-area: 1/ 7/ 1/ 9;
+  box-shadow: 0 0px 20px #A27B5C;
+  border: 5px solid white;
+ 
+}
+
+
+.secondBoxRow {
+
+  border: 4px solid #A27B5C;
+  box-shadow: 0 0px 16px white;
+
+}
+
+.textColorBody {
+  color: white;
+}
+
+.imgBox2 {
+  grid-area: 2/ 5/ 2/ 6;
+  box-shadow: 0 0px 20px #A27B5C;
+  border: 5px solid white;
+}
+
+.Boxdiv2 {
+    display: grid;
+    height: 430px;
+    width: 850px;
+    grid-template-columns: 100px 100px 100px 100px 100px 100px 100px 100px 100px;
+    grid-template-rows:  100px 100px 100px 100px 100px;
+  }    
+
+
+.bookImg {
+    
+    box-shadow: 0 0px 20px white;
+  }
+
+  .bookImg:hover {
+    box-shadow: 0 0px 20px #3F4F44;
+  }
+
+
+.aboutBox {
+
+  box-shadow: 0 0px 16px white;
+}
+
+.aboutBox:hover {
+
+  box-shadow: 0 0px 16px #3F4F44;
+}
+
+
+
+
+
+/*----- YouPost ----*/
+
+
+.btn-danger {
+  background-color: #A27B5C;
+  box-shadow: 0 0 16px white;
+}
+
+.btn-danger:hover {
+  box-shadow: 0 0 16px #3F4F44;
+}
+
+
+.btncreate {
+  box-shadow: 0 0 16px white;
+}
+
+.btncreate:hover {
+  box-shadow: 0 0 16px #3F4F44;
+  background-color: #A27B5C;
+  color: white;
+}
+
+.btn-login {
+  background-color: #A27B5C;
+  box-shadow: 0 0 12px white;
+}
+
+.btn-login:hover {
+    align-items: center;
+    background-color: #DCD7C9;
+    color: black;
+    box-shadow: 0 0 12px white;
+}
+
+
+.editDelete {
+  padding-top: 10px;
+}
+
+
+.boxingText {
+  border-bottom: 3px solid #A27B5C;
+  padding-bottom: 4px;
+}
