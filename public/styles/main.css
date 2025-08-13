@@ -623,3 +623,11 @@ footer {
   border-bottom: 3px solid #A27B5C;
   padding-bottom: 4px;
 }
+
+
+
+.imgResizing {
+  max-width: 100% !important;
+  height: auto !important;
+  object-fit: cover !important;
+}
