@@ -515,11 +515,15 @@ footer {
 
 
 
+
+
+
+/* ---- DESKTOP ---- */
 .Boxdiv {
     display: grid;
     height: 430px;
     width: 1500px;
-    margin: 0 auto; /* centers container on screen */
+    margin: 0 auto;
     grid-template-columns: repeat(13, 100px);
     grid-template-rows: repeat(12, 100px);
 }
@@ -528,20 +532,55 @@ footer {
     grid-area: 2 / 7 / 3 / 12;
     box-shadow: 0 0px 20px #A27B5C;
     border: 5px solid white;
-    display: flex;              /* centers image inside */
+    display: flex;
     align-items: center;
     justify-content: center;
-    overflow: hidden;           /* prevents spill outside box */
+    overflow: hidden;
 }
 
 .imgBox img {
-    width: 100%;                 /* fill container width */
-    height: auto;                 /* keep aspect ratio */
-    object-fit: cover;            /* crop nicely instead of squish */
+    width: 100%;
+    height: auto;
+    object-fit: cover;
 }
 
+/* ---- TABLET ---- */
+@media (max-width: 1024px) {
+    .Boxdiv {
+        width: 100%;
+        height: auto;
+        grid-template-columns: 1fr; /* single column */
+        grid-template-rows: auto;
+        padding: 10px;
+    }
 
+    .imgBox {
+        grid-area: auto;
+        width: 100%;
+        max-width: 700px;
+        margin: 0 auto;
+    }
+}
 
+/* ---- MOBILE ---- */
+@media (max-width: 600px) {
+    .Boxdiv {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+        height: auto;
+    }
+
+    .imgBox {
+        width: 100%;
+        max-width: 100%;
+        margin: 0 auto;
+    }
+
+    .imgBox img {
+        width: 100%;
+        height: auto;
+    }
+}
 
 
 
