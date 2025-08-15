@@ -521,7 +521,7 @@ footer {
 }
 
 .imgBox {
-  grid-area: 1/ 7/ 1/ 9;
+  grid-area: 2/ 7/ 3/ 12;
   box-shadow: 0 0px 20px #A27B5C;
   border: 5px solid white;
  
