@@ -521,12 +521,9 @@ footer {
 }
 
 .imgBox {
-  grid-area: 1/ 6/ 1/ 10;
+  grid-area: 1/ 7/ 1/ 9;
   box-shadow: 0 0px 20px #A27B5C;
   border: 5px solid white;
-  max-width: 100%;
-  height: auto;
-  object-fit: cover;
  
 }
 
@@ -628,9 +625,14 @@ footer {
 }
 
 
+imgResizing {
+  max-width: 100%;
+  height: auto;
+  object-fit: cover;
+}
 
-.imgResizing {
-  max-width: 100% !important;
-  height: auto !important;
-  object-fit: cover !important;
+
+/* Gita */
+.vercesText {
+  color: black;
 }
