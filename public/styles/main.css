@@ -533,7 +533,7 @@ footer {
 
 
 /* Tablet screens */
-@media (max-width: 1024px) {
+@media (max-width: 1200px) {
   .Boxdiv {
     width: 100%;           /* full container width */
     height: auto;          /* let height adjust */
