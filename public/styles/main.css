@@ -537,7 +537,7 @@ footer {
   .Boxdiv {
     width: 100%;           /* full container width */
     height: auto;          /* let height adjust */
-    grid-template-columns: repeat(6, 1fr); /* fewer columns for tablet */
+    grid-template-columns: repeat(6, 10fr); /* fewer columns for tablet */
     grid-template-rows: auto;
   }
 
