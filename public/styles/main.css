@@ -520,11 +520,46 @@ footer {
   color: white;
 }
 
+
 .imgBox {
-  grid-area: 2/ 7/ 3/ 12;
-  box-shadow: 0 0px 20px #A27B5C;
-  border: 5px solid white;
- 
+    grid-area: 2 / 7 / 4 / 12;
+    box-shadow: 0 0px 20px #A27B5C;
+    border: 5px solid white;
+}
+
+
+
+
+
+
+/* Tablet screens */
+@media (max-width: 1024px) {
+  .Boxdiv {
+    width: 100%;           /* full container width */
+    height: auto;          /* let height adjust */
+    grid-template-columns: repeat(6, 1fr); /* fewer columns for tablet */
+    grid-template-rows: auto;
+  }
+
+  .imgBox {
+    grid-area: auto;       /* remove fixed grid placement */
+    width: 100%;
+    height: auto;
+  }
+}
+
+/* Mobile screens */
+@media (max-width: 600px) {
+  .Boxdiv {
+    grid-template-columns: 1fr; /* single column */
+    grid-template-rows: auto;
+  }
+
+  .imgBox {
+    grid-area: auto;
+    width: 100%;
+    height: auto;
+  }
 }
 
 
