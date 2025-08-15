@@ -521,8 +521,8 @@ footer {
 /* ---- DESKTOP ---- */
 .Boxdiv {
     display: grid;
-    height: 430px;
-    width: 1500px;
+    height: 430px;              /* fixed only for desktop */
+    width: 1500px;               /* fixed only for desktop */
     margin: 0 auto;
     grid-template-columns: repeat(13, 100px);
     grid-template-rows: repeat(12, 100px);
@@ -547,18 +547,24 @@ footer {
 /* ---- TABLET ---- */
 @media (max-width: 1024px) {
     .Boxdiv {
-        width: 100%;
-        height: auto;
-        grid-template-columns: 1fr; /* single column */
+        width: 100%;      /* allow full width */
+        height: auto;     /* auto height to prevent cut */
+        grid-template-columns: 1fr;
         grid-template-rows: auto;
         padding: 10px;
     }
 
     .imgBox {
-        grid-area: auto;
+        grid-area: auto;  /* no fixed grid position */
         width: 100%;
         max-width: 700px;
         margin: 0 auto;
+    }
+
+    .imgBox img {
+        width: 100%;
+        height: auto;
+        object-fit: contain; /* show full image without cutting */
     }
 }
 
@@ -567,6 +573,7 @@ footer {
     .Boxdiv {
         grid-template-columns: 1fr;
         grid-template-rows: auto;
+        width: 100%;
         height: auto;
     }
 
@@ -581,7 +588,6 @@ footer {
         height: auto;
     }
 }
-
 
 
 
