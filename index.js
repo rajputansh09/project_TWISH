@@ -5,16 +5,16 @@ import nodemailer from 'nodemailer';
 import methodOverride from 'method-override';
 import { v4 as uuidv4 } from 'uuid';
 import session from 'express-session';
-
-
+import axios from "axios";
+import path from "path";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
+
 
 const app = express();
 const port = 3000;
 
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
+app.use(express.static("public"));
 
 // Static posts (fixed content)
 const blogPosts = [
@@ -75,6 +75,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride('_method'));
 
 app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views'));
 
 // Session setup
 app.use(session({
@@ -82,8 +83,6 @@ app.use(session({
   resave: false,
   saveUninitialized: true,
 }));
-
-
 
 // Make currentUser and ADMIN_USERNAME available in all EJS templates
 app.use((req, res, next) => {
@@ -96,7 +95,7 @@ app.use((req, res, next) => {
 
 // Home page
 app.get('/', (req, res) => {
-  res.render('index.ejs');
+  res.render('partials/home.ejs');
 });
 
 // Signin routes
@@ -118,6 +117,7 @@ app.post('/signin', (req, res) => {
 app.get('/home', (req, res) => res.render('partials/home.ejs'));
 app.get('/about', (req, res) => res.render('partials/about.ejs'));
 app.get('/services', (req, res) => res.render('partials/services.ejs'));
+
 
 // Blog page with static posts
 app.get('/blog', (req, res) => {
@@ -145,7 +145,7 @@ app.post('/send-message', async (req, res) => {
     service: 'gmail',
     auth: {
       user: 'shimul@twishcare.ca',
-      pass: 'npcq hzsk xekw utbn', // Use env var for security
+      pass: process.env.EMAIL_PASSWORD, // Use env var for security
     },
   });
 
@@ -374,7 +374,71 @@ app.get('/search', (req, res) => {
 });
 
 
+
+
+
+// -- Gita --//
+
+
+// --- Bhagavad Gita chapters API for /gita ---
+app.get('/gita', async (req, res) => {
+  const chapterNumber = req.query.chapter; // <-- must be here
+
+  try {
+    // Fetch all chapters (always)
+    const chaptersResponse = await axios.get(
+      'https://bhagavad-gita3.p.rapidapi.com/v2/chapters/',
+      {
+        params: { skip: 0, limit: 18 },
+        headers: {
+          'x-rapidapi-key': '6501103eb4msh0b05105cc5e5316p1dfbeajsn9b57e4414bf3',
+          'x-rapidapi-host': 'bhagavad-gita3.p.rapidapi.com'
+        }
+      }
+    );
+    const chapters = chaptersResponse.data;
+
+    let chapterDetail = null;
+    let verses = [];
+
+    if (chapterNumber) {
+      // Fetch detail only if requested
+      const detailResponse = await axios.get(
+        `https://bhagavad-gita3.p.rapidapi.com/v2/chapters/${chapterNumber}/`,
+        {
+          headers: {
+            'x-rapidapi-key': '6501103eb4msh0b05105cc5e5316p1dfbeajsn9b57e4414bf3',
+            'x-rapidapi-host': 'bhagavad-gita3.p.rapidapi.com'
+          }
+        }
+      );
+      chapterDetail = detailResponse.data;
+
+      // Fetch verses for this chapter
+      const versesResponse = await axios.get(
+        `https://bhagavad-gita3.p.rapidapi.com/v2/chapters/${chapterNumber}/verses/`,
+        {
+          headers: {
+            'x-rapidapi-key': '6501103eb4msh0b05105cc5e5316p1dfbeajsn9b57e4414bf3',
+            'x-rapidapi-host': 'bhagavad-gita3.p.rapidapi.com'
+          }
+        }
+      );
+      verses = versesResponse.data;
+    }
+
+    res.render('gita', { chapters, chapterDetail, verses });
+
+  } catch (error) {
+    console.error('Error fetching chapters:', error.message);
+    res.status(500).send('Something went wrong while fetching chapters.');
+  }
+});
+
+
+
 // --- Start the server ---
 app.listen(port, () => {
   console.log(`Server is running at http://localhost:${port}`);
 });
+
