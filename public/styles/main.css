@@ -544,51 +544,36 @@ footer {
     object-fit: cover;
 }
 
-/* ---- TABLET ---- */
+/* Tablet & smaller */
 @media (max-width: 1024px) {
     .Boxdiv {
-        width: 100%;      /* allow full width */
-        height: auto;     /* auto height to prevent cut */
-        grid-template-columns: 1fr;
-        grid-template-rows: auto;
-        padding: 10px;
+        display: block;     /* remove grid on smaller screens */
+        width: 100%;
+        height: auto;
     }
 
     .imgBox {
-        grid-area: auto;  /* no fixed grid position */
+        grid-area: unset;   /* remove fixed desktop position */
         width: 100%;
         max-width: 700px;
-        margin: 0 auto;
+        margin: 20px auto;
+        box-shadow: 0 0px 20px #A27B5C;
+        border: 5px solid white;
     }
 
     .imgBox img {
         width: 100%;
         height: auto;
-        object-fit: contain; /* show full image without cutting */
+        object-fit: contain; /* ensures no cutting */
     }
 }
 
-/* ---- MOBILE ---- */
+/* Mobile */
 @media (max-width: 600px) {
-    .Boxdiv {
-        grid-template-columns: 1fr;
-        grid-template-rows: auto;
-        width: 100%;
-        height: auto;
-    }
-
     .imgBox {
-        width: 100%;
         max-width: 100%;
-        margin: 0 auto;
-    }
-
-    .imgBox img {
-        width: 100%;
-        height: auto;
     }
 }
-
 
 
 
