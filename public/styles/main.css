@@ -497,13 +497,6 @@ footer {
   box-shadow: 0 0px 16px white;
 }
 
-.Boxdiv {
-    display: grid;
-    height: 430px;
-    width: 1500px;
-    grid-template-columns: 100px 100px 100px 100px 100px 100px 100px 100px 100px 100px 100px 100px 100px;
-    grid-template-rows:  100px 100px 100px 100px 100px 100px 100px 100px 100px 100px 100px 100px;
-}    
 
 .headBox {
   grid-area: 1/ 1/ 1/ 5;
@@ -521,36 +514,35 @@ footer {
 }
 
 
+
+.Boxdiv {
+    display: grid;
+    height: 430px;
+    width: 1500px;
+    margin: 0 auto; /* centers container on screen */
+    grid-template-columns: repeat(13, 100px);
+    grid-template-rows: repeat(12, 100px);
+}
+
 .imgBox {
-    grid-area: 2 / 7 / 4 / 12;
+    grid-area: 2 / 7 / 3 / 12;
     box-shadow: 0 0px 20px #A27B5C;
     border: 5px solid white;
+    display: flex;              /* centers image inside */
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;           /* prevents spill outside box */
+}
+
+.imgBox img {
+    width: 100%;                 /* fill container width */
+    height: auto;                 /* keep aspect ratio */
+    object-fit: cover;            /* crop nicely instead of squish */
 }
 
 
 
 
-
-
-
-
-/* Responsive fix for all screens smaller than desktop */
-@media (max-width: 1500px) {
-  .Boxdiv {
-    width: 100%;                /* take full screen width */
-    height: auto;               /* adjust height automatically */
-    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-    grid-template-rows: auto;   /* auto height for rows */
-    gap: 10px;                   /* optional spacing */
-  }
-
-  .imgBox {
-    grid-area: auto;            /* remove fixed desktop position */
-    width: 100%;                /* full width in its grid cell */
-    height: auto;               /* keep image ratio */
-    display: block;
-  }
-}
 
 
 
