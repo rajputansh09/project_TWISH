@@ -65,8 +65,8 @@ align-items: end;
 
 
 .card {
-  border: 3px solid white;; /* Green border highlight */
-  box-shadow: 0 4px 12px #A27B5C; /* Soft glowing shadow */
+  border: 3px solid #A27B5C; /* Green border highlight */
+  box-shadow: 0 0px 16px white; /* Soft glowing shadow */
   padding: 5px;          /* Space between border and image */
   background-color: white; /* Optional: background inside border */
     
@@ -169,7 +169,7 @@ body {
 
 /* Brand name beside logo */
 #brandName {
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   font-weight: 500;
   margin-left: 8px;
   color: #A27B5C;
@@ -177,6 +177,12 @@ body {
   display: flex;
   align-items: center;
   font-family: 'Merriweather', serif;
+}
+
+@media (max-width: 576px) {
+  #brandName {
+    font-size: 1rem;
+  }
 }
 
 /* Hover brand name text */
@@ -274,6 +280,8 @@ footer {
   margin: 0;
   padding: 2rem 0;
   background-color: #2C3930; /* Or any color you want */
+  word-break: break-word;
+  overflow-wrap: break-word;
 }
 
 
@@ -292,9 +300,17 @@ footer {
 .linkFooterColor {
   color: white;
   font-weight: bold;
+  text-decoration: none;
 }
 
+.linkFooterColor:hover {
+  text-decoration: underline;
+}
 
+footer ul.nav {
+  gap: 0.5rem; /* Better spacing between links on wrap */
+  text-align: center;
+}
 
 .footer-link {
   color: white;
@@ -352,7 +368,7 @@ footer {
 /*----- Services -----*/
 
 
- .titleService {
+.titleService {
   font-family: 'Merriweather', serif;
   font-weight: 600;
   color: #A27B5C;
@@ -431,10 +447,11 @@ footer {
   transform: scale(1.05);
 }
 
+
 /*----- Note for Cards -----*/
 .consultation-note {
   text-align: center;
-  box-shadow: 0 0 12px white;
+  box-shadow: 0 0 16px white;
   border: 4px solid  white;
   padding: 1.5rem 2rem;
   border-radius: 12px;
@@ -498,10 +515,6 @@ footer {
   border: 4px solid #A27B5C;
   box-shadow: 0 0px 16px white;
 }
-
-
-
-
 
 
 
@@ -695,3 +708,6 @@ imgResizing {
     margin-top: 10px;
   }
 }
+
+
+
