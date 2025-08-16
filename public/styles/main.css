@@ -26,7 +26,6 @@ align-items: end;
 
 .card-image {
     padding: 0;
-
 }
 
 .logoimage {
@@ -348,6 +347,8 @@ footer {
 
 
 
+
+
 /*----- Services -----*/
 
 
@@ -437,7 +438,8 @@ footer {
   border: 4px solid  white;
   padding: 1.5rem 2rem;
   border-radius: 12px;
-  max-width: 600px;
+  max-width: 500px;
+  max-height: 250px;
   font-style: italic;
   color: #A27B5C;  /* subtle gray */
   margin-bottom: 1.5rem;
@@ -498,55 +500,6 @@ footer {
 }
 
 
-.headBox {
-  grid-area: 1/ 1/ 1/ 5;
-  color: black;
-  text-align: left;
-
-  
-}
-
-.paraBox {
-  grid-area: 2/ 1 / 5 /5;
-  text-align: left;
-  font-size: 1.3rem;
-  color: white;
-}
-
-
-
-
-
-
-/* ---- DESKTOP ---- */
-.Boxdiv {
-    display: grid;
-    height: 430px;              /* fixed only for desktop */
-    width: 1500px;               /* fixed only for desktop */
-    margin: 0 auto;
-    grid-template-columns: repeat(13, 100px);
-    grid-template-rows: repeat(12, 100px);
-}
-
-.imgBox {
-    grid-area: 2 / 7 / 3 / 12;
-    box-shadow: 0 0px 20px #A27B5C;
-    border: 5px solid white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-}
-
-.imgBox img {
-    width: 100%;
-    height: auto;
-    object-fit: cover;
-}
-
-
-
-
 
 
 
@@ -561,6 +514,11 @@ footer {
 
 .textColorBody {
   color: white;
+}
+
+.imgBox {
+  box-shadow: 0 0px 20px #A27B5C;
+  border: 5px solid white;
 }
 
 .imgBox2 {
@@ -589,7 +547,7 @@ footer {
 
 
 .aboutBox {
-
+  text-align: center;
   box-shadow: 0 0px 16px white;
 }
 
@@ -599,6 +557,30 @@ footer {
 }
 
 
+
+.hero-sectionBlog {
+  background: linear-gradient(135deg, #2C3930, #A27B5C, #DCD7C9, #A27B5C, #2C3930);
+  background-size: 300% 300%;
+  animation: gradientFlow 20s ease-in-out infinite;
+  color: #F4F1EB;
+  position: relative;
+  overflow: hidden;
+  padding: 4rem 2rem;
+    box-shadow: 0 4px 12px white;
+}
+
+@keyframes gradientFlow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+
+}
 
 
 
@@ -659,4 +641,57 @@ imgResizing {
 /* Gita */
 .vercesText {
   color: black;
+}
+
+
+
+
+.hero-sectionBlog2 {
+  background: linear-gradient(135deg, #2C3930, #A27B5C, #DCD7C9, #A27B5C, #2C3930);
+  background-size: 300% 300%;
+  animation: gradientFlow 20s ease-in-out infinite;
+  color: #F4F1EB;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 12px white;
+}
+
+@keyframes gradientFlow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+
+}
+
+
+
+
+
+/* blogHeaderYouPost.ejs */
+
+@media (max-width: 768px) {
+  .topBar .row {
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center;
+  }
+
+  .topBar .row > div {
+    margin-bottom: 10px;
+    width: 100%;
+  }
+
+  .topBar form.d-flex {
+    justify-content: center;
+  }
+
+  .blogBtn {
+    margin-top: 10px;
+  }
 }
