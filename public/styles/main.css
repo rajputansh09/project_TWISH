@@ -545,47 +545,6 @@ footer {
 }
 
 
-@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
-    .imgBox {
-        width: 100%;
-        height: auto;
-        object-fit: contain; /* ensures the whole image fits without being cut */
-    }
-}
-
-
-
-/* Tablet & smaller */
-@media (max-width: 1024px) {
-    .Boxdiv {
-        display: block;     /* remove grid on smaller screens */
-        width: 100%;
-        height: auto;
-    }
-
-    .imgBox {
-        grid-area: unset;   /* remove fixed desktop position */
-        width: 100%;
-        max-width: 700px;
-        margin: 20px auto;
-        box-shadow: 0 0px 20px #A27B5C;
-        border: 5px solid white;
-    }
-
-    .imgBox img {
-        width: 100%;
-        height: auto;
-        object-fit: contain; /* ensures no cutting */
-    }
-}
-
-/* Mobile */
-@media (max-width: 600px) {
-    .imgBox {
-        max-width: 100%;
-    }
-}
-
 
 
 
