@@ -544,6 +544,18 @@ footer {
     object-fit: cover;
 }
 
+
+/* iPad landscape fix */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .imgBox {
+    width: 100%;       /* make the image full width of its container */
+    height: auto;      /* keep aspect ratio */
+    object-fit: cover; /* or 'contain' if you want no cropping */
+  }
+}
+
+
+
 /* Tablet & smaller */
 @media (max-width: 1024px) {
     .Boxdiv {
