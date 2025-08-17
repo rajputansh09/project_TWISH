@@ -145,7 +145,7 @@ app.post('/send-message', async (req, res) => {
     service: 'gmail',
     auth: {
       user: 'shimul@twishcare.ca',
-      pass: process.env.EMAIL_PASSWORD, // Use env var for security
+      pass: 'kjxp nwte alng unck', // Use env var for security
     },
   });
 
