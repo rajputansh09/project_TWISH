@@ -662,33 +662,56 @@ label.tw-label {
   h2 { font-size: 1.6rem; }
 }
 /* ============================================
-   HERO ANIMATIONS — clean stagger + float
+   HERO ANIMATIONS
    ============================================ */
 
 @keyframes tw-fade-up {
-  from { opacity: 0; transform: translateY(30px); }
-  to   { opacity: 1; transform: translateY(0); }
+  0%   { opacity: 0; transform: translateY(50px); }
+  100% { opacity: 1; transform: translateY(0); }
 }
-@keyframes tw-slide-in-right {
-  from { opacity: 0; transform: translateX(40px); }
-  to   { opacity: 1; transform: translateX(0); }
+@keyframes tw-slide-right {
+  0%   { opacity: 0; transform: translateX(60px); }
+  100% { opacity: 1; transform: translateX(0); }
 }
 @keyframes tw-float {
-  0%, 100% { transform: translateY(0); }
-  50%       { transform: translateY(-12px); }
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-14px); }
 }
 
-.tw-anim-1 { animation: tw-fade-up 0.7s cubic-bezier(0.22,1,0.36,1) both; animation-delay: 0.1s; }
-.tw-anim-2 { animation: tw-fade-up 0.7s cubic-bezier(0.22,1,0.36,1) both; animation-delay: 0.3s; }
-.tw-anim-3 { animation: tw-fade-up 0.7s cubic-bezier(0.22,1,0.36,1) both; animation-delay: 0.5s; }
-.tw-anim-4 { animation: tw-fade-up 0.7s cubic-bezier(0.22,1,0.36,1) both; animation-delay: 0.65s; }
-.tw-anim-5 { animation: tw-fade-up 0.7s cubic-bezier(0.22,1,0.36,1) both; animation-delay: 0.8s; }
+/* Start hidden, animate in */
+.tw-anim-1,
+.tw-anim-2,
+.tw-anim-3,
+.tw-anim-4,
+.tw-anim-5 {
+  opacity: 0;
+  animation-fill-mode: forwards;
+  animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+  animation-duration: 0.8s;
+  animation-name: tw-fade-up;
+}
 
-.tw-anim-img { animation: tw-slide-in-right 0.9s cubic-bezier(0.22,1,0.36,1) both; animation-delay: 0.2s; }
+.tw-anim-1 { animation-delay: 0.15s; }
+.tw-anim-2 { animation-delay: 0.4s; }
+.tw-anim-3 { animation-delay: 0.65s; }
+.tw-anim-4 { animation-delay: 0.85s; }
+.tw-anim-5 { animation-delay: 1.05s; }
 
-.tw-float { animation: tw-float 5s ease-in-out infinite; animation-delay: 1.2s; }
+.tw-anim-img {
+  opacity: 0;
+  animation: tw-slide-right 1s cubic-bezier(0.22, 1, 0.36, 1) 0.25s forwards;
+}
+
+.tw-float {
+  animation: tw-float 5s ease-in-out infinite;
+  animation-delay: 1.5s;
+}
 
 @media (prefers-reduced-motion: reduce) {
-  .tw-anim-1, .tw-anim-2, .tw-anim-3, .tw-anim-4, .tw-anim-5, .tw-anim-img { animation: none; opacity: 1; transform: none; }
+  .tw-anim-1, .tw-anim-2, .tw-anim-3,
+  .tw-anim-4, .tw-anim-5, .tw-anim-img {
+    animation: none;
+    opacity: 1;
+  }
   .tw-float { animation: none; }
 }
