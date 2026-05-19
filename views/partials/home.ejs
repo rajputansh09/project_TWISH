@@ -1,178 +1,193 @@
-<%- include("header.ejs") %>
-
-
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TWISH</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Cinzel:wght@400..900&family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Lora:ital,wght@0,400..700;1,400..700&family=Luckiest+Guy&family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=Uncial+Antiqua&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/styles/main.css">
-<style>
-    .feature-icon {
-      width: 4rem;
-      height: 4rem;
-      border-radius: .75rem;
-    }
-  </style>
-</head>
-
-<body>
-
-
-<!-- Center front Page -->
-
-<div class="px-4 pt-5 my-5 text-center hero-section" style="border-bottom: 2px solid #A27B5C; border-top: 2px solid #A27B5C;"> 
-  <h1 class="display-4 fw-bold text-body-emphasis mb-4 pt-5">Welcome to Twish </h1> 
-  <div class="col-lg-6 mx-auto"> 
-    <p class="lead mb-4">A space where healing begins with connection — to your story, your strength, and your true self.
-     Rooted in care and cultural sensitivity, Twish offers support for those navigating life’s in betweens. You don’t need fixing, just a place to feel seen, heard, and supported.</p> 
-    <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mb-5"> 
-    <a href="/about" class="btn btn-primary btn-lg px-4 me-sm-3">Know more</a>
-    <a href="/contact" class="btn btn-outline-secondary btn-lg px-4">Contact Us</a>
-
-    </div> 
-  </div> 
-  <div class="overflow-hidden" > 
-    <div class="container px-5 mt-5"> 
-      <img src="/images/calm.jpg" class="img-fluid w-100 border rounded-3 calmImage" alt="calm yoga"  style="height: 30vh; object-fit: cover; box-shadow: 0 0 20px white;"loading="lazy"> 
-    </div> 
-  </div> 
-</div>
-
-
-<!-- Why Choose TWISH?-->
-
-
-<div class="container px-4 py-5" id="featured-3"  style="display:block;"> 
-  <h2 class="pb-2" style="border-bottom: 2px solid #A27B5C; color: white;">Why Choose TWISH?</h2> 
-  <div class="row g-4 py-5 row-cols-1 row-cols-lg-3" style="border-bottom: 2px solid #A27B5C;"> 
-<div class="card mx-5 my-5 h-100 " style="width: 20rem;">
-  <img class="virtual_card card-image" height="450px" src="/images/virtual session.png"  alt="virtual session">
-  <div class="card-body">
-    <h5 class="card-title">Initial Consult</h5> <br>
-    <p class="card-text">Begin with 15 purposeful minutes designed to connect deeply.<br>
-      <br>
-We’ll clarify your goals, answer your questions, and uncover the path that fits you best.<br>
-<br>
-This is your moment to be truly heard and understood.
-Take the first step toward a journey of meaningful change.</p>
-    <a href="/services" class="btn btn-primary">More info</a> 
-  </div>
-</div>
-<div class="card mx-5 my-5 h-100" style="width: 20rem;">
-  <img class="individual_card card-image" height="450px" src="/images/individual session.png"  alt="virtual session" />
-  <div class="card-body">
-    <h5 class="card-title">Individual Therapy</h5> <br>
-    <p class="card-text">Step into a compassionate space crafted for your journey.<br>
-      <br>
-Face challenges with empathy, and explore self-discovery at your own pace.<br>
-<br>
-Find calm, strength, and renewed clarity within.
-Embrace growth and create the life you envision.</p>
-<br>
-    <a href="/services" class="btn btn-primary">More info</a>
-  </div>
-</div>
-<div class="card center-on-tablet mx-5 my-5 h-100" style="width: 20rem;">
-  <img class="couples_card card-image" height="450px"  src="/images/couples session.png"  alt="virtual session">
-  <div class="card-body">
-    <h5 class="card-title">Couple Session</h5>
-    <br>
-    <p class="card-text">Rediscover connection and deepen communication.<br>
-      <br>
-Strengthen your bond with intention,
-navigating change side by side.<br>
-<br>
-Foster understanding and create a partnership that thrives.<br>
- Build trust and embrace growth together.</p>
-    <a href="/services" class="btn btn-primary">More info</a>
-  </div>
-</div>
-</div>
-<div class="consultation-note mt-5 px-3">
- If you are unsure about therapy, you can try our 15 minute free complimentary consultation — your opportunity to explore with clarity, whether online or in person, free of obligation.
-</div>
-
-
-
-
-
-
-<br>
-<br>
-<br>
-<br>
-
-
-
-<!-- Carusel -->
-
-<div class="container bordered-container"> 
-<div id="carouselExampleIndicators" class="carousel slide  mt-5">
-  <div class="carousel-indicators slide">
-    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-  </div>
-  <div class="carousel-inner slide"> 
-    <div class="carousel-item active">
-      <img src="/images/Breathing.png" class="d-block w-100" alt="Breathing">
-      <div class="carousel-caption d-none d-md-block">
-        <h5>Inhale Calm, Exhale Chaos</h5>
-        <p>Breathe in peace, let go with grace</p>
+<!-- HOME PAGE — Twish Therapy With Shimul -->
+<!-- Hero Section -->
+<section class="tw-hero">
+  <div class="container">
+    <div class="row align-items-center g-5">
+      <div class="col-lg-6 tw-fade">
+        <span class="tw-hero-eyebrow">Mississauga, Ontario — Canada</span>
+        <h1>Healing begins with<br><em>feeling seen.</em></h1>
+        <p class="tw-hero-lead">A sanctuary for those navigating life between worlds — cultures, identities, transitions, and the quiet weight of simply being human. Rooted in cultural sensitivity, guided by compassion.</p>
+        <div class="d-flex flex-wrap gap-3 mt-4">
+          <a href="https://twishcare.myndweb.app/shimul/booking" target="_blank" rel="noopener" class="btn-tw-primary">Book Free Consult</a>
+          <a href="/about" class="btn-tw-outline">Meet Shimul</a>
+        </div>
+        <div class="d-flex gap-4 mt-5 tw-fade tw-fade-delay-2">
+          <div>
+            <div style="font-family:var(--ff-heading);font-size:2rem;color:var(--tw-gold);line-height:1;">4+</div>
+            <div style="font-size:0.72rem;letter-spacing:0.15em;text-transform:uppercase;color:rgba(220,215,201,0.6);margin-top:4px;">Years experience</div>
+          </div>
+          <div style="width:1px;background:rgba(162,123,92,0.3);"></div>
+          <div>
+            <div style="font-family:var(--ff-heading);font-size:2rem;color:var(--tw-gold);line-height:1;">3</div>
+            <div style="font-size:0.72rem;letter-spacing:0.15em;text-transform:uppercase;color:rgba(220,215,201,0.6);margin-top:4px;">Languages</div>
+          </div>
+          <div style="width:1px;background:rgba(162,123,92,0.3);"></div>
+          <div>
+            <div style="font-family:var(--ff-heading);font-size:2rem;color:var(--tw-gold);line-height:1;">MACP</div>
+            <div style="font-size:0.72rem;letter-spacing:0.15em;text-transform:uppercase;color:rgba(220,215,201,0.6);margin-top:4px;">Yorkville University</div>
+          </div>
+        </div>
       </div>
-    </div>
-    <div class="carousel-item">
-      <img src="/images/Grasswalk.png" class="d-block w-100" alt="Grasswalk">
-      <div class="carousel-caption d-none d-md-block">
-      <h5>Rooted in the Moment</h5>
-      <p>Walk softly, live mindfully</p>
-      </div>
-    </div>
-    <div class="carousel-item">
-      <img src="/images/Notes.png" class="d-block w-100" alt="Notes">
-      <div class="carousel-caption d-none d-md-block">
-        <h5>Penning Peace, One Thought at a Time</h5>
-        <p>Discover clarity through gentle reflection</p>
+      <div class="col-lg-6 tw-fade tw-fade-delay-1">
+        <img src="/images/calm.jpg" alt="Calm therapeutic space — Twish Therapy Mississauga" class="tw-hero-image" loading="eager">
       </div>
     </div>
   </div>
-  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
-  </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
-  </button>
+</section>
+
+<!-- Trust Strip -->
+<div class="tw-section-sage py-4 tw-gold-border-bottom">
+  <div class="container">
+    <div class="row g-3 align-items-center text-center">
+      <div class="col-6 col-md-3 tw-fade">
+        <i class="bi bi-shield-check" style="font-size:1.4rem;color:var(--tw-gold);"></i>
+        <div style="font-size:0.78rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--tw-cream);margin-top:6px;">Registered Psychotherapist (Qualifying)</div>
+      </div>
+      <div class="col-6 col-md-3 tw-fade tw-fade-delay-1">
+        <i class="bi bi-translate" style="font-size:1.4rem;color:var(--tw-gold);"></i>
+        <div style="font-size:0.78rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--tw-cream);margin-top:6px;">English · Hindi · Punjabi</div>
+      </div>
+      <div class="col-6 col-md-3 tw-fade tw-fade-delay-2">
+        <i class="bi bi-camera-video" style="font-size:1.4rem;color:var(--tw-gold);"></i>
+        <div style="font-size:0.78rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--tw-cream);margin-top:6px;">In-Person & Virtual Ontario-Wide</div>
+      </div>
+      <div class="col-6 col-md-3 tw-fade tw-fade-delay-3">
+        <i class="bi bi-heart" style="font-size:1.4rem;color:var(--tw-gold);"></i>
+        <div style="font-size:0.78rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--tw-cream);margin-top:6px;">LGBTQ+ & BIPOC Affirming</div>
+      </div>
+    </div>
+  </div>
 </div>
-</div>
 
-<br>
-<br>
-<br>
-<br>
+<!-- Services Section -->
+<section class="tw-section-dark">
+  <div class="container">
+    <div class="text-center mb-5 tw-fade">
+      <span class="tw-section-label">How I Can Help</span>
+      <h2 style="color:var(--tw-cream);">Therapy offerings</h2>
+      <hr class="tw-divider">
+    </div>
+    <div class="row g-4">
+      <!-- Free Consult -->
+      <div class="col-md-4 tw-fade">
+        <div class="tw-card h-100">
+          <img src="/images/virtual session.png" alt="Free 15-minute consultation — Twish Therapy" class="tw-card-img" loading="lazy">
+          <div class="tw-card-body">
+            <div class="tw-card-price">Free</div>
+            <div class="tw-card-duration">15 minutes</div>
+            <h3 class="mt-2">Initial Consult</h3>
+            <p>A gentle, no-pressure conversation to see if we are the right fit. Explore your goals, ask questions, and take your first step with clarity and confidence.</p>
+            <a href="https://twishcare.myndweb.app/shimul/booking" target="_blank" rel="noopener" class="btn-tw-primary" style="font-size:0.8rem;padding:0.6rem 1.5rem;">Book Now</a>
+          </div>
+        </div>
+      </div>
+      <!-- Individual -->
+      <div class="col-md-4 tw-fade tw-fade-delay-1">
+        <div class="tw-card h-100">
+          <img src="/images/individual session.png" alt="Individual therapy Mississauga — Twish" class="tw-card-img" loading="lazy">
+          <div class="tw-card-body">
+            <div class="tw-card-price">$150</div>
+            <div class="tw-card-duration">50 minutes</div>
+            <h3 class="mt-2">Individual Therapy</h3>
+            <p>A compassionate space to explore your inner world, untangle emotional blocks, and reconnect with your authentic self. CBT, DBT, narrative therapy and more.</p>
+            <a href="/services#individual" class="btn-tw-outline" style="font-size:0.8rem;padding:0.6rem 1.5rem;">Learn More</a>
+          </div>
+        </div>
+      </div>
+      <!-- Couples -->
+      <div class="col-md-4 tw-fade tw-fade-delay-2">
+        <div class="tw-card h-100">
+          <img src="/images/couples session.png" alt="Couples therapy Mississauga — Twish" class="tw-card-img" loading="lazy">
+          <div class="tw-card-body">
+            <div class="tw-card-price">$150</div>
+            <div class="tw-card-duration">50 minutes</div>
+            <h3 class="mt-2">Couples Therapy</h3>
+            <p>Rebuild trust, deepen communication, and navigate life's changes together. Emotionally focused, trauma-informed, and welcoming of all couples and identities.</p>
+            <a href="/services#couples" class="btn-tw-outline" style="font-size:0.8rem;padding:0.6rem 1.5rem;">Learn More</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="text-center mt-5 tw-fade">
+      <p style="color:rgba(220,215,201,0.7);font-size:0.95rem;margin-bottom:1.25rem;">Not sure where to start? A free 15-minute consult is the perfect first step — no pressure, no obligation.</p>
+      <a href="/services" class="btn-tw-dark">View All Services</a>
+    </div>
+  </div>
+</section>
 
+<!-- About Shimul Teaser -->
+<section class="tw-section-ivory">
+  <div class="container">
+    <div class="row align-items-center g-5">
+      <div class="col-lg-5 tw-fade">
+        <img src="/images/tintin.jpg" alt="Shimul Rajput — Registered Psychotherapist Mississauga" class="tw-founder-img" loading="lazy">
+      </div>
+      <div class="col-lg-7 tw-fade tw-fade-delay-1">
+        <span class="tw-section-label" style="color:var(--tw-gold);">Meet Your Therapist</span>
+        <h2 style="color:var(--tw-forest);">Shimul Rajput</h2>
+        <hr class="tw-divider tw-divider-left">
+        <p style="color:var(--tw-text-mid);">Registered Psychotherapist (Qualifying) · MACP, Yorkville University · BSc Psychology & Health Studies, University of Toronto</p>
+        <p style="color:var(--tw-text-mid);">As a South Asian therapist, Shimul is deeply dedicated to decolonizing the therapy space and uplifting BIPOC voices. With over four years of clinical experience, she integrates evidence-based approaches — CBT, DBT, mindfulness, EFCT, and narrative therapy — with genuine cultural understanding.</p>
+        <p style="color:var(--tw-text-mid);font-style:italic;font-family:var(--ff-accent);">"True healing unfolds within safe, collaborative spaces where you feel genuinely seen and supported."</p>
+        <a href="/about" class="btn-tw-dark mt-2">Read Shimul's Story</a>
+      </div>
+    </div>
+  </div>
+</section>
 
-<!-- Link to use buttons and list and other features in NavBars or others in templates -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
+<!-- Carousel / Mindfulness Section -->
+<section class="tw-section-sage">
+  <div class="container">
+    <div class="text-center mb-5 tw-fade">
+      <span class="tw-section-label">A Moment for You</span>
+      <h2 style="color:var(--tw-cream);">Grounded in the present</h2>
+      <hr class="tw-divider">
+    </div>
+    <div class="row justify-content-center tw-fade">
+      <div class="col-lg-9">
+        <div id="twCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="5000">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img src="/images/Breathing.png" class="d-block w-100" alt="Breathing — mindfulness at Twish Therapy" loading="lazy">
+              <div class="carousel-caption">
+                <h5>Inhale calm, exhale chaos</h5>
+                <p>Breathe in peace, let go with grace</p>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <img src="/images/Grasswalk.png" class="d-block w-100" alt="Grounded in the moment — Twish Therapy" loading="lazy">
+              <div class="carousel-caption">
+                <h5>Rooted in the moment</h5>
+                <p>Walk softly, live mindfully</p>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <img src="/images/Notes.png" class="d-block w-100" alt="Journaling for clarity — Twish Therapy" loading="lazy">
+              <div class="carousel-caption">
+                <h5>Penning peace, one thought at a time</h5>
+                <p>Discover clarity through gentle reflection</p>
+              </div>
+            </div>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#twCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#twCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-</body>
-
-<%- include("footer.ejs") %>
-<br>
-</html>
-
-
-
+<!-- CTA Banner -->
+<section class="tw-stats">
+  <div class="container text-center tw-fade">
+    <h2 style="color:var(--tw-white);font-size:clamp(1.6rem,3vw,2.2rem);margin-bottom:0.75rem;">Ready to begin your journey?</h2>
+    <p style="color:rgba(255,255,255,0.85);margin-bottom:1.75rem;font-size:0.95rem;">Your first 15-minute consultation is completely free — in person or virtual, anywhere in Ontario.</p>
+    <a href="https://twishcare.myndweb.app/shimul/booking" target="_blank" rel="noopener" class="btn-tw-dark">Book Your Free Consult</a>
+  </div>
+</section>
