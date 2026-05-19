@@ -145,6 +145,20 @@ p  { font-size: 1rem; line-height: 1.85; margin-bottom: 1.25rem; }
   box-shadow: 0 4px 14px rgba(162,123,92,0.35);
 }
 
+
+/* Footer book button — force exact same behaviour as navbar, override .tw-footer * transition */
+.tw-footer .tw-nav-book {
+  transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease, transform 0.2s ease !important;
+  display: inline-block !important;
+}
+.tw-footer .tw-nav-book:hover {
+  background: var(--tw-gold-lt) !important;
+  border-color: var(--tw-gold-lt) !important;
+  color: var(--tw-white) !important;
+  transform: translateY(-1px) !important;
+  box-shadow: 0 4px 14px rgba(162,123,92,0.35) !important;
+}
+
 /* Active page indicator replaced */
 /* Active page indicator — pure gold underbar */
 .tw-nav-active {
