@@ -34,20 +34,23 @@ const transporter = nodemailer.createTransport({
 
 app.get(['/', '/home'], (req, res) => {
   renderPage(res, 'home', {
+    currentPage: 'home',
     pageTitle: 'Twish — Psychotherapist in Mississauga | Shimul Rajput',
-    metaDesc: 'Twish offers individual, couples and virtual therapy in Mississauga, Ontario. Registered Psychotherapist Shimul Rajput provides culturally sensitive therapy in English, Hindi and Punjabi.'
+    metaDesc: 'Twish offers individual, couples and virtual therapy in Mississauga, Ontario. Registered Psychotherapist Shimul Rajput — English, Hindi and Punjabi.'
   });
 });
 
 app.get('/about', (req, res) => {
   renderPage(res, 'about', {
+    currentPage: 'about',
     pageTitle: 'About Shimul Rajput — South Asian Therapist Mississauga | Twish',
-    metaDesc: 'Meet Shimul Rajput, Registered Psychotherapist (Qualifying) in Mississauga. MACP from Yorkville University. Culturally sensitive therapy in English, Hindi and Punjabi.'
+    metaDesc: 'Meet Shimul Rajput, Registered Psychotherapist (Qualifying) in Mississauga. MACP from Yorkville University. Therapy in English, Hindi and Punjabi.'
   });
 });
 
 app.get('/services', (req, res) => {
   renderPage(res, 'services', {
+    currentPage: 'services',
     pageTitle: 'Therapy Services — Individual, Couples & Virtual | Twish Mississauga',
     metaDesc: 'Individual therapy, couples therapy, and virtual therapy in Mississauga, Ontario. $150/50 min. Free 15-minute consultation available.'
   });
@@ -55,13 +58,15 @@ app.get('/services', (req, res) => {
 
 app.get('/blog', (req, res) => {
   renderPage(res, 'blog', {
+    currentPage: 'blog',
     pageTitle: 'Mental Health Blog — Twish Therapy Mississauga',
-    metaDesc: 'Articles on mental health, anxiety, relationships, South Asian identity, and therapy insights by Shimul Rajput, psychotherapist in Mississauga.'
+    metaDesc: 'Articles on mental health, anxiety, relationships, South Asian identity, and therapy insights by Shimul Rajput.'
   });
 });
 
 app.get('/contact', (req, res) => {
   renderPage(res, 'contact', {
+    currentPage: 'contact',
     pageTitle: 'Contact Twish — Book a Therapy Session in Mississauga',
     metaDesc: 'Contact Shimul Rajput at Twish Therapy, 365 Prince of Wales Dr, Mississauga. Book your free 15-minute consultation today.',
     email: process.env.CONTACT_EMAIL || 'rajputshimul@gmail.com',
@@ -71,7 +76,7 @@ app.get('/contact', (req, res) => {
 });
 
 app.get('/signin', (req, res) => {
-  renderPage(res, 'signIn', { pageTitle: 'Sign In — Twish' });
+  renderPage(res, 'signIn', { currentPage: '', pageTitle: 'Sign In — Twish' });
 });
 
 app.post('/send-message', async (req, res) => {
