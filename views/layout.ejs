@@ -3,87 +3,29 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="<%= typeof metaDesc !== 'undefined' ? metaDesc : 'Twish — Therapy with Shimul Rajput, Registered Psychotherapist in Mississauga, Ontario. Individual, couples and virtual therapy in English, Hindi and Punjabi.' %>">
-  <meta property="og:title" content="<%= typeof pageTitle !== 'undefined' ? pageTitle : 'Twish — Therapy with Shimul' %>">
-  <meta property="og:description" content="<%= typeof metaDesc !== 'undefined' ? metaDesc : 'Compassionate psychotherapy in Mississauga. Book your free 15-min consultation today.' %>">
+  <meta name="description" content="<%= typeof metaDesc !== 'undefined' ? metaDesc : 'Twish — Therapy With Shimul. Registered Psychotherapist in Mississauga, Ontario. Individual, couples and virtual therapy. Culturally sensitive South Asian therapist.' %>">
+  <meta name="keywords" content="psychotherapist Mississauga, South Asian therapist GTA, therapy Mississauga Ontario, couples therapy Mississauga, online therapy Ontario, Hindi speaking therapist, Punjabi speaking therapist, BIPOC therapist, registered psychotherapist qualifying Ontario">
+  <meta name="author" content="Shimul Rajput, Twish Therapy">
+  <meta property="og:title" content="<%= typeof pageTitle !== 'undefined' ? pageTitle : 'Twish — Therapy With Shimul' %>">
+  <meta property="og:description" content="<%= typeof metaDesc !== 'undefined' ? metaDesc : 'Compassionate, culturally sensitive therapy in Mississauga, Ontario.' %>">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://twishcare.ca">
   <meta name="robots" content="index, follow">
-  <title><%= typeof pageTitle !== 'undefined' ? pageTitle : 'Twish — Therapy with Shimul' %></title>
-
-  <!-- Bootstrap 5.3.7 (single load) -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6B3T3a+pA/+2VbNRXD5v0f5NhxHv9N7+V5jPqBz5gy0iEz5HshvVAD" crossorigin="anonymous">
-
-  <!-- Bootstrap Icons -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
-
-  <!-- Google Fonts (single load) -->
+  <title><%= typeof pageTitle !== 'undefined' ? pageTitle : 'Twish — Therapy With Shimul' %></title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,600&family=DM+Sans:wght@300;400;500&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
-
-  <!-- Main stylesheet -->
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@300;400;500&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/styles/main.css">
-
-  <!-- Local Business Schema (JSON-LD for Google) -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "MedicalBusiness",
-    "name": "Twish — Therapy with Shimul",
-    "description": "Registered Psychotherapist in Mississauga offering individual, couples and virtual therapy in English, Hindi and Punjabi.",
-    "url": "https://twishcare.ca",
-    "telephone": "+16476165744",
-    "email": "rajputshimul@gmail.com",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "365 Prince of Wales Dr",
-      "addressLocality": "Mississauga",
-      "addressRegion": "ON",
-      "postalCode": "L5B 0G6",
-      "addressCountry": "CA"
-    },
-    "geo": {
-      "@type": "GeoCoordinates",
-      "latitude": 43.5847,
-      "longitude": -79.6380
-    },
-    "openingHours": "Mo-Fr 09:00-18:00",
-    "priceRange": "$$",
-    "image": "https://twishcare.ca/images/tintin.jpg",
-    "sameAs": [
-      "https://www.instagram.com/twishcare/",
-      "https://www.facebook.com/profile.php?id=61579022499287",
-      "https://www.linkedin.com/company/twish-therapy-with-shimul/"
-    ]
-  }
-  </script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"MedicalBusiness","name":"Twish — Therapy With Shimul","url":"https://twishcare.ca","telephone":"(647) 616-5744","email":"rajputshimul@gmail.com","address":{"@type":"PostalAddress","streetAddress":"365 Prince of Wales Dr","addressLocality":"Mississauga","addressRegion":"ON","postalCode":"L5B 0G6","addressCountry":"CA"},"geo":{"@type":"GeoCoordinates","latitude":43.5905,"longitude":-79.6393},"openingHours":"Mo-Fr 09:00-18:00","priceRange":"$$","description":"Registered Psychotherapist (Qualifying) in Mississauga. Individual, couples and virtual therapy. South Asian therapist — English, Hindi, Punjabi.","areaServed":["Mississauga","GTA","Ontario"],"medicalSpecialty":"Psychotherapy"}</script>
 </head>
 <body>
-
-  <%- include("partials/header.ejs") %>
-
-  <main>
-    <%- body %>
-  </main>
-
-  <%- include("partials/footer.ejs") %>
-
-  <!-- Bootstrap JS (single load) -->
+  <%- include('partials/header.ejs') %>
+  <main><%- body %></main>
+  <%- include('partials/footer.ejs') %>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
-
-  <!-- Scroll animations -->
-  <script>
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (e.isIntersecting) {
-          e.target.classList.add('tw-visible');
-          observer.unobserve(e.target);
-        }
-      });
-    }, { threshold: 0.1 });
-    document.querySelectorAll('.tw-fade').forEach(el => observer.observe(el));
-  </script>
-
+  <script>const _obs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('tw-visible')}),{threshold:0.12});document.querySelectorAll('.tw-fade').forEach(el=>_obs.observe(el));</script>
+  <%- typeof extraScripts !== 'undefined' ? extraScripts : '' %>
 </body>
 </html>
