@@ -1,49 +1,27 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Cinzel:wght@400..900&family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Lora:ital,wght@0,400..700;1,400..700&family=Luckiest+Guy&family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=Uncial+Antiqua&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles/main.css">
-    <title>TWISH</title>
-</head>
-<body>
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
-  <div class="container-fluid px-0">
-    <!-- Logo + Brand Name -->
-    <a class="navbar-brand d-flex align-items-center ms-0 me-auto" href="/home" style="gap: 8px;">
-      <img class="logoimage imgResizing img-fluid" src="./images/twishLogo.jpg" alt="TWISH logo" height="50" />
-      <span id="brandName" style="white-space: nowrap;">TWISH | Therapy With Shimul</span>
-    </a>
-
-    <!-- Hamburger / Toggle Button -->
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+<nav class="navbar navbar-expand-lg tw-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/home">Twi<span>sh</span></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#twishNav" aria-controls="twishNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-
-    <!-- Collapsible Navigation Links -->
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-        <li class="nav-item"><a class="nav-link active" aria-current="page" href="/home">Home</a></li>
+    <div class="collapse navbar-collapse" id="twishNav">
+      <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-1">
+        <li class="nav-item"><a class="nav-link" href="/home">Home</a></li>
         <li class="nav-item"><a class="nav-link" href="/about">About</a></li>
-        <li class="nav-item"><a class="nav-link" href="/services">Services</a></li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="/services" id="servicesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Services</a>
+          <ul class="dropdown-menu" style="background:var(--tw-sage);border:1px solid rgba(162,123,92,0.3);border-radius:12px;padding:0.5rem;">
+            <li><a class="dropdown-item" href="/services#individual" style="color:var(--tw-cream);font-size:0.875rem;padding:0.6rem 1rem;border-radius:8px;" onmouseover="this.style.background='rgba(162,123,92,0.2)'" onmouseout="this.style.background='transparent'">Individual Therapy</a></li>
+            <li><a class="dropdown-item" href="/services#couples" style="color:var(--tw-cream);font-size:0.875rem;padding:0.6rem 1rem;border-radius:8px;" onmouseover="this.style.background='rgba(162,123,92,0.2)'" onmouseout="this.style.background='transparent'">Couples Therapy</a></li>
+            <li><a class="dropdown-item" href="/services#virtual" style="color:var(--tw-cream);font-size:0.875rem;padding:0.6rem 1rem;border-radius:8px;" onmouseover="this.style.background='rgba(162,123,92,0.2)'" onmouseout="this.style.background='transparent'">Virtual Therapy</a></li>
+          </ul>
+        </li>
         <li class="nav-item"><a class="nav-link" href="/blog">Blog</a></li>
-        <li class="nav-item"><a class="nav-link" href="/gita">MyInspiration</a></li>
-        <li class="nav-item"><a class="nav-link" href="/contact">Contact Us</a></li>
+        <li class="nav-item"><a class="nav-link" href="/contact">Contact</a></li>
+        <li class="nav-item ms-lg-2">
+          <a class="nav-link tw-nav-cta" href="https://twishcare.myndweb.app/shimul/booking" target="_blank" rel="noopener">Book Free Consult</a>
+        </li>
       </ul>
     </div>
   </div>
 </nav>
- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>   
-</body>
-</html>
-
-
