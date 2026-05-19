@@ -1,176 +1,104 @@
-<%- include("header.ejs") %>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Contact Us – Twish</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css2?family=Lora&family=Merriweather&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="/styles/main.css" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
-  <link rel="stylesheet" href="styles/main.css">
-
-  <style>
-    body {
-      font-family: 'Merriweather', serif;
-      background-color: #F8F5F0;
-      color: #444;
-    }
-
-    .contact-section {
-      padding: 4rem 1rem;
-    }
-
-    .contact-heading {
-      font-family: 'Lora', serif;
-      color: #A27B5C;
-      font-weight: 600;
-    }
-
-    .contact-subtext {
-      font-size: 1.1rem;
-      color: #DCD7C9;
-      max-width: 600px;
-      margin-bottom: 2rem;
-    }
-
-    .form-control, .form-select {
-      border-radius: 0.5rem;
-    }
-
-    .btn-success {
-      background-color: #A27B5C;
-      color: white;
-      border: none;
-      border-radius: 8px;
-      padding: 0.6rem 1.5rem;
-      font-weight: 600;
-      transition: all 0.3s ease;
-    }
-
-.btn-success:hover {
-  background-color: #A27B5C;
-  box-shadow: 0 4px 12px white;
-}
-
-    .contact-info {
-      font-size: 0.95rem;
-      color: #DCD7C9;
-    }
-
-    .contact-info i {
-      color: #A27B5C;
-      margin-right: 8px;
-    }
-
-    iframe.map-frame {
-      width: 100%;
-      height: 250px;
-      border-radius: 10px;
-      border: 3px solid #A27B5C;
-      box-shadow: 0 0 10px white;
-    }
-
-    iframe.map-frame:hover {
-        background-color: #A27B5C;
-        box-shadow: 0 0px 20px white;
-    }
-
-#responseMsg {
-    color: #DCD7C9;
-}
-    
-  </style>
-</head>
-<body>
-
-<section class="container contact-section">
-  <div class="text-center mb-5">
-    <h2 class="contact-heading">Get in Touch</h2>
-    <p class="contact-subtext mx-auto">Whether you have questions, need guidance, or want to begin therapy, we’re here to listen. Reach out below — healing starts with one message.</p>
+<!-- CONTACT PAGE -->
+<section class="tw-section-dark tw-gold-border-bottom" style="padding:5rem 0 3rem;">
+  <div class="container text-center tw-fade">
+    <span class="tw-section-label">We're Here</span>
+    <h1 style="color:var(--tw-cream);">Get in <em style="color:var(--tw-gold);font-style:italic;">touch</em></h1>
+    <hr class="tw-divider">
+    <p style="max-width:560px;margin:0 auto;color:rgba(220,215,201,0.8);font-size:1.05rem;line-height:1.9;">Whether you have questions or are ready to begin, healing starts with one message. Reach out below — we respond within one business day.</p>
   </div>
+</section>
 
-  <div class="row g-4">
-    <!-- Contact Form -->
-    <div class="col-md-7">
-      <form id="contactForm" method="POST" action="/send-message">
-        <div class="mb-3">
-          <label for="name" class="form-label">Full Name</label>
-          <input type="text" class="form-control" id="name" name="name" placeholder="Your name" required>
-        </div>
-        <div class="mb-3">
-          <label for="email" class="form-label">Email Address</label>
-          <input type="email" class="form-control" id="email" name="email" placeholder="you@example.com" required>
-        </div>
-        <div class="mb-3">
-          <label for="subject" class="form-label">Subject</label>
-          <input type="text" class="form-control" id="subject" name="subject" placeholder="Brief subject" required>
-        </div>
-        <div class="mb-3">
-          <label for="message" class="form-label">Your Message</label>
-          <textarea class="form-control" id="message" name="message" rows="5" placeholder="Write your message..." required></textarea>
-        </div>
-        <button type="submit" class="btn btn-success">Send Message</button>
-        <p id="responseMsg" class="mt-3 d-none">Thanks for reaching out! We'll get back to you soon.</p>
-      </form>
-    </div>
+<section class="tw-section-ivory">
+  <div class="container">
+    <div class="row g-5">
 
-    <!-- Contact Info + Map -->
-    <div class="col-md-5">
-      <div class="contact-info mb-4">
-        <p><i class="bi bi-envelope"></i> <%= email || 'rajputshimul@gmail.com' %></p>
-        <p><i class="bi bi-phone"></i> <%= phone || '(647)-616-5744' %></p>
-        <p><i class="bi bi-geo-alt"></i> <%= address || '39 Dunbar St, Belleville, Ontario' %></p>
+      <!-- Contact Form -->
+      <div class="col-lg-7 tw-fade">
+        <h2 style="color:var(--tw-forest);margin-bottom:0.5rem;">Send a message</h2>
+        <hr class="tw-divider tw-divider-left">
+        <form id="contactForm" method="POST" action="/send-message" novalidate>
+          <div class="mb-4">
+            <label class="tw-label" style="color:var(--tw-gold);" for="name">Full Name</label>
+            <input type="text" class="tw-form-control" id="name" name="name" placeholder="Your full name" required style="background:rgba(44,57,48,0.06);border:1px solid rgba(162,123,92,0.35);color:var(--tw-text-dark);">
+          </div>
+          <div class="mb-4">
+            <label class="tw-label" style="color:var(--tw-gold);" for="email">Email Address</label>
+            <input type="email" class="tw-form-control" id="email" name="email" placeholder="you@example.com" required style="background:rgba(44,57,48,0.06);border:1px solid rgba(162,123,92,0.35);color:var(--tw-text-dark);">
+          </div>
+          <div class="mb-4">
+            <label class="tw-label" style="color:var(--tw-gold);" for="subject">Subject</label>
+            <input type="text" class="tw-form-control" id="subject" name="subject" placeholder="Brief subject" required style="background:rgba(44,57,48,0.06);border:1px solid rgba(162,123,92,0.35);color:var(--tw-text-dark);">
+          </div>
+          <div class="mb-4">
+            <label class="tw-label" style="color:var(--tw-gold);" for="message">Your Message</label>
+            <textarea class="tw-form-control" id="message" name="message" rows="5" placeholder="Write your message here..." required style="background:rgba(44,57,48,0.06);border:1px solid rgba(162,123,92,0.35);color:var(--tw-text-dark);resize:vertical;"></textarea>
+          </div>
+          <button type="submit" class="btn-tw-primary">Send Message &nbsp;<i class="bi bi-arrow-right"></i></button>
+          <p id="responseMsg" class="mt-3 d-none" style="color:var(--tw-gold);font-size:0.9rem;"><i class="bi bi-check-circle"></i> &nbsp;Thank you! We'll get back to you within one business day.</p>
+        </form>
       </div>
-      <!-- Google Map Embed -->
-      <iframe
-        class="map-frame"
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2870.032894318204!2d-77.39220252422725!3d44.1747236710828!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89d6d314f452b36b%3A0xe7645a946acb6cc2!2s39%20Dunbar%20St%2C%20Belleville%2C%20ON%20K8P%203R6%2C%20Canada!5e0!3m2!1sen!2sca!4v1691271345678!5m2!1sen!2sca" 
-        allowfullscreen=""
-        loading="lazy"
-        referrerpolicy="no-referrer-when-downgrade"
-      ></iframe>
-      <br>
-      <br>
-      <div class="contact-info mb-4">
-      <p><i class="bi bi-facebook"></i><a  href="https://www.facebook.com/profile.php?id=61579022499287">Facebook</a>  &nbsp; <i class="bi bi-linkedin"></i><a href="https://www.linkedin.com/company/twish-therapy-with-shimul/">linkedin</a>  &nbsp; <i class="bi bi-instagram"></i><a href="https://www.instagram.com/twishcare/?igsh=MTIyZDZ0ZzVrOWVneA%3D%3D&utm_source=qr">Instagram</a> &nbsp;<i class="bi bi-tiktok"></i><a href="https://www.tiktok.com/@twishtherapywithshimul?lang=en">tiktok</a> </span>
+
+      <!-- Contact Info -->
+      <div class="col-lg-5 tw-fade tw-fade-delay-1">
+        <h2 style="color:var(--tw-forest);margin-bottom:0.5rem;">Find us</h2>
+        <hr class="tw-divider tw-divider-left">
+
+        <div class="d-flex gap-3 align-items-start mb-3">
+          <i class="bi bi-geo-alt-fill" style="color:var(--tw-gold);font-size:1.2rem;margin-top:3px;flex-shrink:0;"></i>
+          <div>
+            <div style="font-size:0.78rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--tw-gold);margin-bottom:2px;">Office</div>
+            <div style="color:var(--tw-text-mid);font-size:0.95rem;">365 Prince of Wales Dr<br>Mississauga, ON L5B 0G6</div>
+          </div>
+        </div>
+
+        <div class="d-flex gap-3 align-items-center mb-3">
+          <i class="bi bi-telephone-fill" style="color:var(--tw-gold);font-size:1.1rem;flex-shrink:0;"></i>
+          <div>
+            <div style="font-size:0.78rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--tw-gold);margin-bottom:2px;">Phone</div>
+            <a href="tel:+16476165744" style="color:var(--tw-text-mid);font-size:0.95rem;">(647) 616-5744</a>
+          </div>
+        </div>
+
+        <div class="d-flex gap-3 align-items-center mb-4">
+          <i class="bi bi-envelope-fill" style="color:var(--tw-gold);font-size:1.1rem;flex-shrink:0;"></i>
+          <div>
+            <div style="font-size:0.78rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--tw-gold);margin-bottom:2px;">Email</div>
+            <a href="mailto:rajputshimul@gmail.com" style="color:var(--tw-text-mid);font-size:0.95rem;">rajputshimul@gmail.com</a>
+          </div>
+        </div>
+
+        <!-- Google Map — 365 Prince of Wales Dr, Mississauga -->
+        <iframe
+          class="tw-map"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2884.4!2d-79.6393!3d43.5905!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x882b47b5e3c3b3b3%3A0x0!2s365+Prince+of+Wales+Dr%2C+Mississauga%2C+ON+L5B+0G6%2C+Canada!5e0!3m2!1sen!2sca!4v1700000000000!5m2!1sen!2sca"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="Twish Therapy location — 365 Prince of Wales Dr, Mississauga ON">
+        </iframe>
+
+        <div class="mt-4">
+          <div style="font-size:0.78rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--tw-gold);margin-bottom:0.75rem;">Follow Shimul</div>
+          <div class="tw-social-links" style="justify-content:flex-start;">
+            <a href="https://www.instagram.com/twishcare/" target="_blank" rel="noopener" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+            <a href="https://www.facebook.com/profile.php?id=61579022499287" target="_blank" rel="noopener" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+            <a href="https://www.linkedin.com/company/twish-therapy-with-shimul/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+            <a href="https://www.tiktok.com/@twishtherapywithshimul" target="_blank" rel="noopener" aria-label="TikTok"><i class="bi bi-tiktok"></i></a>
+          </div>
+        </div>
       </div>
+
     </div>
   </div>
 </section>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
-
-<!-- Simulated AJAX Feedback -->
 <script>
-document.getElementById('contactForm').addEventListener('submit', async function (e) {
-  e.preventDefault(); // stop normal form submission
-
-  const formData = {
-    name: this.name.value,
-    email: this.email.value,
-    subject: this.subject.value,
-    message: this.message.value
-  };
-
-  const res = await fetch('/send-message', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(formData)
-  });
-
-  if (res.ok) {
-    document.getElementById('responseMsg').classList.remove('d-none');
-    this.reset();
-  }
+document.getElementById('contactForm').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  const formData = { name: this.name.value, email: this.email.value, subject: this.subject.value, message: this.message.value };
+  try {
+    const res = await fetch('/send-message', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(formData) });
+    if (res.ok) { document.getElementById('responseMsg').classList.remove('d-none'); this.reset(); }
+  } catch(err) { console.error('Contact form error:', err); }
 });
 </script>
-
-</body>
-</html>
-
-
-<%- include("footer.ejs") %>
-
