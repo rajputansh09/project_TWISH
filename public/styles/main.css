@@ -512,10 +512,13 @@ label.tw-label {
 }
 .tw-footer-brand img { height: 42px; width: auto; margin-bottom: 1rem; }
 .tw-footer p { color: rgba(220,215,201,0.6); font-size: 0.88rem; line-height: 1.7; }
-.tw-footer-heading {
+.tw-footer-heading,
+.tw-footer p.tw-footer-heading {
   font-size: 0.72rem; font-weight: 500;
   letter-spacing: 0.22em; text-transform: uppercase;
-  color: var(--tw-cream); margin-bottom: 1.25rem;
+  color: #DCD7C9 !important;
+  opacity: 1 !important;
+  margin-bottom: 1.25rem;
 }
 .tw-footer-links { list-style: none; padding: 0; margin: 0; }
 .tw-footer-links li { margin-bottom: 0.6rem; }
@@ -542,8 +545,8 @@ label.tw-label {
 /* Footer book button — stable gold, no text shift */
 .tw-footer-book-btn {
   display: inline-block;
-  background: var(--tw-gold);
-  color: var(--tw-white) !important;
+  background: #A27B5C;
+  color: #FFFFFF !important;
   font-family: var(--ff-body);
   font-size: 0.78rem;
   font-weight: 500;
@@ -551,16 +554,19 @@ label.tw-label {
   text-transform: uppercase;
   padding: 0.65rem 1.5rem;
   border-radius: var(--radius-xl);
-  border: 2px solid var(--tw-gold);
+  border: 2px solid #A27B5C;
   text-decoration: none;
   text-align: center;
+  line-height: 1;
   transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  transform: none !important;
 }
 .tw-footer-book-btn:hover {
-  background: var(--tw-gold-lt);
-  border-color: var(--tw-gold-lt);
-  color: var(--tw-white) !important;
-  box-shadow: 0 4px 16px rgba(162,123,92,0.4);
+  background: #C4956A;
+  border-color: #C4956A;
+  color: #FFFFFF !important;
+  box-shadow: 0 4px 16px rgba(162,123,92,0.35);
+  transform: none !important;
 }
 
 /* ============================================
