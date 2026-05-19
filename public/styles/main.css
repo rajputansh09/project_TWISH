@@ -662,148 +662,33 @@ label.tw-label {
   h2 { font-size: 1.6rem; }
 }
 /* ============================================
-   HERO ANIMATIONS — Home page
+   HERO ANIMATIONS — clean stagger + float
    ============================================ */
 
-/* Entrance keyframes */
-@keyframes tw-hero-fade-up {
-  from { opacity: 0; transform: translateY(32px); }
+@keyframes tw-fade-up {
+  from { opacity: 0; transform: translateY(30px); }
   to   { opacity: 1; transform: translateY(0); }
 }
-@keyframes tw-hero-slide-right {
-  from { opacity: 0; transform: translateX(48px) scale(0.97); }
-  to   { opacity: 1; transform: translateX(0) scale(1); }
-}
-@keyframes tw-hero-eyebrow-in {
-  from { opacity: 0; transform: translateY(16px); letter-spacing: 0.08em; }
-  to   { opacity: 1; transform: translateY(0);    letter-spacing: 0.22em; }
+@keyframes tw-slide-in-right {
+  from { opacity: 0; transform: translateX(40px); }
+  to   { opacity: 1; transform: translateX(0); }
 }
 @keyframes tw-float {
-  0%, 100% { transform: translateY(0px); }
-  50%       { transform: translateY(-10px); }
-}
-@keyframes tw-glow-pulse {
-  0%, 100% { opacity: 0.06; transform: scale(1); }
-  50%       { opacity: 0.13; transform: scale(1.08); }
-}
-@keyframes tw-shimmer {
-  0%   { background-position: -200% center; }
-  100% { background-position: 200% center; }
-}
-@keyframes tw-btn-fade-up {
-  from { opacity: 0; transform: translateY(20px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-@keyframes tw-line-grow {
-  from { width: 0; opacity: 0; }
-  to   { width: 60px; opacity: 1; }
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-12px); }
 }
 
-/* Background glow orb */
-.tw-hero-glow {
-  position: absolute;
-  top: 10%; left: -5%;
-  width: 55%; height: 80%;
-  background: radial-gradient(ellipse at center, rgba(162,123,92,0.12) 0%, transparent 65%);
-  border-radius: 50%;
-  pointer-events: none;
-  animation: tw-glow-pulse 6s ease-in-out infinite;
-}
-.tw-hero-glow-2 {
-  position: absolute;
-  bottom: 5%; right: 5%;
-  width: 30%; height: 50%;
-  background: radial-gradient(ellipse at center, rgba(162,123,92,0.07) 0%, transparent 65%);
-  border-radius: 50%;
-  pointer-events: none;
-  animation: tw-glow-pulse 8s ease-in-out infinite 2s;
-}
+.tw-anim-1 { animation: tw-fade-up 0.7s cubic-bezier(0.22,1,0.36,1) both; animation-delay: 0.1s; }
+.tw-anim-2 { animation: tw-fade-up 0.7s cubic-bezier(0.22,1,0.36,1) both; animation-delay: 0.3s; }
+.tw-anim-3 { animation: tw-fade-up 0.7s cubic-bezier(0.22,1,0.36,1) both; animation-delay: 0.5s; }
+.tw-anim-4 { animation: tw-fade-up 0.7s cubic-bezier(0.22,1,0.36,1) both; animation-delay: 0.65s; }
+.tw-anim-5 { animation: tw-fade-up 0.7s cubic-bezier(0.22,1,0.36,1) both; animation-delay: 0.8s; }
 
-/* Eyebrow pill */
-.tw-hero-eyebrow {
-  animation: tw-hero-eyebrow-in 0.8s cubic-bezier(0.22,1,0.36,1) both;
-  animation-delay: 0.1s;
-}
+.tw-anim-img { animation: tw-slide-in-right 0.9s cubic-bezier(0.22,1,0.36,1) both; animation-delay: 0.2s; }
 
-/* Heading lines stagger */
-.tw-hero-line-1 {
-  display: block;
-  animation: tw-hero-fade-up 0.9s cubic-bezier(0.22,1,0.36,1) both;
-  animation-delay: 0.35s;
-}
-.tw-hero-line-2 {
-  display: block;
-  animation: tw-hero-fade-up 0.9s cubic-bezier(0.22,1,0.36,1) both;
-  animation-delay: 0.55s;
-}
+.tw-float { animation: tw-float 5s ease-in-out infinite; animation-delay: 1.2s; }
 
-/* Gold italic shimmer on "feeling seen" */
-.tw-hero-shimmer {
-  background: linear-gradient(
-    90deg,
-    #A27B5C 0%,
-    #E8C99A 40%,
-    #C4956A 50%,
-    #E8C99A 60%,
-    #A27B5C 100%
-  );
-  background-size: 200% auto;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  animation: tw-shimmer 4s linear infinite;
-  animation-delay: 1.4s;
-}
-
-/* Gold divider line grows in */
-.tw-hero-divider {
-  display: block;
-  height: 1.5px;
-  background: var(--tw-gold);
-  border: none;
-  margin: 1.2rem 0;
-  animation: tw-line-grow 0.7s cubic-bezier(0.22,1,0.36,1) both;
-  animation-delay: 0.75s;
-}
-
-/* Lead paragraph */
-.tw-hero-lead {
-  animation: tw-hero-fade-up 0.9s cubic-bezier(0.22,1,0.36,1) both;
-  animation-delay: 0.85s;
-}
-
-/* Buttons */
-.tw-hero-btn-wrap {
-  animation: tw-btn-fade-up 0.8s cubic-bezier(0.22,1,0.36,1) both;
-  animation-delay: 1.05s;
-}
-
-/* Sub-note */
-.tw-hero-subnote {
-  animation: tw-hero-fade-up 0.7s ease both;
-  animation-delay: 1.25s;
-}
-
-/* Image slides in from right + floats */
-.tw-hero-image-wrap {
-  animation: tw-hero-slide-right 1.1s cubic-bezier(0.22,1,0.36,1) both;
-  animation-delay: 0.3s;
-}
-.tw-hero-image-wrap img {
-  animation: tw-float 6s ease-in-out infinite;
-  animation-delay: 1.5s;
-}
-
-/* Reduce motion */
 @media (prefers-reduced-motion: reduce) {
-  .tw-hero-eyebrow, .tw-hero-line-1, .tw-hero-line-2,
-  .tw-hero-lead, .tw-hero-btn-wrap, .tw-hero-subnote,
-  .tw-hero-image-wrap, .tw-hero-divider {
-    animation: none;
-    opacity: 1;
-    transform: none;
-  }
-  .tw-hero-shimmer { animation: none; }
-  .tw-hero-image-wrap img { animation: none; }
-  .tw-hero-glow, .tw-hero-glow-2 { animation: none; }
+  .tw-anim-1, .tw-anim-2, .tw-anim-3, .tw-anim-4, .tw-anim-5, .tw-anim-img { animation: none; opacity: 1; transform: none; }
+  .tw-float { animation: none; }
 }
