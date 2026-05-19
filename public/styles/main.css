@@ -145,16 +145,31 @@ p  { font-size: 1rem; line-height: 1.85; margin-bottom: 1.25rem; }
   box-shadow: 0 4px 14px rgba(162,123,92,0.35);
 }
 
-/* Active page indicator — gold bottom bar */
+/* Active page indicator replaced */
+/* Active page indicator — pure gold underbar */
 .tw-nav-active {
   color: var(--tw-gold) !important;
   font-weight: 500;
 }
-.tw-nav-active::after {
+/* Underbar for regular nav links */
+.tw-nav-active:not(.dropdown-toggle)::after {
   transform: scaleX(1) !important;
-  background: var(--tw-gold) !important;
+  background: #A27B5C !important;
   height: 2.5px !important;
   border-radius: 2px;
+  border: none !important;
+  width: auto !important;
+}
+/* Underbar for dropdown-toggle (Services) — use a box-shadow trick instead
+   because ::after is taken by Bootstrap's caret arrow */
+.tw-nav-active.dropdown-toggle {
+  box-shadow: inset 0 -2.5px 0 0 #A27B5C;
+  padding-bottom: 0.5rem !important;
+}
+.tw-nav-active.dropdown-toggle::after {
+  /* Keep Bootstrap's caret but force gold colour */
+  border-top-color: var(--tw-gold) !important;
+  border-bottom-color: var(--tw-gold) !important;
 }
 
 /* ============================================
