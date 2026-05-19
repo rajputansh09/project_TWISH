@@ -8,20 +8,28 @@
     </button>
     <div class="collapse navbar-collapse" id="twishNav">
       <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-1">
-        <li class="nav-item"><a class="nav-link" href="/home">Home</a></li>
-        <li class="nav-item"><a class="nav-link" href="/about">About</a></li>
+        <li class="nav-item">
+          <a class="nav-link <%= currentPage === 'home' ? 'tw-nav-active' : '' %>" href="/home">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link <%= currentPage === 'about' ? 'tw-nav-active' : '' %>" href="/about">About</a>
+        </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="/services" id="servicesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Services</a>
+          <a class="nav-link dropdown-toggle <%= currentPage === 'services' ? 'tw-nav-active' : '' %>" href="/services" id="servicesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Services</a>
           <ul class="dropdown-menu shadow-sm" style="border:1px solid rgba(44,57,48,0.1);border-radius:12px;padding:0.5rem;min-width:200px;">
             <li><a class="dropdown-item py-2 px-3" href="/services#individual" style="font-size:0.85rem;color:var(--tw-text-dark);border-radius:8px;" onmouseover="this.style.background='rgba(44,57,48,0.05)';this.style.color='var(--tw-gold)'" onmouseout="this.style.background='transparent';this.style.color='var(--tw-text-dark)'"><i class="bi bi-person me-2" style="color:var(--tw-gold);"></i>Individual Therapy</a></li>
             <li><a class="dropdown-item py-2 px-3" href="/services#couples" style="font-size:0.85rem;color:var(--tw-text-dark);border-radius:8px;" onmouseover="this.style.background='rgba(44,57,48,0.05)';this.style.color='var(--tw-gold)'" onmouseout="this.style.background='transparent';this.style.color='var(--tw-text-dark)'"><i class="bi bi-people me-2" style="color:var(--tw-gold);"></i>Couples Therapy</a></li>
             <li><a class="dropdown-item py-2 px-3" href="/services#virtual" style="font-size:0.85rem;color:var(--tw-text-dark);border-radius:8px;" onmouseover="this.style.background='rgba(44,57,48,0.05)';this.style.color='var(--tw-gold)'" onmouseout="this.style.background='transparent';this.style.color='var(--tw-text-dark)'"><i class="bi bi-camera-video me-2" style="color:var(--tw-gold);"></i>Virtual Therapy</a></li>
           </ul>
         </li>
-        <li class="nav-item"><a class="nav-link" href="/blog">Blog</a></li>
-        <li class="nav-item"><a class="nav-link" href="/contact">Contact</a></li>
-        <li class="nav-item ms-lg-2">
-          <a class="nav-link tw-nav-cta" href="https://twishcare.myndweb.app/shimul/booking" target="_blank" rel="noopener">Book Free Consult</a>
+        <li class="nav-item">
+          <a class="nav-link <%= currentPage === 'blog' ? 'tw-nav-active' : '' %>" href="/blog">Blog</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link <%= currentPage === 'contact' ? 'tw-nav-active' : '' %>" href="/contact">Contact</a>
+        </li>
+        <li class="nav-item ms-lg-3">
+          <a class="tw-nav-book" href="https://twishcare.myndweb.app/shimul/booking" target="_blank" rel="noopener">Book Free Consult</a>
         </li>
       </ul>
     </div>
