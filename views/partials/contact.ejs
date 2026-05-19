@@ -1,71 +1,57 @@
-<!-- CONTACT HERO -->
-<section class="tw-section-dark" style="padding-top:6rem;padding-bottom:3rem;">
+<!-- HERO — dark -->
+<section class="tw-section-dark" style="padding-top:6rem;padding-bottom:4rem;">
   <div class="container text-center tw-fade" style="max-width:600px;">
     <span class="tw-section-label">Reach Out</span>
     <h1>Get in <em style="color:var(--tw-gold)">Touch</em></h1>
     <hr class="tw-divider">
-    <p style="font-size:1.05rem;color:rgba(220,215,201,0.85);">Whether you have questions, need guidance, or are ready to begin — Shimul is here to listen. Healing starts with one message.</p>
+    <p style="color:rgba(220,215,201,0.82);font-size:1.05rem;">Whether you have questions, need guidance, or are ready to begin — Shimul is here to listen.</p>
   </div>
 </section>
 
-<!-- CONTACT BODY -->
-<section class="tw-section-sage">
+<!-- CONTACT BODY — white -->
+<section class="tw-section-white">
   <div class="container">
     <div class="row g-5">
-      <!-- FORM -->
       <div class="col-lg-7 tw-fade">
         <h3 style="margin-bottom:0.25rem;">Send a Message</h3>
-        <p style="font-size:0.9rem;color:rgba(220,215,201,0.65);margin-bottom:2rem;">We'll respond within 1-2 business days.</p>
+        <p style="font-size:0.9rem;color:var(--tw-text-muted);margin-bottom:2rem;">We'll respond within 1-2 business days.</p>
         <form id="contactForm" method="POST" action="/send-message">
-          <div class="mb-4">
-            <label class="tw-label" for="name">Full Name</label>
-            <input type="text" class="tw-form-control" id="name" name="name" placeholder="Your name" required>
-          </div>
-          <div class="mb-4">
-            <label class="tw-label" for="email">Email Address</label>
-            <input type="email" class="tw-form-control" id="email" name="email" placeholder="you@example.com" required>
-          </div>
-          <div class="mb-4">
-            <label class="tw-label" for="subject">Subject</label>
-            <input type="text" class="tw-form-control" id="subject" name="subject" placeholder="How can Shimul help?" required>
-          </div>
-          <div class="mb-4">
-            <label class="tw-label" for="message">Your Message</label>
-            <textarea class="tw-form-control" id="message" name="message" rows="5" placeholder="Share what's on your mind..." required></textarea>
-          </div>
-          <button type="submit" class="btn-tw-primary">Send Message</button>
+          <div class="mb-4"><label class="tw-label" for="name">Full Name</label><input type="text" class="tw-form-control" id="name" name="name" placeholder="Your name" required></div>
+          <div class="mb-4"><label class="tw-label" for="email">Email Address</label><input type="email" class="tw-form-control" id="email" name="email" placeholder="you@example.com" required></div>
+          <div class="mb-4"><label class="tw-label" for="subject">Subject</label><input type="text" class="tw-form-control" id="subject" name="subject" placeholder="How can Shimul help?" required></div>
+          <div class="mb-4"><label class="tw-label" for="message">Your Message</label><textarea class="tw-form-control" id="message" name="message" rows="5" placeholder="Share what's on your mind..." required></textarea></div>
+          <button type="submit" class="btn-tw-forest">Send Message</button>
           <p id="responseMsg" style="display:none;color:var(--tw-gold);font-size:0.9rem;margin-top:1rem;">Thank you for reaching out. Shimul will be in touch soon.</p>
         </form>
       </div>
-      <!-- INFO -->
       <div class="col-lg-5 tw-fade tw-fade-delay-1">
         <h3 style="margin-bottom:2rem;">Contact Information</h3>
         <div style="display:flex;gap:1rem;margin-bottom:1.5rem;align-items:flex-start;">
-          <div style="width:42px;height:42px;border-radius:50%;background:rgba(162,123,92,0.15);border:1px solid rgba(162,123,92,0.3);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><i class="bi bi-geo-alt" style="color:var(--tw-gold);font-size:1.1rem;"></i></div>
-          <div><p style="font-size:0.75rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--tw-gold);margin-bottom:0.25rem;">Location</p><p style="margin-bottom:0;font-size:0.95rem;">365 Prince of Wales Dr<br>Mississauga, ON L5B 0G6</p></div>
+          <div style="width:44px;height:44px;border-radius:50%;background:rgba(44,57,48,0.07);border:1px solid rgba(44,57,48,0.12);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><i class="bi bi-geo-alt" style="color:var(--tw-gold);font-size:1.1rem;"></i></div>
+          <div><p style="font-size:0.72rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--tw-gold);margin-bottom:0.2rem;">Location</p><p style="margin-bottom:0;font-size:0.92rem;color:var(--tw-text-mid);">365 Prince of Wales Dr<br>Mississauga, ON L5B 0G6</p></div>
         </div>
         <div style="display:flex;gap:1rem;margin-bottom:1.5rem;align-items:center;">
-          <div style="width:42px;height:42px;border-radius:50%;background:rgba(162,123,92,0.15);border:1px solid rgba(162,123,92,0.3);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><i class="bi bi-telephone" style="color:var(--tw-gold);font-size:1.1rem;"></i></div>
-          <div><p style="font-size:0.75rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--tw-gold);margin-bottom:0.25rem;">Phone</p><a href="tel:+16476165744" style="color:var(--tw-cream);font-size:0.95rem;">(647) 616-5744</a></div>
+          <div style="width:44px;height:44px;border-radius:50%;background:rgba(44,57,48,0.07);border:1px solid rgba(44,57,48,0.12);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><i class="bi bi-telephone" style="color:var(--tw-gold);font-size:1.1rem;"></i></div>
+          <div><p style="font-size:0.72rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--tw-gold);margin-bottom:0.2rem;">Phone</p><a href="tel:+16476165744" style="color:var(--tw-text-mid);font-size:0.92rem;">(647) 616-5744</a></div>
         </div>
         <div style="display:flex;gap:1rem;margin-bottom:2rem;align-items:center;">
-          <div style="width:42px;height:42px;border-radius:50%;background:rgba(162,123,92,0.15);border:1px solid rgba(162,123,92,0.3);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><i class="bi bi-envelope" style="color:var(--tw-gold);font-size:1.1rem;"></i></div>
-          <div><p style="font-size:0.75rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--tw-gold);margin-bottom:0.25rem;">Email</p><a href="mailto:rajputshimul@gmail.com" style="color:var(--tw-cream);font-size:0.95rem;">rajputshimul@gmail.com</a></div>
+          <div style="width:44px;height:44px;border-radius:50%;background:rgba(44,57,48,0.07);border:1px solid rgba(44,57,48,0.12);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><i class="bi bi-envelope" style="color:var(--tw-gold);font-size:1.1rem;"></i></div>
+          <div><p style="font-size:0.72rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--tw-gold);margin-bottom:0.2rem;">Email</p><a href="mailto:rajputshimul@gmail.com" style="color:var(--tw-text-mid);font-size:0.92rem;">rajputshimul@gmail.com</a></div>
         </div>
         <iframe class="tw-map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2886.5!2d-79.638!3d43.5847!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x882b47027ef0f285%3A0x0!2s365+Prince+of+Wales+Dr%2C+Mississauga%2C+ON+L5B+0G6!5e0!3m2!1sen!2sca!4v1" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Twish location Mississauga"></iframe>
         <div style="margin-top:1.5rem;">
-          <p style="font-size:0.75rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--tw-gold);margin-bottom:0.75rem;">Follow Shimul</p>
-          <div class="tw-social-links">
-            <a href="https://www.instagram.com/twishcare/" target="_blank" rel="noopener" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
-            <a href="https://www.facebook.com/profile.php?id=61579022499287" target="_blank" rel="noopener" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
-            <a href="https://www.linkedin.com/company/twish-therapy-with-shimul/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
-            <a href="https://www.tiktok.com/@twishtherapywithshimul" target="_blank" rel="noopener" aria-label="TikTok"><i class="bi bi-tiktok"></i></a>
+          <p style="font-size:0.72rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--tw-gold);margin-bottom:0.75rem;">Follow Shimul</p>
+          <div class="tw-social-links" style="--bs-link-color:var(--tw-forest);">
+            <a href="https://www.instagram.com/twishcare/" target="_blank" rel="noopener" aria-label="Instagram" style="border-color:rgba(44,57,48,0.2);color:var(--tw-forest);"><i class="bi bi-instagram"></i></a>
+            <a href="https://www.facebook.com/profile.php?id=61579022499287" target="_blank" rel="noopener" aria-label="Facebook" style="border-color:rgba(44,57,48,0.2);color:var(--tw-forest);"><i class="bi bi-facebook"></i></a>
+            <a href="https://www.linkedin.com/company/twish-therapy-with-shimul/" target="_blank" rel="noopener" aria-label="LinkedIn" style="border-color:rgba(44,57,48,0.2);color:var(--tw-forest);"><i class="bi bi-linkedin"></i></a>
+            <a href="https://www.tiktok.com/@twishtherapywithshimul" target="_blank" rel="noopener" aria-label="TikTok" style="border-color:rgba(44,57,48,0.2);color:var(--tw-forest);"><i class="bi bi-tiktok"></i></a>
           </div>
         </div>
-        <div style="margin-top:2rem;padding:1.5rem;background:rgba(162,123,92,0.1);border:1px solid rgba(162,123,92,0.25);border-radius:16px;">
-          <p style="font-size:0.85rem;color:var(--tw-gold);font-weight:500;margin-bottom:0.5rem;">Ready to book directly?</p>
-          <p style="font-size:0.85rem;margin-bottom:1rem;color:rgba(220,215,201,0.8);">Start with a free 15-minute consultation — no commitment required.</p>
-          <a href="https://twishcare.myndweb.app/shimul/booking" target="_blank" rel="noopener" class="btn-tw-primary" style="font-size:0.82rem;">Book Free Consult</a>
+        <div style="margin-top:2rem;padding:1.5rem;background:var(--tw-ivory);border:1px solid rgba(44,57,48,0.08);border-radius:16px;">
+          <p style="font-size:0.85rem;color:var(--tw-forest);font-weight:500;margin-bottom:0.5rem;">Ready to book directly?</p>
+          <p style="font-size:0.85rem;margin-bottom:1rem;color:var(--tw-text-mid);">Start with a free 15-minute consultation — no commitment required.</p>
+          <a href="https://twishcare.myndweb.app/shimul/booking" target="_blank" rel="noopener" class="btn-tw-forest" style="font-size:0.78rem;">Book Free Consult</a>
         </div>
       </div>
     </div>
