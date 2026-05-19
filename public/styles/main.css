@@ -515,7 +515,7 @@ label.tw-label {
 .tw-footer-heading {
   font-size: 0.72rem; font-weight: 500;
   letter-spacing: 0.22em; text-transform: uppercase;
-  color: var(--tw-gold); margin-bottom: 1.25rem;
+  color: var(--tw-cream); margin-bottom: 1.25rem;
 }
 .tw-footer-links { list-style: none; padding: 0; margin: 0; }
 .tw-footer-links li { margin-bottom: 0.6rem; }
@@ -536,6 +536,31 @@ label.tw-label {
   text-align: center;
   font-size: 0.78rem;
   color: rgba(220,215,201,0.35);
+}
+
+
+/* Footer book button — stable gold, no text shift */
+.tw-footer-book-btn {
+  display: inline-block;
+  background: var(--tw-gold);
+  color: var(--tw-white) !important;
+  font-family: var(--ff-body);
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.65rem 1.5rem;
+  border-radius: var(--radius-xl);
+  border: 2px solid var(--tw-gold);
+  text-decoration: none;
+  text-align: center;
+  transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.tw-footer-book-btn:hover {
+  background: var(--tw-gold-lt);
+  border-color: var(--tw-gold-lt);
+  color: var(--tw-white) !important;
+  box-shadow: 0 4px 16px rgba(162,123,92,0.4);
 }
 
 /* ============================================
