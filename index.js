@@ -1,444 +1,103 @@
-import express from 'express';
-import { dirname, join } from 'path';
-import { fileURLToPath } from 'url';
-import nodemailer from 'nodemailer';
-import methodOverride from 'method-override';
-import { v4 as uuidv4 } from 'uuid';
-import session from 'express-session';
-import axios from "axios";
-import path from "path";
-
-const __dirname = dirname(fileURLToPath(import.meta.url));
-
+require('dotenv').config();
+const express = require('express');
+const nodemailer = require('nodemailer');
+const session = require('express-session');
+const path = require('path');
 
 const app = express();
-const port = 3000;
+const PORT = process.env.PORT || 3000;
 
-app.use(express.static("public"));
-
-// Static posts (fixed content)
-const blogPosts = [
-  { title: 'Blog post 1', content: 'Content of blog post 1' },
-  { title: 'Blog post 2', content: 'Content of blog post 2' },
-];
-
-const nestPosts = [
-  { title: 'Nest post 1', content: 'Content of nest post 1' },
-  { title: 'Nest post 2', content: 'Content of nest post 2' },
-];
-
-const bloomPosts = [
-  { title: 'Bloom post 1', content: 'Content of bloom post 1' },
-  { title: 'Bloom post 2', content: 'Content of bloom post 2' },
-];
-
-// ... add other static post arrays similarly ...
-const flowPosts = [
-  { title: 'Flow post 1', content: 'Content of flow post 1' },
-  { title: 'Flow post 2', content: 'Content of flow post 2' },
-];
-const loomPosts = [
-  { title: 'Loom post 1', content: 'Content of loom post 1' },
-  { title: 'Loom post 2', content: 'Content of loom post 2' },
-];
-const renewPosts = [
-  { title: 'Renew post 1', content: 'Content of renew post 1' },
-  { title: 'Renew post 2', content: 'Content of renew post 2' },
-];
-const pearlPosts = [
-  { title: 'Pearl post 1', content: 'Content of pearl post 1' },
-  { title: 'Pearl post 2', content: 'Content of pearl post 2' },
-];
-const glowPosts = [
-  { title: 'Glow post 1', content: 'Content of glow post 1' },
-  { title: 'Glow post 2', content: 'Content of glow post 2' },
-];
-const litPosts = [
-  { title: 'Lit post 1', content: 'Content of lit post 1' },
-  { title: 'Lit post 2', content: 'Content of lit post 2' },
-];
-const voicePosts = [
-  { title: 'Voice post 1', content: 'Content of voice post 1' },
-  { title: 'Voice post 2', content: 'Content of voice post 2' },
-];
-
-// Dynamic posts (user created)
-let posts = [];
-
-// Admin username (you)
-const ADMIN_USERNAME = 'anshrajput'; // Change as needed
-
-// Middleware setup
-app.use(express.static(join(__dirname, 'public')));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(methodOverride('_method'));
+app.use(express.static(path.join(__dirname, 'public')));
+app.use(session({
+  secret: process.env.SESSION_SECRET || 'twish-secret-2025',
+  resave: false,
+  saveUninitialized: false,
+  cookie: { secure: false, maxAge: 24 * 60 * 60 * 1000 }
+}));
 
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
-// Session setup
-app.use(session({
-  secret: 'your-super-secret-key', // Replace with a strong secret for production
-  resave: false,
-  saveUninitialized: true,
-}));
+function renderPage(res, partial, locals = {}) {
+  res.render('partials/' + partial, { ...locals, layout: false }, (err, body) => {
+    if (err) { console.error(err); return res.status(500).send(err.message); }
+    res.render('layout', { ...locals, body });
+  });
+}
 
-// Make currentUser and ADMIN_USERNAME available in all EJS templates
-app.use((req, res, next) => {
-  res.locals.currentUser = req.session.username || null;
-  res.locals.ADMIN_USERNAME = ADMIN_USERNAME;
-  next();
+const transporter = nodemailer.createTransport({
+  service: 'gmail',
+  auth: { user: process.env.EMAIL_USER, pass: process.env.EMAIL_PASS }
 });
 
-// --- ROUTES ---
-
-// Home page
-app.get('/', (req, res) => {
-  res.render('partials/home.ejs');
+app.get(['/', '/home'], (req, res) => {
+  renderPage(res, 'home', {
+    pageTitle: 'Twish — Psychotherapist in Mississauga | Shimul Rajput',
+    metaDesc: 'Twish offers individual, couples and virtual therapy in Mississauga, Ontario. Registered Psychotherapist Shimul Rajput provides culturally sensitive therapy in English, Hindi and Punjabi.'
+  });
 });
 
-// Signin routes
-app.get('/signin', (req, res) => {
-  res.render('signin.ejs');
+app.get('/about', (req, res) => {
+  renderPage(res, 'about', {
+    pageTitle: 'About Shimul Rajput — South Asian Therapist Mississauga | Twish',
+    metaDesc: 'Meet Shimul Rajput, Registered Psychotherapist (Qualifying) in Mississauga. MACP from Yorkville University. Culturally sensitive therapy in English, Hindi and Punjabi.'
+  });
 });
 
-app.post('/signin', (req, res) => {
-  const password = req.body['floatingPassword'];
-  if (password === 'Rajputansh09') {
-    req.session.username = ADMIN_USERNAME;
-    res.redirect('/home');
-  } else {
-    res.render('index.ejs', { error: 'Invalid password' });
-  }
+app.get('/services', (req, res) => {
+  renderPage(res, 'services', {
+    pageTitle: 'Therapy Services — Individual, Couples & Virtual | Twish Mississauga',
+    metaDesc: 'Individual therapy, couples therapy, and virtual therapy in Mississauga, Ontario. $150/50 min. Free 15-minute consultation available.'
+  });
 });
 
-// Static pages
-app.get('/home', (req, res) => res.render('partials/home.ejs'));
-app.get('/about', (req, res) => res.render('partials/about.ejs'));
-app.get('/services', (req, res) => res.render('partials/services.ejs'));
-
-
-// Blog page with static posts
 app.get('/blog', (req, res) => {
-  res.render('partials/blog.ejs', {
-    currentFolder: 'partials',
-    currentPage: 'blog',
-    posts: blogPosts,
+  renderPage(res, 'blog', {
+    pageTitle: 'Mental Health Blog — Twish Therapy Mississauga',
+    metaDesc: 'Articles on mental health, anxiety, relationships, South Asian identity, and therapy insights by Shimul Rajput, psychotherapist in Mississauga.'
   });
 });
 
-// Contact page
 app.get('/contact', (req, res) => {
-  res.render('partials/contact.ejs', {
-    email: 'shimul@twishcare.ca',
-    phone: '+1 (647) 617-5744',
-    address: '39 Dunbar St, Belleville, ON K8P 3R6',
+  renderPage(res, 'contact', {
+    pageTitle: 'Contact Twish — Book a Therapy Session in Mississauga',
+    metaDesc: 'Contact Shimul Rajput at Twish Therapy, 365 Prince of Wales Dr, Mississauga. Book your free 15-minute consultation today.',
+    email: process.env.CONTACT_EMAIL || 'rajputshimul@gmail.com',
+    phone: '(647) 616-5744',
+    address: '365 Prince of Wales Dr, Mississauga, ON L5B 0G6'
   });
 });
 
-// Contact form submission
+app.get('/signin', (req, res) => {
+  renderPage(res, 'signIn', { pageTitle: 'Sign In — Twish' });
+});
+
 app.post('/send-message', async (req, res) => {
   const { name, email, subject, message } = req.body;
-
-  const transporter = nodemailer.createTransport({
-    service: 'gmail',
-    auth: {
-      user: 'shimul@twishcare.ca',
-      pass: 'kjxp nwte alng unck', // Use env var for security
-    },
-  });
-
-  const mailOptions = {
-    from: 'shimul@twishcare.ca',
-    replyTo: email,
-    to: 'shimul@twishcare.ca',
-    subject: `Twish Website Contact: ${subject}`,
-    text: `
-From: ${name}
-Email: ${email}
-
-Message:
-${message}
-    `,
-  };
-
+  if (!name || !email || !message) return res.status(400).json({ error: 'Missing required fields' });
   try {
-    await transporter.sendMail(mailOptions);
-    res.render('partials/contact.ejs', {
-      email: 'shimul@twishcare.ca',
-      phone: '+1 (647) 617-5744',
-      address: '39 Dunbar St, Belleville, ON K8P 3R6',
-      success: true,
+    await transporter.sendMail({
+      from: '"Twish Website" <' + process.env.EMAIL_USER + '>',
+      to: process.env.CONTACT_EMAIL || 'rajputshimul@gmail.com',
+      replyTo: email,
+      subject: '[Twish] ' + (subject || 'New message from ' + name),
+      html: '<h2>New message from Twish website</h2><p><strong>Name:</strong> ' + name + '</p><p><strong>Email:</strong> ' + email + '</p><p><strong>Subject:</strong> ' + subject + '</p><p><strong>Message:</strong><br>' + message.replace(/\n/g, '<br>') + '</p>'
     });
+    res.status(200).json({ success: true });
   } catch (err) {
-    console.error('Email send error:', err);
-    res.render('partials/contact.ejs', {
-      email: 'shimul@twishcare.ca',
-      phone: '+1 (647) 617-5744',
-      address: '39 Dunbar St, Belleville, ON K8P 3R6',
-      success: false,
-    });
+    console.error('Email error:', err.message);
+    res.status(500).json({ error: 'Failed to send message' });
   }
 });
 
-// Blog files routes with static posts + posts passed for search functionality
-const blogFileRoutes = [
-  { path: 'bloom', posts: bloomPosts },
-  { path: 'nest', posts: nestPosts },
-  { path: 'flow', posts: flowPosts },
-  { path: 'loom', posts: loomPosts },
-  { path: 'renew', posts: renewPosts },
-  { path: 'pearl', posts: pearlPosts },
-  { path: 'glow', posts: glowPosts },
-  { path: 'lit', posts: litPosts },
-  { path: 'voice', posts: voicePosts },
-];
-
-// Register blogFiles routes dynamically
-blogFileRoutes.forEach(({ path, posts }) => {
-  app.get(`/${path}`, (req, res) => {
-    res.render(`blogFiles/${path}`, {
-      currentFolder: 'blogFiles',
-      currentPage: path,
-      posts,
-    });
-  });
+app.post('/admin-login', (req, res) => {
+  const { password } = req.body;
+  if (password === process.env.ADMIN_PASSWORD) { req.session.isAdmin = true; res.redirect('/blog'); }
+  else res.redirect('/signin?error=1');
 });
 
-// --- Authentication routes for YouPost ---
+app.get('/admin-logout', (req, res) => { req.session.destroy(); res.redirect('/home'); });
 
-// Login page (username based login)
-app.get('/login', (req, res) => {
-  res.render('blogFiles/login.ejs');
-});
-
-// Login POST
-app.post('/login', (req, res) => {
-  const { username } = req.body;
-  if (!username || username.trim() === '') {
-    return res.send('Please provide a username');
-  }
-  req.session.username = username.trim();
-  res.redirect('/youPost');
-});
-
-// Logout POST
-app.post('/logout', (req, res) => {
-  req.session.destroy(() => {
-    res.redirect('/youPost');
-  });
-});
-
-// --- YouPost dynamic posts routes ---
-
-// Render YouPost page
-app.get('/youPost', (req, res) => {
-  res.render('blogFiles/youPost.ejs', {
-    currentFolder: 'blogFiles',
-    currentPage: 'youPost',
-    posts: posts,
-    q: "",
-    currentUser: req.session.username || null,
-    ADMIN_USERNAME,
-  });
-});
-
-// Create new post
-app.post('/posts', (req, res) => {
-  const { title, content } = req.body;
-  const username = req.session.username;
-
-  if (!username) {
-    return res.send('You must be logged in to create a post. <a href="/login">Login here</a>');
-  }
-  if (!title || !content) {
-    return res.status(400).send('Title and content are required');
-  }
-
-  const newPost = {
-    _id: uuidv4(),
-    title,
-    content,
-    author: username,
-  };
-
-  posts.push(newPost);
-  res.redirect('/youPost');
-});
-
-// Update existing post
-app.put('/posts/:id', (req, res) => {
-  const postId = req.params.id;
-  const { title, content } = req.body;
-  const username = req.session.username;
-
-  const post = posts.find((p) => p._id === postId);
-  if (!post) {
-    return res.status(404).send('Post not found');
-  }
-  if (!username) {
-    return res.send('You must be logged in to edit a post.');
-  }
-  if (post.author !== username && username !== ADMIN_USERNAME) {
-    return res.status(403).send('You do not have permission to edit this post.');
-  }
-  if (!title || !content) {
-    return res.status(400).send('Title and content are required');
-  }
-
-  post.title = title;
-  post.content = content;
-
-  res.redirect('/youPost');
-});
-
-// Delete post
-app.delete('/posts/:id', (req, res) => {
-  const postId = req.params.id;
-  const username = req.session.username;
-
-  const post = posts.find((p) => p._id === postId);
-  if (!post) {
-    return res.status(404).send('Post not found');
-  }
-  if (!username) {
-    return res.send('You must be logged in to delete a post.');
-  }
-  if (post.author !== username && username !== ADMIN_USERNAME) {
-    return res.status(403).send('You do not have permission to delete this post.');
-  }
-
-  posts = posts.filter((p) => p._id !== postId);
-  res.redirect('/youPost');
-});
-
-// --- Search route ---
-
-app.get('/search', (req, res) => {
-  const { q, folder, page } = req.query;
-
-  // Helper function to get posts by page
-  function getPostsByPage(page) {
-    switch (page) {
-      case 'blog': return blogPosts;
-      case 'nest': return nestPosts;
-      case 'bloom': return bloomPosts;
-      case 'flow': return flowPosts;
-      case 'loom': return loomPosts;
-      case 'renew': return renewPosts;
-      case 'lit': return litPosts;
-      case 'pearl': return pearlPosts;
-      case 'glow': return glowPosts;
-      case 'voice': return voicePosts;
-      case 'youPost': return posts;
-      default: return null;
-    }
-  }
-
-  const pagePosts = getPostsByPage(page);
-  if (!pagePosts) {
-    return res.status(400).send('Invalid page parameter for search');
-  }
-
-  if (!q || q.trim() === '') {
-    // No search query: render full page with all posts
-    return res.render(`${folder}/${page}`, {
-      currentFolder: folder,
-      currentPage: page,
-      posts: pagePosts,
-      q: '',
-    });
-  }
-
-  if (page === 'youPost') {
-    // On youPost page, filter by title OR content
-    const filteredPosts = pagePosts.filter(post =>
-      post.title.toLowerCase().includes(q.toLowerCase()) ||
-      post.content.toLowerCase().includes(q.toLowerCase())
-    );
-
-    return res.render(`${folder}/${page}`, {
-      currentFolder: folder,
-      currentPage: page,
-      q,
-      posts: filteredPosts,
-      currentUser: req.session.username || null,
-      ADMIN_USERNAME,
-    });
-  } else {
-    // On other pages, do NOT filter posts server-side
-    // Just redirect back to the page with the query param
-    return res.redirect(`/${page}?q=${encodeURIComponent(q)}`);
-  }
-});
-
-
-
-
-
-// -- Gita --//
-
-
-// --- Bhagavad Gita chapters API for /gita ---
-app.get('/gita', async (req, res) => {
-  const chapterNumber = req.query.chapter; // <-- must be here
-
-  try {
-    // Fetch all chapters (always)
-    const chaptersResponse = await axios.get(
-      'https://bhagavad-gita3.p.rapidapi.com/v2/chapters/',
-      {
-        params: { skip: 0, limit: 18 },
-        headers: {
-          'x-rapidapi-key': '6501103eb4msh0b05105cc5e5316p1dfbeajsn9b57e4414bf3',
-          'x-rapidapi-host': 'bhagavad-gita3.p.rapidapi.com'
-        }
-      }
-    );
-    const chapters = chaptersResponse.data;
-
-    let chapterDetail = null;
-    let verses = [];
-
-    if (chapterNumber) {
-      // Fetch detail only if requested
-      const detailResponse = await axios.get(
-        `https://bhagavad-gita3.p.rapidapi.com/v2/chapters/${chapterNumber}/`,
-        {
-          headers: {
-            'x-rapidapi-key': '6501103eb4msh0b05105cc5e5316p1dfbeajsn9b57e4414bf3',
-            'x-rapidapi-host': 'bhagavad-gita3.p.rapidapi.com'
-          }
-        }
-      );
-      chapterDetail = detailResponse.data;
-
-      // Fetch verses for this chapter
-      const versesResponse = await axios.get(
-        `https://bhagavad-gita3.p.rapidapi.com/v2/chapters/${chapterNumber}/verses/`,
-        {
-          headers: {
-            'x-rapidapi-key': '6501103eb4msh0b05105cc5e5316p1dfbeajsn9b57e4414bf3',
-            'x-rapidapi-host': 'bhagavad-gita3.p.rapidapi.com'
-          }
-        }
-      );
-      verses = versesResponse.data;
-    }
-
-    res.render('gita', { chapters, chapterDetail, verses });
-
-  } catch (error) {
-    console.error('Error fetching chapters:', error.message);
-    res.status(500).send('Something went wrong while fetching chapters.');
-  }
-});
-
-
-
-// --- Start the server ---
-app.listen(port, () => {
-  console.log(`Server is running at http://localhost:${port}`);
-});
-
+app.listen(PORT, () => console.log('Twish running on port ' + PORT));
