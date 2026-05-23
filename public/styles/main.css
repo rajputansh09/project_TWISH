@@ -829,3 +829,63 @@ label.tw-label {
   }
   .tw-float { animation: none; }
 }
+
+/* ============================================
+   NON-CLICKABLE CARDS — glow, no lift
+   Use .tw-card-static on any card without a link
+   ============================================ */
+
+/* Override dark card hover — static version */
+.tw-card-dark.tw-card-static:hover,
+.tw-card-static.tw-card-dark:hover {
+  transform: none !important;
+  box-shadow: 0 0 0 2px var(--tw-gold), 0 0 20px rgba(162,123,92,0.2) !important;
+  border-color: var(--tw-gold) !important;
+  border-top-color: var(--tw-gold-lt) !important;
+}
+
+/* Override light card hover — static version */
+.tw-card-light.tw-card-static:hover,
+.tw-card-static.tw-card-light:hover {
+  transform: none !important;
+  box-shadow: 0 0 0 2px var(--tw-gold), 0 0 20px rgba(162,123,92,0.15) !important;
+  border-color: var(--tw-gold) !important;
+}
+.tw-card-light.tw-card-static:hover::after {
+  opacity: 1;
+}
+
+/* Override approach card hover — static version */
+.tw-approach-card.tw-card-static:hover {
+  transform: none !important;
+  box-shadow: 0 0 0 2px var(--tw-gold), 0 0 18px rgba(162,123,92,0.15) !important;
+  border-color: rgba(162,123,92,0.5) !important;
+}
+
+/* FAQ cards — glow on left border */
+.tw-faq-card {
+  background: var(--tw-ivory);
+  border: 1px solid rgba(44,57,48,0.08);
+  border-top: 3px solid var(--tw-gold);
+  border-radius: 0 0 14px 14px;
+  padding: 1.75rem;
+  height: 100%;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  cursor: default;
+}
+.tw-faq-card:hover {
+  border-color: rgba(162,123,92,0.4);
+  border-top-color: var(--tw-gold-lt);
+  box-shadow: 0 0 0 1px rgba(162,123,92,0.2), 0 4px 20px rgba(162,123,92,0.1);
+}
+.tw-faq-card h4 {
+  color: var(--tw-forest);
+  font-size: 1rem;
+  margin-bottom: 0.75rem;
+}
+.tw-faq-card p {
+  color: var(--tw-text-mid);
+  font-size: 0.88rem;
+  margin: 0;
+  line-height: 1.8;
+}
