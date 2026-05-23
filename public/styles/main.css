@@ -40,7 +40,7 @@ html { scroll-behavior: smooth; }
 body {
   font-family: var(--ff-body);
   font-size: 1rem;
-  line-height: 1.85;
+  line-height: 1.75;
   color: var(--tw-text-dark);
   background: var(--tw-white);
   margin: 0; padding: 0;
@@ -48,10 +48,7 @@ body {
 }
 
 img { max-width: 100%; height: auto; display: block; }
-p, li, td, dd, dt, figcaption, blockquote {
-  font-family: var(--ff-body);
-  line-height: 1.85;
-}
+p, li, blockquote, cite, dd { font-family: 'Lora', Georgia, serif; line-height: 1.85; }
 a { color: var(--tw-gold); text-decoration: none; transition: var(--transition); }
 a:hover { color: var(--tw-gold-lt); }
 
@@ -91,7 +88,7 @@ p  { font-size: 1rem; line-height: 1.85; margin-bottom: 1.25rem; }
 .tw-navbar .navbar-brand img { height: 44px; width: auto; }
 
 .tw-navbar .nav-link {
-  font-family: var(--ff-ui);
+  font-family: 'DM Sans', system-ui, sans-serif;
   font-size: 0.82rem;
   font-weight: 500;
   letter-spacing: 0.08em;
@@ -128,7 +125,7 @@ p  { font-size: 1rem; line-height: 1.85; margin-bottom: 1.25rem; }
 /* Book button — warm brown, white text */
 .tw-nav-book {
   display: inline-block;
-  font-family: var(--ff-ui);
+  font-family: var(--ff-body);
   font-size: 0.78rem;
   font-weight: 500;
   letter-spacing: 0.1em;
@@ -230,11 +227,11 @@ p  { font-size: 1rem; line-height: 1.85; margin-bottom: 1.25rem; }
   background: radial-gradient(ellipse, rgba(162,123,92,0.07) 0%, transparent 70%);
   pointer-events: none;
 }
+font-family: 'DM Sans', system-ui, sans-serif;
 .tw-hero-eyebrow {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  font-family: var(--ff-ui);
   font-size: 0.72rem;
   font-weight: 500;
   letter-spacing: 0.22em;
@@ -301,7 +298,7 @@ p  { font-size: 1rem; line-height: 1.85; margin-bottom: 1.25rem; }
   margin-bottom: 0.4rem;
 }
 .tw-stat-label {
-  font-family: var(--ff-ui);
+  font-family: 'DM Sans', system-ui, sans-serif;
   font-size: 0.78rem;
   letter-spacing: 0.15em;
   text-transform: uppercase;
@@ -309,7 +306,7 @@ p  { font-size: 1rem; line-height: 1.85; margin-bottom: 1.25rem; }
   margin-bottom: 0.15rem;
 }
 .tw-stat-sub {
-  font-family: var(--ff-ui);
+  font-family: 'DM Sans', system-ui, sans-serif;
   font-size: 0.7rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -481,7 +478,7 @@ p  { font-size: 1rem; line-height: 1.85; margin-bottom: 1.25rem; }
   display: inline-block;
   background: var(--tw-gold);
   color: var(--tw-white);
-  font-family: var(--ff-ui);
+  font-family: var(--ff-body);
   font-size: 0.82rem;
   font-weight: 500;
   letter-spacing: 0.1em;
@@ -498,7 +495,7 @@ p  { font-size: 1rem; line-height: 1.85; margin-bottom: 1.25rem; }
   display: inline-block;
   background: transparent;
   color: var(--tw-cream);
-  font-family: var(--ff-ui);
+  font-family: var(--ff-body);
   font-size: 0.82rem;
   font-weight: 500;
   letter-spacing: 0.1em;
@@ -515,7 +512,7 @@ p  { font-size: 1rem; line-height: 1.85; margin-bottom: 1.25rem; }
   display: inline-block;
   background: transparent;
   color: var(--tw-forest);
-  font-family: var(--ff-ui);
+  font-family: var(--ff-body);
   font-size: 0.82rem;
   font-weight: 500;
   letter-spacing: 0.1em;
@@ -532,7 +529,7 @@ p  { font-size: 1rem; line-height: 1.85; margin-bottom: 1.25rem; }
   display: inline-block;
   background: var(--tw-forest);
   color: var(--tw-cream);
-  font-family: var(--ff-ui);
+  font-family: var(--ff-body);
   font-size: 0.82rem;
   font-weight: 500;
   letter-spacing: 0.1em;
@@ -549,7 +546,7 @@ p  { font-size: 1rem; line-height: 1.85; margin-bottom: 1.25rem; }
    SECTION LABEL & DIVIDER
    ============================================ */
 .tw-section-label {
-  font-family: var(--ff-ui);
+  font-family: 'DM Sans', system-ui, sans-serif;
   font-size: 0.72rem;
   font-weight: 500;
   letter-spacing: 0.25em;
@@ -629,7 +626,7 @@ p  { font-size: 1rem; line-height: 1.85; margin-bottom: 1.25rem; }
   box-shadow: 0 0 0 3px rgba(162,123,92,0.1);
 }
 label.tw-label {
-  font-family: var(--ff-ui);
+  font-family: 'DM Sans', system-ui, sans-serif;
   font-size: 0.75rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -651,7 +648,7 @@ label.tw-label {
 .tw-footer p { color: rgba(220,215,201,0.6); font-size: 0.88rem; line-height: 1.7; }
 .tw-footer-heading,
 .tw-footer p.tw-footer-heading {
-  font-family: var(--ff-ui);
+  font-family: 'DM Sans', system-ui, sans-serif;
   font-size: 0.72rem; font-weight: 500;
   letter-spacing: 0.22em; text-transform: uppercase;
   color: #DCD7C9 !important;
@@ -660,7 +657,7 @@ label.tw-label {
 }
 .tw-footer-links { list-style: none; padding: 0; margin: 0; }
 .tw-footer-links li { margin-bottom: 0.6rem; }
-.tw-footer-links a { font-family: var(--ff-body); font-size: 0.88rem; color: rgba(220,215,201,0.65); transition: var(--transition); }
+.tw-footer-links a { font-size: 0.88rem; color: rgba(220,215,201,0.65); transition: var(--transition); }
 .tw-footer-links a:hover { color: var(--tw-gold); padding-left: 4px; }
 .tw-social-links { display: flex; gap: 0.65rem; margin-top: 1rem; }
 .tw-social-links a {
@@ -739,7 +736,6 @@ label.tw-label {
    UTILITY BADGES
    ============================================ */
 .tw-badge {
-  font-family: var(--ff-body);
   background: rgba(44,57,48,0.06);
   border: 1px solid rgba(44,57,48,0.12);
   color: var(--tw-forest);
@@ -750,7 +746,6 @@ label.tw-label {
   display: inline-block;
 }
 .tw-badge-gold {
-  font-family: var(--ff-body);
   background: rgba(162,123,92,0.1);
   border: 1px solid rgba(162,123,92,0.25);
   color: var(--tw-gold);
@@ -760,7 +755,6 @@ label.tw-label {
   display: inline-block;
 }
 .tw-badge-cream {
-  font-family: var(--ff-body);
   background: rgba(162,123,92,0.15);
   border: 1px solid rgba(162,123,92,0.3);
   color: var(--tw-cream);
