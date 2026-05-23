@@ -830,39 +830,45 @@ label.tw-label {
   .tw-float { animation: none; }
 }
 
+
 /* ============================================
-   NON-CLICKABLE CARDS — glow, no lift
-   Use .tw-card-static on any card without a link
+   STATIC CARDS — zero hover effect
+   Cards without clickable links stay completely
+   still on hover. No lift, no glow, no change.
    ============================================ */
 
-/* Override dark card hover — static version */
-.tw-card-dark.tw-card-static:hover,
-.tw-card-static.tw-card-dark:hover {
-  transform: none !important;
-  box-shadow: 0 0 0 2px var(--tw-gold), 0 0 20px rgba(162,123,92,0.2) !important;
-  border-color: var(--tw-gold) !important;
-  border-top-color: var(--tw-gold-lt) !important;
+.tw-card-dark.tw-card-static,
+.tw-card-light.tw-card-static,
+.tw-approach-card.tw-card-static,
+.tw-faq-card,
+.tw-testimonial.tw-card-static {
+  cursor: default;
 }
 
-/* Override light card hover — static version */
-.tw-card-light.tw-card-static:hover,
-.tw-card-static.tw-card-light:hover {
+.tw-card-dark.tw-card-static:hover {
   transform: none !important;
-  box-shadow: 0 0 0 2px var(--tw-gold), 0 0 20px rgba(162,123,92,0.15) !important;
-  border-color: var(--tw-gold) !important;
+  box-shadow: none !important;
+  border-color: rgba(162,123,92,0.15) !important;
+  border-top-color: var(--tw-gold) !important;
+}
+
+.tw-card-light.tw-card-static:hover {
+  transform: none !important;
+  box-shadow: var(--shadow-card) !important;
+  border-color: rgba(44,57,48,0.07) !important;
 }
 .tw-card-light.tw-card-static:hover::after {
-  opacity: 1;
+  opacity: 0 !important;
+}
+.tw-card-light.tw-card-static:hover .tw-card-img {
+  transform: none !important;
 }
 
-/* Override approach card hover — static version */
 .tw-approach-card.tw-card-static:hover {
   transform: none !important;
-  box-shadow: 0 0 0 2px var(--tw-gold), 0 0 18px rgba(162,123,92,0.15) !important;
-  border-color: rgba(162,123,92,0.5) !important;
+  box-shadow: none !important;
 }
 
-/* FAQ cards — glow on left border */
 .tw-faq-card {
   background: var(--tw-ivory);
   border: 1px solid rgba(44,57,48,0.08);
@@ -870,13 +876,12 @@ label.tw-label {
   border-radius: 0 0 14px 14px;
   padding: 1.75rem;
   height: 100%;
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
   cursor: default;
+  transition: none;
 }
 .tw-faq-card:hover {
-  border-color: rgba(162,123,92,0.4);
-  border-top-color: var(--tw-gold-lt);
-  box-shadow: 0 0 0 1px rgba(162,123,92,0.2), 0 4px 20px rgba(162,123,92,0.1);
+  transform: none !important;
+  box-shadow: none !important;
 }
 .tw-faq-card h4 {
   color: var(--tw-forest);
@@ -888,4 +893,9 @@ label.tw-label {
   font-size: 0.88rem;
   margin: 0;
   line-height: 1.8;
+}
+
+.tw-testimonial.tw-card-static:hover {
+  transform: none !important;
+  box-shadow: none !important;
 }
