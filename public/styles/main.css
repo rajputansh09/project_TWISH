@@ -130,9 +130,565 @@ p  { font-size: 1rem; line-height: 1.85; margin-bottom: 1.25rem; }
   font-weight: 500;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: #FFFFFF !important;
-  background: #A27B5C;
+  color: var(--tw-white) !important;
+  background: var(--tw-gold);
   padding: 0.52rem 1.4rem;
+  border-radius: var(--radius-xl);
+  border: 2px solid var(--tw-gold);
+  transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
+  cursor: pointer;
+  text-decoration: none;
+}
+.tw-nav-book:hover {
+  background: var(--tw-gold-lt);
+  border-color: var(--tw-gold-lt);
+  color: var(--tw-white) !important;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(162,123,92,0.35);
+}
+
+
+/* Footer book button — force exact same behaviour as navbar, override .tw-footer * transition */
+.tw-footer .tw-nav-book {
+  transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease, transform 0.2s ease !important;
+  display: inline-block !important;
+}
+.tw-footer .tw-nav-book:hover {
+  background: var(--tw-gold-lt) !important;
+  border-color: var(--tw-gold-lt) !important;
+  color: var(--tw-white) !important;
+  transform: translateY(-1px) !important;
+  box-shadow: 0 4px 14px rgba(162,123,92,0.35) !important;
+}
+
+/* Active page indicator replaced */
+/* Active page indicator — pure gold underbar */
+.tw-nav-active {
+  color: var(--tw-gold) !important;
+  font-weight: 500;
+}
+/* Underbar for regular nav links */
+.tw-nav-active:not(.dropdown-toggle)::after {
+  transform: scaleX(1) !important;
+  background: #A27B5C !important;
+  height: 2.5px !important;
+  border-radius: 2px;
+  border: none !important;
+  width: auto !important;
+}
+/* Underbar for dropdown-toggle (Services) — use a box-shadow trick instead
+   because ::after is taken by Bootstrap's caret arrow */
+.tw-nav-active.dropdown-toggle {
+  box-shadow: inset 0 -2.5px 0 0 #A27B5C;
+  padding-bottom: 0.5rem !important;
+}
+.tw-nav-active.dropdown-toggle::after {
+  /* Keep Bootstrap's caret but force gold colour */
+  border-top-color: var(--tw-gold) !important;
+  border-bottom-color: var(--tw-gold) !important;
+}
+
+/* ============================================
+   SECTION BACKGROUNDS — Alternating rhythm
+   ============================================ */
+.tw-section-dark  { background: var(--tw-forest);    padding: 5rem 0; }
+.tw-section-darker{ background: var(--tw-forest-dk); padding: 5rem 0; }
+.tw-section-white { background: var(--tw-white);     padding: 5rem 0; }
+.tw-section-ivory { background: var(--tw-ivory);     padding: 5rem 0; }
+.tw-section-cream { background: var(--tw-cream);     padding: 5rem 0; }
+
+/* Text colours per background */
+.tw-section-dark  h1, .tw-section-dark  h2, .tw-section-dark  h3, .tw-section-dark  h4,
+.tw-section-darker h1,.tw-section-darker h2,.tw-section-darker h3,.tw-section-darker h4 { color: var(--tw-cream); }
+.tw-section-dark  p, .tw-section-darker p { color: rgba(220,215,201,0.85); }
+
+.tw-section-white h1,.tw-section-white h2,.tw-section-white h3,.tw-section-white h4,
+.tw-section-ivory h1,.tw-section-ivory h2,.tw-section-ivory h3,.tw-section-ivory h4,
+.tw-section-cream h1,.tw-section-cream h2,.tw-section-cream h3,.tw-section-cream h4 { color: var(--tw-forest); }
+.tw-section-white p,.tw-section-ivory p,.tw-section-cream p { color: var(--tw-text-mid); }
+
+/* ============================================
+   HERO
+   ============================================ */
+.tw-hero {
+  min-height: 92vh;
+  display: flex;
+  align-items: center;
+  background: var(--tw-forest);
+  border-bottom: 1px solid rgba(162,123,92,0.2);
+  padding: 6rem 0;
+  position: relative;
+  overflow: hidden;
+}
+.tw-hero::before {
+  content: '';
+  position: absolute;
+  top: -20%; right: -8%; width: 50%; height: 120%;
+  background: radial-gradient(ellipse, rgba(162,123,92,0.07) 0%, transparent 70%);
+  pointer-events: none;
+}
+font-family: 'DM Sans', system-ui, sans-serif;
+.tw-hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'DM Sans', system-ui, sans-serif !important;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--tw-gold);
+  background: rgba(162,123,92,0.12);
+  border: 1px solid rgba(162,123,92,0.3);
+  padding: 0.4rem 1rem;
+  border-radius: var(--radius-xl);
+  margin-bottom: 1.5rem;
+}
+.tw-hero-eyebrow::before {
+  content: '';
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--tw-gold);
+  flex-shrink: 0;
+}
+.tw-hero h1 { color: var(--tw-cream); margin-bottom: 1.5rem; }
+.tw-hero h1 em { font-style: italic; color: var(--tw-gold); }
+.tw-hero-lead {
+  font-size: 1.05rem;
+  color: rgba(220,215,201,0.82);
+  max-width: 520px;
+  margin-bottom: 2.5rem;
+  line-height: 1.9;
+}
+.tw-hero-image {
+  border-radius: var(--radius-lg);
+  border: 2px solid rgba(162,123,92,0.3);
+  object-fit: cover;
+  width: 100%;
+  max-height: 560px;
+  box-shadow: var(--shadow-gold);
+}
+
+/* ============================================
+   STATS STRIP — CertCanada style
+   ============================================ */
+.tw-stats {
+  background: var(--tw-forest-dk);
+  padding: 3.5rem 0;
+  border-top: 1px solid rgba(162,123,92,0.2);
+  border-bottom: 1px solid rgba(162,123,92,0.2);
+}
+.tw-stat-item {
+  text-align: center;
+  padding: 0.5rem 1rem;
+  position: relative;
+}
+.tw-stat-item:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  right: 0; top: 15%; height: 70%;
+  width: 1px;
+  background: rgba(162,123,92,0.3);
+}
+.tw-stat-number {
+  font-family: var(--ff-heading);
+  font-size: clamp(2.4rem, 4vw, 3.2rem);
+  font-weight: 600;
+  color: var(--tw-gold);
+  line-height: 1;
+  margin-bottom: 0.4rem;
+}
+.tw-stat-label {
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-size: 0.78rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--tw-cream);
+  margin-bottom: 0.15rem;
+}
+.tw-stat-sub {
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(220,215,201,0.4);
+}
+
+/* ============================================
+   CARDS — on white/ivory backgrounds
+   ============================================ */
+.tw-card-light {
+  background: var(--tw-white);
+  border: 1px solid rgba(44,57,48,0.08);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: var(--transition);
+  height: 100%;
+  box-shadow: var(--shadow-card);
+}
+.tw-card-light:hover {
+  transform: translateY(-6px);
+  border-color: rgba(162,123,92,0.3);
+  box-shadow: var(--shadow-gold);
+}
+.tw-card-light .tw-card-img {
+  width: 100%; height: 220px; object-fit: cover;
+}
+.tw-card-light .tw-card-body { padding: 1.75rem; }
+.tw-card-light .tw-card-body h3 { color: var(--tw-forest); font-size: 1.4rem; margin-bottom: 0.5rem; }
+.tw-card-light .tw-card-body p  { color: var(--tw-text-mid); font-size: 0.9rem; margin-bottom: 1.25rem; }
+.tw-card-price   { font-family: var(--ff-heading); font-size: 1.7rem; color: var(--tw-gold); font-weight: 600; margin-bottom: 0.1rem; }
+.tw-card-duration{ font-size: 0.75rem; color: var(--tw-text-muted); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.75rem; }
+
+
+/* ============================================
+   REDESIGNED CARDS — Premium dark glass style
+   ============================================ */
+
+/* Dark card — on dark green backgrounds */
+.tw-card-dark {
+  background: linear-gradient(145deg, rgba(63,79,68,0.9) 0%, rgba(44,57,48,0.95) 100%);
+  border: 1px solid rgba(162,123,92,0.15);
+  border-top: 2px solid var(--tw-gold);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: transform 0.35s cubic-bezier(0.22,1,0.36,1), box-shadow 0.35s ease, border-color 0.35s ease;
+  height: 100%;
+  position: relative;
+}
+.tw-card-dark::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at top left, rgba(162,123,92,0.06) 0%, transparent 65%);
+  pointer-events: none;
+  border-radius: inherit;
+}
+.tw-card-dark:hover {
+  transform: translateY(-6px);
+  border-color: rgba(162,123,92,0.5);
+  border-top-color: var(--tw-gold-lt);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.3), 0 0 0 1px rgba(162,123,92,0.2);
+}
+.tw-card-dark .tw-card-body {
+  padding: 2rem 1.75rem 1.75rem;
+  position: relative;
+  z-index: 1;
+}
+.tw-card-dark .tw-card-body h3,
+.tw-card-dark .tw-card-body h4 {
+  color: var(--tw-cream);
+  margin-bottom: 0.6rem;
+  font-size: 1.35rem;
+}
+.tw-card-dark .tw-card-body p {
+  color: rgba(220,215,201,0.72);
+  font-size: 0.9rem;
+  line-height: 1.8;
+}
+
+/* Icon container for info cards */
+.tw-card-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  background: rgba(162,123,92,0.12);
+  border: 1px solid rgba(162,123,92,0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.25rem;
+  font-size: 1.4rem;
+  color: var(--tw-gold);
+  transition: background 0.3s ease, border-color 0.3s ease;
+}
+.tw-card-dark:hover .tw-card-icon {
+  background: rgba(162,123,92,0.22);
+  border-color: rgba(162,123,92,0.45);
+}
+
+/* Light card — on white/ivory backgrounds */
+.tw-card-light {
+  background: var(--tw-white);
+  border: 1px solid rgba(44,57,48,0.07);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: transform 0.35s cubic-bezier(0.22,1,0.36,1), box-shadow 0.35s ease, border-color 0.35s ease;
+  height: 100%;
+  position: relative;
+}
+.tw-card-light::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--tw-gold), var(--tw-gold-lt));
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+.tw-card-light:hover {
+  transform: translateY(-7px);
+  border-color: rgba(162,123,92,0.25);
+  box-shadow: 0 20px 50px rgba(44,57,48,0.1), 0 4px 16px rgba(162,123,92,0.12);
+}
+.tw-card-light:hover::after { opacity: 1; }
+.tw-card-light .tw-card-img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+.tw-card-light:hover .tw-card-img { transform: scale(1.04); }
+.tw-card-light .tw-card-body { padding: 1.75rem; }
+.tw-card-light .tw-card-body h3 {
+  color: var(--tw-forest);
+  font-size: 1.4rem;
+  margin-bottom: 0.5rem;
+}
+.tw-card-light .tw-card-body p { color: var(--tw-text-mid); font-size: 0.9rem; margin-bottom: 1.25rem; }
+
+/* Approach cards on white bg */
+.tw-approach-card {
+  background: var(--tw-white);
+  border: 1px solid rgba(44,57,48,0.07);
+  border-top: 3px solid var(--tw-gold);
+  border-radius: 0 0 var(--radius-md) var(--radius-md);
+  padding: 1.75rem;
+  transition: transform 0.35s cubic-bezier(0.22,1,0.36,1), box-shadow 0.35s ease;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+.tw-approach-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, var(--tw-gold), var(--tw-gold-lt));
+}
+.tw-approach-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 16px 40px rgba(44,57,48,0.1), 0 4px 12px rgba(162,123,92,0.1);
+}
+.tw-approach-card h4 { color: var(--tw-forest); margin-bottom: 0.5rem; font-size: 1.1rem; }
+.tw-approach-card p { color: var(--tw-text-mid); font-size: 0.88rem; margin: 0; line-height: 1.75; }
+
+/* ============================================
+   BUTTONS
+   ============================================ */
+.btn-tw-primary {
+  display: inline-block;
+  background: var(--tw-gold);
+  color: var(--tw-white);
+  font-family: 'DM Sans', system-ui, sans-serif !important;
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.78rem 2rem;
+  border-radius: var(--radius-xl);
+  border: 2px solid var(--tw-gold);
+  cursor: pointer;
+  transition: var(--transition);
+}
+.btn-tw-primary:hover { background: transparent; color: var(--tw-gold); }
+
+.btn-tw-outline-light {
+  display: inline-block;
+  background: transparent;
+  color: var(--tw-cream);
+  font-family: 'DM Sans', system-ui, sans-serif !important;
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.78rem 2rem;
+  border-radius: var(--radius-xl);
+  border: 1.5px solid rgba(220,215,201,0.5);
+  cursor: pointer;
+  transition: var(--transition);
+}
+.btn-tw-outline-light:hover { background: var(--tw-cream); color: var(--tw-forest); border-color: var(--tw-cream); }
+
+.btn-tw-outline-dark {
+  display: inline-block;
+  background: transparent;
+  color: var(--tw-forest);
+  font-family: 'DM Sans', system-ui, sans-serif !important;
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.78rem 2rem;
+  border-radius: var(--radius-xl);
+  border: 1.5px solid var(--tw-forest);
+  cursor: pointer;
+  transition: var(--transition);
+}
+.btn-tw-outline-dark:hover { background: var(--tw-forest); color: var(--tw-cream); }
+
+.btn-tw-forest {
+  display: inline-block;
+  background: var(--tw-forest);
+  color: var(--tw-cream);
+  font-family: 'DM Sans', system-ui, sans-serif !important;
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.78rem 2rem;
+  border-radius: var(--radius-xl);
+  border: 2px solid var(--tw-forest);
+  cursor: pointer;
+  transition: var(--transition);
+}
+.btn-tw-forest:hover { background: var(--tw-gold); border-color: var(--tw-gold); color: var(--tw-white); }
+
+/* ============================================
+   SECTION LABEL & DIVIDER
+   ============================================ */
+.tw-section-label {
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--tw-gold);
+  margin-bottom: 0.75rem;
+  display: block;
+}
+.tw-divider {
+  width: 60px; height: 2px;
+  background: var(--tw-gold);
+  margin: 1.25rem auto 0;
+  border: none;
+}
+.tw-divider-left { margin-left: 0; }
+
+/* ============================================
+   TESTIMONIALS — on white background
+   ============================================ */
+.tw-testimonial {
+  background: var(--tw-ivory);
+  border-left: 3px solid var(--tw-gold);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  padding: 2rem 2.25rem;
+  box-shadow: var(--shadow-card);
+  transition: var(--transition);
+}
+.tw-testimonial:hover { box-shadow: var(--shadow-gold); transform: translateY(-4px); }
+.tw-testimonial blockquote {
+  font-family: var(--ff-accent);
+  font-style: italic;
+  font-size: 1rem;
+  color: var(--tw-text-dark);
+  margin-bottom: 1rem;
+  line-height: 1.85;
+}
+.tw-testimonial cite { font-size: 0.82rem; color: var(--tw-gold); font-style: normal; letter-spacing: 0.05em; }
+
+/* ============================================
+   FOUNDER / SERVICE IMAGES
+   ============================================ */
+.tw-founder-img {
+  border-radius: var(--radius-lg);
+  border: 3px solid rgba(162,123,92,0.35);
+  object-fit: cover;
+  width: 100%;
+  max-height: 520px;
+  box-shadow: var(--shadow-gold);
+}
+
+/* ============================================
+   CAROUSEL
+   ============================================ */
+.carousel-item img { height: 440px; object-fit: cover; border-radius: var(--radius-md); }
+.carousel-caption { background: rgba(26,35,32,0.7); border-radius: var(--radius-sm); padding: 0.75rem 1.25rem; }
+.carousel-caption h5 { font-family: var(--ff-heading); color: var(--tw-cream); font-size: 1.4rem; margin-bottom: 0.25rem; }
+.carousel-caption p  { color: rgba(220,215,201,0.85); font-size: 0.9rem; margin: 0; }
+
+/* ============================================
+   CONTACT FORM
+   ============================================ */
+.tw-form-control {
+  background: var(--tw-white);
+  border: 1.5px solid rgba(44,57,48,0.15);
+  border-radius: var(--radius-sm);
+  color: var(--tw-text-dark);
+  padding: 0.75rem 1rem;
+  font-family: var(--ff-body);
+  font-size: 0.95rem;
+  transition: var(--transition);
+  width: 100%;
+}
+.tw-form-control::placeholder { color: var(--tw-text-muted); }
+.tw-form-control:focus {
+  outline: none;
+  border-color: var(--tw-gold);
+  box-shadow: 0 0 0 3px rgba(162,123,92,0.1);
+}
+label.tw-label {
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--tw-forest);
+  margin-bottom: 0.4rem;
+  display: block;
+  font-weight: 500;
+}
+
+/* ============================================
+   FOOTER
+   ============================================ */
+.tw-footer {
+  background: var(--tw-forest-dk);
+  border-top: 1px solid rgba(162,123,92,0.2);
+  padding: 4.5rem 0 2rem;
+}
+.tw-footer-brand img { height: 42px; width: auto; margin-bottom: 1rem; }
+.tw-footer p { color: rgba(220,215,201,0.6); font-size: 0.88rem; line-height: 1.7; }
+.tw-footer-heading,
+.tw-footer p.tw-footer-heading {
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-size: 0.72rem; font-weight: 500;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: #DCD7C9 !important;
+  opacity: 1 !important;
+  margin-bottom: 1.25rem;
+}
+.tw-footer-links { list-style: none; padding: 0; margin: 0; }
+.tw-footer-links li { margin-bottom: 0.6rem; }
+.tw-footer-links a { font-size: 0.88rem; color: rgba(220,215,201,0.65); transition: var(--transition); }
+.tw-footer-links a:hover { color: var(--tw-gold); padding-left: 4px; }
+.tw-social-links { display: flex; gap: 0.65rem; margin-top: 1rem; }
+.tw-social-links a {
+  width: 38px; height: 38px; border-radius: 50%;
+  border: 1px solid rgba(162,123,92,0.35);
+  display: flex; align-items: center; justify-content: center;
+  color: rgba(220,215,201,0.7); font-size: 1rem;
+  transition: var(--transition);
+}
+.tw-social-links a:hover { background: var(--tw-gold); border-color: var(--tw-gold); color: var(--tw-white); }
+.tw-footer-bottom {
+  border-top: 1px solid rgba(162,123,92,0.12);
+  margin-top: 3rem; padding-top: 1.5rem;
+  text-align: center;
+  font-size: 0.78rem;
+  color: rgba(220,215,201,0.35);
+}
+
+
+/* Footer book button — stable gold, no text shift */
+.tw-footer-book-btn {
+  display: inline-block;
+  background: #A27B5C;
+  color: #FFFFFF !important;
+  font-family: var(--ff-body);
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.65rem 1.5rem;
   border-radius: var(--radius-xl);
   border: 2px solid #A27B5C;
   text-decoration: none;
