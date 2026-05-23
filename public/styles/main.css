@@ -334,23 +334,137 @@ p  { font-size: 1rem; line-height: 1.85; margin-bottom: 1.25rem; }
 .tw-card-price   { font-family: var(--ff-heading); font-size: 1.7rem; color: var(--tw-gold); font-weight: 600; margin-bottom: 0.1rem; }
 .tw-card-duration{ font-size: 0.75rem; color: var(--tw-text-muted); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.75rem; }
 
-/* Cards on dark backgrounds */
+
+/* ============================================
+   REDESIGNED CARDS — Premium dark glass style
+   ============================================ */
+
+/* Dark card — on dark green backgrounds */
 .tw-card-dark {
-  background: var(--tw-sage);
-  border: 1px solid rgba(162,123,92,0.18);
+  background: linear-gradient(145deg, rgba(63,79,68,0.9) 0%, rgba(44,57,48,0.95) 100%);
+  border: 1px solid rgba(162,123,92,0.15);
+  border-top: 2px solid var(--tw-gold);
   border-radius: var(--radius-lg);
   overflow: hidden;
-  transition: var(--transition);
+  transition: transform 0.35s cubic-bezier(0.22,1,0.36,1), box-shadow 0.35s ease, border-color 0.35s ease;
   height: 100%;
+  position: relative;
+}
+.tw-card-dark::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at top left, rgba(162,123,92,0.06) 0%, transparent 65%);
+  pointer-events: none;
+  border-radius: inherit;
 }
 .tw-card-dark:hover {
-  transform: translateY(-5px);
-  border-color: rgba(162,123,92,0.45);
-  box-shadow: var(--shadow-gold);
+  transform: translateY(-6px);
+  border-color: rgba(162,123,92,0.5);
+  border-top-color: var(--tw-gold-lt);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.3), 0 0 0 1px rgba(162,123,92,0.2);
 }
-.tw-card-dark .tw-card-body { padding: 1.75rem; }
-.tw-card-dark .tw-card-body h3,.tw-card-dark .tw-card-body h4 { color: var(--tw-cream); }
-.tw-card-dark .tw-card-body p { color: rgba(220,215,201,0.78); font-size: 0.9rem; }
+.tw-card-dark .tw-card-body {
+  padding: 2rem 1.75rem 1.75rem;
+  position: relative;
+  z-index: 1;
+}
+.tw-card-dark .tw-card-body h3,
+.tw-card-dark .tw-card-body h4 {
+  color: var(--tw-cream);
+  margin-bottom: 0.6rem;
+  font-size: 1.35rem;
+}
+.tw-card-dark .tw-card-body p {
+  color: rgba(220,215,201,0.72);
+  font-size: 0.9rem;
+  line-height: 1.8;
+}
+
+/* Icon container for info cards */
+.tw-card-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  background: rgba(162,123,92,0.12);
+  border: 1px solid rgba(162,123,92,0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.25rem;
+  font-size: 1.4rem;
+  color: var(--tw-gold);
+  transition: background 0.3s ease, border-color 0.3s ease;
+}
+.tw-card-dark:hover .tw-card-icon {
+  background: rgba(162,123,92,0.22);
+  border-color: rgba(162,123,92,0.45);
+}
+
+/* Light card — on white/ivory backgrounds */
+.tw-card-light {
+  background: var(--tw-white);
+  border: 1px solid rgba(44,57,48,0.07);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: transform 0.35s cubic-bezier(0.22,1,0.36,1), box-shadow 0.35s ease, border-color 0.35s ease;
+  height: 100%;
+  position: relative;
+}
+.tw-card-light::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--tw-gold), var(--tw-gold-lt));
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+.tw-card-light:hover {
+  transform: translateY(-7px);
+  border-color: rgba(162,123,92,0.25);
+  box-shadow: 0 20px 50px rgba(44,57,48,0.1), 0 4px 16px rgba(162,123,92,0.12);
+}
+.tw-card-light:hover::after { opacity: 1; }
+.tw-card-light .tw-card-img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+.tw-card-light:hover .tw-card-img { transform: scale(1.04); }
+.tw-card-light .tw-card-body { padding: 1.75rem; }
+.tw-card-light .tw-card-body h3 {
+  color: var(--tw-forest);
+  font-size: 1.4rem;
+  margin-bottom: 0.5rem;
+}
+.tw-card-light .tw-card-body p { color: var(--tw-text-mid); font-size: 0.9rem; margin-bottom: 1.25rem; }
+
+/* Approach cards on white bg */
+.tw-approach-card {
+  background: var(--tw-white);
+  border: 1px solid rgba(44,57,48,0.07);
+  border-top: 3px solid var(--tw-gold);
+  border-radius: 0 0 var(--radius-md) var(--radius-md);
+  padding: 1.75rem;
+  transition: transform 0.35s cubic-bezier(0.22,1,0.36,1), box-shadow 0.35s ease;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+.tw-approach-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, var(--tw-gold), var(--tw-gold-lt));
+}
+.tw-approach-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 16px 40px rgba(44,57,48,0.1), 0 4px 12px rgba(162,123,92,0.1);
+}
+.tw-approach-card h4 { color: var(--tw-forest); margin-bottom: 0.5rem; font-size: 1.1rem; }
+.tw-approach-card p { color: var(--tw-text-mid); font-size: 0.88rem; margin: 0; line-height: 1.75; }
 
 /* ============================================
    BUTTONS
