@@ -48,7 +48,7 @@ body {
 }
 
 img { max-width: 100%; height: auto; display: block; }
-p, li, blockquote, cite, dd { font-family: 'Lora', Georgia, serif; line-height: 1.85; }
+p, li, blockquote, cite, dd { font-family: 'Lora', Georgia, serif !important; line-height: 1.85; }
 a { color: var(--tw-gold); text-decoration: none; transition: var(--transition); }
 a:hover { color: var(--tw-gold-lt); }
 
@@ -925,15 +925,6 @@ label.tw-label {
   letter-spacing: 0.22em !important;
   text-transform: uppercase !important;
   line-height: 1.5 !important;
-  color: #A27B5C !important;
-  background: rgba(162,123,92,0.12) !important;
-  border: 1px solid rgba(162,123,92,0.3) !important;
-  padding: 0.4rem 1rem !important;
-  border-radius: 999px !important;
-  display: inline-flex !important;
-  align-items: center !important;
-  gap: 8px !important;
-  margin-bottom: 2rem !important;
 }
 .tw-section-label {
   font-family: 'DM Sans', system-ui, sans-serif !important;
