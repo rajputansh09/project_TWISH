@@ -915,3 +915,34 @@ label.tw-label {
   transform: none !important;
   box-shadow: none !important;
 }
+
+
+/* ===== ABSOLUTE FINAL OVERRIDES — nothing beats these ===== */
+.tw-hero-eyebrow {
+  font-family: 'DM Sans', system-ui, sans-serif !important;
+  font-size: 0.72rem !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.22em !important;
+  text-transform: uppercase !important;
+  line-height: 1.5 !important;
+}
+.tw-section-label {
+  font-family: 'DM Sans', system-ui, sans-serif !important;
+  font-size: 0.72rem !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.25em !important;
+  text-transform: uppercase !important;
+  line-height: 1.5 !important;
+}
+.tw-nav-book,
+.btn-tw-primary,
+.btn-tw-outline-light,
+.btn-tw-outline-dark,
+.btn-tw-forest,
+.tw-footer-book-btn {
+  font-family: 'DM Sans', system-ui, sans-serif !important;
+  font-size: 0.82rem !important;
+  letter-spacing: 0.1em !important;
+  text-transform: uppercase !important;
+  line-height: 1 !important;
+}
