@@ -3,9 +3,11 @@ const express = require('express');
 const nodemailer = require('nodemailer');
 const session = require('express-session');
 const path = require('path');
+const fs = require('fs');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
+const BASE_URL = process.env.BASE_URL || 'https://twishcare-ca.onrender.com';
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -32,43 +34,93 @@ const transporter = nodemailer.createTransport({
   auth: { user: process.env.EMAIL_USER, pass: process.env.EMAIL_PASS }
 });
 
+// Serve sitemap.xml
+app.get('/sitemap.xml', (req, res) => {
+  res.header('Content-Type', 'application/xml');
+  const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>${BASE_URL}/home</loc><lastmod>2025-05-23</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>${BASE_URL}/about</loc><lastmod>2025-05-23</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>${BASE_URL}/services</loc><lastmod>2025-05-23</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>${BASE_URL}/contact</loc><lastmod>2025-05-23</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>${BASE_URL}/blog</loc><lastmod>2025-05-23</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+</urlset>`;
+  res.send(sitemap);
+});
+
+// Serve robots.txt
+app.get('/robots.txt', (req, res) => {
+  res.header('Content-Type', 'text/plain');
+  res.send(`User-agent: *
+Allow: /
+Disallow: /signin
+Disallow: /admin
+Sitemap: ${BASE_URL}/sitemap.xml
+
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /`);
+});
+
 app.get(['/', '/home'], (req, res) => {
   renderPage(res, 'home', {
     currentPage: 'home',
-    pageTitle: 'Twish — Psychotherapist in Mississauga | Shimul Rajput',
-    metaDesc: 'Twish offers individual, couples and virtual therapy in Mississauga, Ontario. Registered Psychotherapist Shimul Rajput — English, Hindi and Punjabi.'
+    canonicalUrl: BASE_URL + '/home',
+    pageTitle: 'Twish — Registered Psychotherapist in Mississauga and Markham | Shimul Rajput',
+    metaDesc: 'Twish — Registered Psychotherapist Shimul Rajput offers individual therapy, couples therapy, and virtual therapy in Mississauga, Markham, and across Canada. Sessions in English, Hindi, and Punjabi. Book a free 15-minute consultation today. CRPO #18680.'
   });
 });
 
 app.get('/about', (req, res) => {
   renderPage(res, 'about', {
     currentPage: 'about',
-    pageTitle: 'About Shimul Rajput — South Asian Therapist Mississauga | Twish',
-    metaDesc: 'Meet Shimul Rajput, Registered Psychotherapist (Qualifying) in Mississauga. MACP from Yorkville University. Therapy in English, Hindi and Punjabi.'
+    canonicalUrl: BASE_URL + '/about',
+    pageTitle: 'About Shimul Rajput — Registered Psychotherapist Mississauga and Markham | Twish',
+    metaDesc: 'Meet Shimul Rajput, Registered Psychotherapist (Qualifying) CRPO #18680. MACP from Yorkville University. Offering therapy in English, Hindi, and Punjabi in Mississauga, Markham, and virtually across Canada.'
   });
 });
 
 app.get('/services', (req, res) => {
   renderPage(res, 'services', {
     currentPage: 'services',
-    pageTitle: 'Therapy Services — Individual, Couples & Virtual | Twish Mississauga',
-    metaDesc: 'Individual therapy, couples therapy, and virtual therapy in Mississauga, Ontario. $150/50 min. Free 15-minute consultation available.'
+    canonicalUrl: BASE_URL + '/services',
+    pageTitle: 'Therapy Services — Individual, Couples and Virtual Therapy | Twish Mississauga Markham',
+    metaDesc: 'Individual therapy $150, couples therapy $250, and free 15-minute consultation. Serving Mississauga, Markham, and virtually across Canada. CBT, DBT, EFCT, trauma-informed care. Sessions in English, Hindi, Punjabi. CRPO registered therapist.'
   });
 });
 
 app.get('/blog', (req, res) => {
   renderPage(res, 'blog', {
     currentPage: 'blog',
-    pageTitle: 'Mental Health Blog — Twish Therapy Mississauga',
-    metaDesc: 'Articles on mental health, anxiety, relationships, South Asian identity, and therapy insights by Shimul Rajput.'
+    canonicalUrl: BASE_URL + '/blog',
+    pageTitle: 'Mental Health Blog — Anxiety, Trauma, Burnout and Therapy Insights | Twish',
+    metaDesc: 'Mental health articles by Shimul Rajput, Registered Psychotherapist. Topics include anxiety, depression, trauma recovery, burnout, cultural identity, couples therapy, and South Asian mental health in Canada.'
   });
 });
 
 app.get('/contact', (req, res) => {
   renderPage(res, 'contact', {
     currentPage: 'contact',
-    pageTitle: 'Contact Twish — Book a Therapy Session in Mississauga',
-    metaDesc: 'Contact Shimul Rajput at Twish Therapy, 365 Prince of Wales Dr, Mississauga. Book your free 15-minute consultation today.',
+    canonicalUrl: BASE_URL + '/contact',
+    pageTitle: 'Contact Twish — Book a Therapy Session in Mississauga or Markham | Shimul Rajput',
+    metaDesc: 'Contact Shimul Rajput at Twish Therapy. Two locations: 365 Prince of Wales Dr Mississauga and 10 Villa Ada Drive Markham. Virtual therapy across Canada. Book your free 15-minute consultation. Call (647) 616-5744.',
     email: process.env.CONTACT_EMAIL || 'rajputshimul@gmail.com',
     phone: '(647) 616-5744',
     address: '365 Prince of Wales Dr, Mississauga, ON L5B 0G6'
@@ -76,7 +128,11 @@ app.get('/contact', (req, res) => {
 });
 
 app.get('/signin', (req, res) => {
-  renderPage(res, 'signIn', { currentPage: '', pageTitle: 'Sign In — Twish' });
+  renderPage(res, 'signIn', {
+    currentPage: '',
+    canonicalUrl: BASE_URL + '/signin',
+    pageTitle: 'Sign In — Twish Admin'
+  });
 });
 
 app.post('/send-message', async (req, res) => {
