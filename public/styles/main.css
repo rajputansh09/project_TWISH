@@ -946,3 +946,10 @@ label.tw-label {
   text-transform: uppercase !important;
   line-height: 1 !important;
 }
+
+
+/* ===== NUMERICAL VALUES — all Lora ===== */
+.tw-stat-number,
+.tw-card-price {
+  font-family: 'Lora', Georgia, serif !important;
+}
