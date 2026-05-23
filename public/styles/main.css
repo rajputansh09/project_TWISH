@@ -953,3 +953,11 @@ label.tw-label {
 .tw-card-price {
   font-family: 'Lora', Georgia, serif !important;
 }
+
+
+/* ===== NAVBAR — Lora for all links and book button ===== */
+.tw-navbar .nav-link,
+.tw-navbar .dropdown-item,
+.tw-nav-book {
+  font-family: 'Lora', Georgia, serif !important;
+}
