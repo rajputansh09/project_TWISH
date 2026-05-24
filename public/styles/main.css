@@ -961,3 +961,22 @@ label.tw-label {
 .tw-nav-book {
   font-family: 'Lora', Georgia, serif !important;
 }
+
+
+/* ===== SERVICE CARDS — brown accent, stand out ===== */
+.tw-card-light {
+  border-top: 3px solid var(--tw-gold) !important;
+  border-left: none !important;
+  box-shadow: 0 4px 24px rgba(162,123,92,0.12), 0 1px 4px rgba(44,57,48,0.08) !important;
+}
+.tw-card-light:not(.tw-card-static):hover {
+  box-shadow: 0 12px 40px rgba(162,123,92,0.22), 0 4px 12px rgba(44,57,48,0.1) !important;
+  border-top-color: var(--tw-gold-lt) !important;
+}
+
+/* ===== COMMUNITY GALLERY IMAGES — gold border + glow ===== */
+.tw-gallery-img {
+  border: 2px solid rgba(162,123,92,0.35);
+  box-shadow: 0 4px 20px rgba(162,123,92,0.12), 0 1px 6px rgba(44,57,48,0.08);
+  transition: box-shadow 0.3s ease, border-color 0.3s ease;
+}
