@@ -1065,3 +1065,58 @@ label.tw-label {
   font-weight: 500;
   transition: gap 0.2s ease;
 }
+
+
+/* ============================================
+   CAROUSEL — premium styled
+   ============================================ */
+#twishCarousel .carousel-caption {
+  background: linear-gradient(to top, rgba(26,35,32,0.92) 0%, rgba(26,35,32,0.4) 70%, transparent 100%);
+  left: 0; right: 0; bottom: 0;
+  padding: 2.5rem 2rem 2rem;
+  text-align: left;
+}
+#twishCarousel .carousel-caption h5 {
+  font-family: 'Cormorant Garamond', Georgia, serif !important;
+  font-size: 1.6rem;
+  font-weight: 500;
+  color: var(--tw-cream);
+  margin-bottom: 0.4rem;
+  text-shadow: none;
+}
+#twishCarousel .carousel-caption p {
+  font-family: 'Lora', Georgia, serif !important;
+  font-size: 0.9rem;
+  color: rgba(220,215,201,0.75);
+  margin: 0;
+  text-shadow: none;
+}
+#twishCarousel .carousel-indicators [data-bs-target] {
+  background-color: var(--tw-gold);
+  width: 24px;
+  height: 3px;
+  border-radius: 2px;
+  opacity: 0.45;
+}
+#twishCarousel .carousel-indicators .active {
+  opacity: 1;
+  width: 40px;
+}
+#twishCarousel .carousel-control-prev,
+#twishCarousel .carousel-control-next {
+  width: 48px;
+  height: 48px;
+  background: rgba(162,123,92,0.2);
+  border: 1px solid rgba(162,123,92,0.4);
+  border-radius: 50%;
+  top: 50%;
+  transform: translateY(-50%);
+  bottom: auto;
+  opacity: 1;
+}
+#twishCarousel .carousel-control-prev { left: 1.25rem; }
+#twishCarousel .carousel-control-next { right: 1.25rem; }
+#twishCarousel .carousel-control-prev:hover,
+#twishCarousel .carousel-control-next:hover {
+  background: rgba(162,123,92,0.45);
+}
