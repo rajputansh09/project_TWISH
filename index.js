@@ -11,7 +11,18 @@ const BASE_URL = process.env.BASE_URL || 'https://twishcare-ca.onrender.com';
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'public'), {
+  maxAge: '7d',
+  etag: true,
+  lastModified: true,
+  setHeaders: (res, filePath) => {
+    if (filePath.match(/\.(jpg|jpeg|png|gif|webp|svg|ico)$/i)) {
+      res.setHeader('Cache-Control', 'public, max-age=604800, immutable');
+    } else if (filePath.match(/\.(css|js)$/i)) {
+      res.setHeader('Cache-Control', 'public, max-age=86400');
+    }
+  }
+}));
 app.use(session({
   secret: process.env.SESSION_SECRET || 'twish-secret-2025',
   resave: false,
