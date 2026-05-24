@@ -1,106 +1,219 @@
-<!-- BLOG HERO -->
+<!-- HERO -->
 <section class="tw-section-dark" style="padding-top:6rem;padding-bottom:4rem;">
   <div class="container text-center tw-fade" style="max-width:680px;">
-    <span class="tw-section-label">Insights &amp; Resources</span>
-    <h1>The Twish <em style="color:var(--tw-gold)">Journal</em></h1>
+    <span class="tw-section-label">Insights and Resources</span>
+    <h1>The <em style="color:var(--tw-gold);">Twish Journal</em></h1>
     <hr class="tw-divider">
-    <p style="font-size:1.05rem;color:rgba(220,215,201,0.85);">Thoughtful articles on mental health, South Asian identity, relationships, and the journey toward healing, written with care by Shimul.</p>
+    <p style="color:rgba(220,215,201,0.82);font-size:1.05rem;margin-top:1.25rem;">Thoughtful articles on mental health, anxiety, relationships, burnout, and the journey toward healing. Written with care by Shimul Rajput, Registered Psychotherapist.</p>
   </div>
 </section>
 
-<!-- FEATURED ARTICLE -->
-<section class="tw-section-sage">
+<!-- FEATURED POST -->
+<section class="tw-section-white">
+  <div class="container">
+    <div class="tw-fade" style="margin-bottom:1rem;"><span class="tw-section-label">Featured Article</span></div>
+    <a href="#article-anxiety" style="text-decoration:none;display:block;" class="tw-fade">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:0;border-radius:20px;overflow:hidden;border:1px solid rgba(44,57,48,0.1);box-shadow:0 8px 40px rgba(44,57,48,0.08);transition:box-shadow 0.3s ease,transform 0.3s ease;" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 20px 60px rgba(44,57,48,0.14)'" onmouseout="this.style.transform='';this.style.boxShadow='0 8px 40px rgba(44,57,48,0.08)'">
+        <img src="/images/shimul-session-individual.png" alt="Understanding Anxiety" style="width:100%;height:360px;object-fit:cover;">
+        <div style="background:var(--tw-forest);padding:3rem;display:flex;flex-direction:column;justify-content:center;">
+          <div style="display:flex;gap:0.5rem;margin-bottom:1.25rem;flex-wrap:wrap;">
+            <span style="font-family:'DM Sans',sans-serif;font-size:0.68rem;font-weight:500;letter-spacing:0.15em;text-transform:uppercase;color:var(--tw-gold);background:rgba(162,123,92,0.15);border:1px solid rgba(162,123,92,0.3);padding:0.3rem 0.75rem;border-radius:999px;">Anxiety</span>
+            <span style="font-family:'DM Sans',sans-serif;font-size:0.68rem;font-weight:500;letter-spacing:0.15em;text-transform:uppercase;color:var(--tw-gold);background:rgba(162,123,92,0.15);border:1px solid rgba(162,123,92,0.3);padding:0.3rem 0.75rem;border-radius:999px;">Mindfulness</span>
+          </div>
+          <h2 style="color:var(--tw-cream);margin-bottom:1rem;font-size:1.75rem;line-height:1.2;">Understanding Anxiety: Why Your Body Thinks You Are in Danger</h2>
+          <p style="color:rgba(220,215,201,0.75);font-size:0.92rem;line-height:1.85;margin-bottom:1.5rem;">Anxiety is your nervous system doing its job, sometimes too well. Learn what is actually happening in your body during an anxiety response, and how therapy can help you find calm again.</p>
+          <div style="display:flex;align-items:center;justify-content:space-between;">
+            <span style="font-family:'DM Sans',sans-serif;font-size:0.78rem;color:rgba(220,215,201,0.5);letter-spacing:0.08em;"><i class="bi bi-clock" style="margin-right:5px;"></i>5 min read</span>
+            <span style="font-family:'DM Sans',sans-serif;font-size:0.78rem;color:var(--tw-gold);letter-spacing:0.08em;">Read Article <i class="bi bi-arrow-right"></i></span>
+          </div>
+        </div>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- BLOG GRID -->
+<section class="tw-section-ivory">
   <div class="container">
     <div class="text-center mb-5 tw-fade">
-      <span class="tw-section-label">Latest Articles</span>
-      <h2>Exploring what it means to <em style="color:var(--tw-gold)">heal</em></h2>
+      <span class="tw-section-label">All Articles</span>
+      <h2>Guides for <em style="color:var(--tw-gold);">every part of your journey</em></h2>
       <hr class="tw-divider">
     </div>
-    <div class="row g-4">
 
-      <div class="col-md-6 col-lg-4 tw-fade">
-        <div class="tw-card h-100">
-          <img src="/images/Breathing.png" alt="Anxiety and breathing therapy" class="tw-card-img">
-          <div class="tw-card-body">
-            <span style="font-size:0.72rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--tw-gold);">Anxiety &bull; Mindfulness</span>
-            <h3 style="margin-top:0.5rem;font-size:1.25rem;">Understanding Anxiety: Why Your Body Thinks You're in Danger</h3>
-            <p style="font-size:0.88rem;">Anxiety is your nervous system doing its job, sometimes too well. Learn what's actually happening in your body, and how therapy can help you find calm.</p>
-            <span style="font-size:0.78rem;color:rgba(220,215,201,0.5);">5 min read</span>
+    <!-- Filter tabs -->
+    <div class="tw-fade" style="display:flex;gap:0.5rem;flex-wrap:wrap;justify-content:center;margin-bottom:3rem;">
+      <button onclick="filterPosts('all')" id="filter-all" style="font-family:'DM Sans',sans-serif;font-size:0.75rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;padding:0.5rem 1.25rem;border-radius:999px;border:1.5px solid var(--tw-forest);background:var(--tw-forest);color:white;cursor:pointer;transition:all 0.2s;">All</button>
+      <button onclick="filterPosts('anxiety')" id="filter-anxiety" style="font-family:'DM Sans',sans-serif;font-size:0.75rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;padding:0.5rem 1.25rem;border-radius:999px;border:1.5px solid rgba(44,57,48,0.2);background:transparent;color:var(--tw-forest);cursor:pointer;transition:all 0.2s;">Anxiety</button>
+      <button onclick="filterPosts('relationships')" id="filter-relationships" style="font-family:'DM Sans',sans-serif;font-size:0.75rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;padding:0.5rem 1.25rem;border-radius:999px;border:1.5px solid rgba(44,57,48,0.2);background:transparent;color:var(--tw-forest);cursor:pointer;transition:all 0.2s;">Relationships</button>
+      <button onclick="filterPosts('culture')" id="filter-culture" style="font-family:'DM Sans',sans-serif;font-size:0.75rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;padding:0.5rem 1.25rem;border-radius:999px;border:1.5px solid rgba(44,57,48,0.2);background:transparent;color:var(--tw-forest);cursor:pointer;transition:all 0.2s;">Culture</button>
+      <button onclick="filterPosts('burnout')" id="filter-burnout" style="font-family:'DM Sans',sans-serif;font-size:0.75rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;padding:0.5rem 1.25rem;border-radius:999px;border:1.5px solid rgba(44,57,48,0.2);background:transparent;color:var(--tw-forest);cursor:pointer;transition:all 0.2s;">Burnout</button>
+      <button onclick="filterPosts('healing')" id="filter-healing" style="font-family:'DM Sans',sans-serif;font-size:0.75rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;padding:0.5rem 1.25rem;border-radius:999px;border:1.5px solid rgba(44,57,48,0.2);background:transparent;color:var(--tw-forest);cursor:pointer;transition:all 0.2s;">Healing</button>
+    </div>
+
+    <div id="blog-grid" class="row g-4">
+
+      <!-- Card 1 -->
+      <div class="col-md-6 col-lg-4 tw-fade blog-post-card" data-tags="culture healing">
+        <a href="#article-south-asian" style="text-decoration:none;display:block;height:100%;">
+          <div style="background:white;border-radius:16px;overflow:hidden;border:1px solid rgba(44,57,48,0.08);box-shadow:0 2px 16px rgba(44,57,48,0.05);height:100%;transition:transform 0.3s ease,box-shadow 0.3s ease;display:flex;flex-direction:column;" onmouseover="this.style.transform='translateY(-6px)';this.style.boxShadow='0 16px 48px rgba(44,57,48,0.12)'" onmouseout="this.style.transform='';this.style.boxShadow='0 2px 16px rgba(44,57,48,0.05)'">
+            <div style="position:relative;overflow:hidden;">
+              <img src="/images/shimul-community-1.png" alt="South Asian mental health" style="width:100%;height:220px;object-fit:cover;transition:transform 0.5s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform=''">
+              <div style="position:absolute;top:1rem;left:1rem;display:flex;gap:0.4rem;flex-wrap:wrap;">
+                <span style="font-family:'DM Sans',sans-serif;font-size:0.65rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;background:rgba(44,57,48,0.85);color:var(--tw-cream);padding:0.25rem 0.65rem;border-radius:999px;">Culture</span>
+              </div>
+            </div>
+            <div style="padding:1.5rem;display:flex;flex-direction:column;flex:1;">
+              <h3 style="color:var(--tw-forest);font-size:1.1rem;line-height:1.4;margin-bottom:0.75rem;">Mental Health in the South Asian Community: Breaking the Silence</h3>
+              <p style="color:var(--tw-text-mid);font-size:0.88rem;line-height:1.8;margin-bottom:1.25rem;flex:1;">Stigma, shame, and the pressure to stay strong. Why mental health is often the last conversation South Asian families have, and how to start having it.</p>
+              <div style="display:flex;align-items:center;justify-content:space-between;padding-top:1rem;border-top:1px solid rgba(44,57,48,0.07);">
+                <span style="font-family:'DM Sans',sans-serif;font-size:0.75rem;color:var(--tw-text-muted);"><i class="bi bi-clock" style="margin-right:4px;"></i>7 min read</span>
+                <span style="font-family:'DM Sans',sans-serif;font-size:0.75rem;color:var(--tw-gold);font-weight:500;">Read More <i class="bi bi-arrow-right"></i></span>
+              </div>
+            </div>
           </div>
-        </div>
+        </a>
       </div>
 
-      <div class="col-md-6 col-lg-4 tw-fade tw-fade-delay-1">
-        <div class="tw-card h-100">
-          <img src="/images/Grasswalk.png" alt="South Asian mental health therapy" class="tw-card-img">
-          <div class="tw-card-body">
-            <span style="font-size:0.72rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--tw-gold);">South Asian Identity &bull; Culture</span>
-            <h3 style="margin-top:0.5rem;font-size:1.25rem;">Mental Health in the South Asian Community: Breaking the Silence</h3>
-            <p style="font-size:0.88rem;">Stigma, shame, and the pressure to stay strong, why mental health is often the last conversation South Asian families have, and how to start having it.</p>
-            <span style="font-size:0.78rem;color:rgba(220,215,201,0.5);">7 min read</span>
+      <!-- Card 2 -->
+      <div class="col-md-6 col-lg-4 tw-fade blog-post-card" data-tags="relationships">
+        <a href="#article-relationships" style="text-decoration:none;display:block;height:100%;">
+          <div style="background:white;border-radius:16px;overflow:hidden;border:1px solid rgba(44,57,48,0.08);box-shadow:0 2px 16px rgba(44,57,48,0.05);height:100%;transition:transform 0.3s ease,box-shadow 0.3s ease;display:flex;flex-direction:column;" onmouseover="this.style.transform='translateY(-6px)';this.style.boxShadow='0 16px 48px rgba(44,57,48,0.12)'" onmouseout="this.style.transform='';this.style.boxShadow='0 2px 16px rgba(44,57,48,0.05)'">
+            <div style="position:relative;overflow:hidden;">
+              <img src="/images/shimul-couples-therapy.png" alt="Relationship patterns" style="width:100%;height:220px;object-fit:cover;transition:transform 0.5s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform=''">
+              <div style="position:absolute;top:1rem;left:1rem;">
+                <span style="font-family:'DM Sans',sans-serif;font-size:0.65rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;background:rgba(44,57,48,0.85);color:var(--tw-cream);padding:0.25rem 0.65rem;border-radius:999px;">Relationships</span>
+              </div>
+            </div>
+            <div style="padding:1.5rem;display:flex;flex-direction:column;flex:1;">
+              <h3 style="color:var(--tw-forest);font-size:1.1rem;line-height:1.4;margin-bottom:0.75rem;">The Four Patterns That Quietly Damage Relationships</h3>
+              <p style="color:var(--tw-text-mid);font-size:0.88rem;line-height:1.8;margin-bottom:1.25rem;flex:1;">Criticism, contempt, defensiveness, and stonewalling. How to recognise these patterns in your relationship and what to do before they cause lasting damage.</p>
+              <div style="display:flex;align-items:center;justify-content:space-between;padding-top:1rem;border-top:1px solid rgba(44,57,48,0.07);">
+                <span style="font-family:'DM Sans',sans-serif;font-size:0.75rem;color:var(--tw-text-muted);"><i class="bi bi-clock" style="margin-right:4px;"></i>6 min read</span>
+                <span style="font-family:'DM Sans',sans-serif;font-size:0.75rem;color:var(--tw-gold);font-weight:500;">Read More <i class="bi bi-arrow-right"></i></span>
+              </div>
+            </div>
           </div>
-        </div>
+        </a>
       </div>
 
-      <div class="col-md-6 col-lg-4 tw-fade tw-fade-delay-2">
-        <div class="tw-card h-100">
-          <img src="/images/Notes.png" alt="Couples communication therapy" class="tw-card-img">
-          <div class="tw-card-body">
-            <span style="font-size:0.72rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--tw-gold);">Relationships &bull; Couples</span>
-            <h3 style="margin-top:0.5rem;font-size:1.25rem;">The Four Patterns That Quietly Damage Relationships</h3>
-            <p style="font-size:0.88rem;">Based on decades of research, these four communication habits predict relationship breakdown, and couples therapy can help you unlearn them together.</p>
-            <span style="font-size:0.78rem;color:rgba(220,215,201,0.5);">6 min read</span>
+      <!-- Card 3 -->
+      <div class="col-md-6 col-lg-4 tw-fade blog-post-card" data-tags="burnout healing">
+        <a href="#article-burnout" style="text-decoration:none;display:block;height:100%;">
+          <div style="background:white;border-radius:16px;overflow:hidden;border:1px solid rgba(44,57,48,0.08);box-shadow:0 2px 16px rgba(44,57,48,0.05);height:100%;transition:transform 0.3s ease,box-shadow 0.3s ease;display:flex;flex-direction:column;" onmouseover="this.style.transform='translateY(-6px)';this.style.boxShadow='0 16px 48px rgba(44,57,48,0.12)'" onmouseout="this.style.transform='';this.style.boxShadow='0 2px 16px rgba(44,57,48,0.05)'">
+            <div style="position:relative;overflow:hidden;">
+              <img src="/images/shimul-therapist-notes.png" alt="Burnout recovery" style="width:100%;height:220px;object-fit:cover;transition:transform 0.5s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform=''">
+              <div style="position:absolute;top:1rem;left:1rem;">
+                <span style="font-family:'DM Sans',sans-serif;font-size:0.65rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;background:rgba(44,57,48,0.85);color:var(--tw-cream);padding:0.25rem 0.65rem;border-radius:999px;">Burnout</span>
+              </div>
+            </div>
+            <div style="padding:1.5rem;display:flex;flex-direction:column;flex:1;">
+              <h3 style="color:var(--tw-forest);font-size:1.1rem;line-height:1.4;margin-bottom:0.75rem;">Burnout Is Not Laziness: What Exhaustion Is Really Telling You</h3>
+              <p style="color:var(--tw-text-mid);font-size:0.88rem;line-height:1.8;margin-bottom:1.25rem;flex:1;">Chronic exhaustion, cynicism, and a growing sense of ineffectiveness. Understanding the real signs of burnout and how to begin recovering your sense of self.</p>
+              <div style="display:flex;align-items:center;justify-content:space-between;padding-top:1rem;border-top:1px solid rgba(44,57,48,0.07);">
+                <span style="font-family:'DM Sans',sans-serif;font-size:0.75rem;color:var(--tw-text-muted);"><i class="bi bi-clock" style="margin-right:4px;"></i>8 min read</span>
+                <span style="font-family:'DM Sans',sans-serif;font-size:0.75rem;color:var(--tw-gold);font-weight:500;">Read More <i class="bi bi-arrow-right"></i></span>
+              </div>
+            </div>
           </div>
-        </div>
+        </a>
       </div>
 
-      <div class="col-md-6 col-lg-4 tw-fade">
-        <div class="tw-card h-100">
-          <img src="/images/calm.jpg" alt="Immigration stress therapy Ontario" class="tw-card-img">
-          <div class="tw-card-body">
-            <span style="font-size:0.72rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--tw-gold);">Immigration &bull; Identity</span>
-            <h3 style="margin-top:0.5rem;font-size:1.25rem;">The Hidden Weight of Immigration: Grief Nobody Talks About</h3>
-            <p style="font-size:0.88rem;">Moving to Canada is celebrated as success, but it often comes with profound loss. Shimul explores the emotional journey many immigrants carry in silence.</p>
-            <span style="font-size:0.78rem;color:rgba(220,215,201,0.5);">8 min read</span>
+      <!-- Card 4 -->
+      <div class="col-md-6 col-lg-4 tw-fade blog-post-card" data-tags="anxiety healing">
+        <a href="#article-grounding" style="text-decoration:none;display:block;height:100%;">
+          <div style="background:white;border-radius:16px;overflow:hidden;border:1px solid rgba(44,57,48,0.08);box-shadow:0 2px 16px rgba(44,57,48,0.05);height:100%;transition:transform 0.3s ease,box-shadow 0.3s ease;display:flex;flex-direction:column;" onmouseover="this.style.transform='translateY(-6px)';this.style.boxShadow='0 16px 48px rgba(44,57,48,0.12)'" onmouseout="this.style.transform='';this.style.boxShadow='0 2px 16px rgba(44,57,48,0.05)'">
+            <div style="position:relative;overflow:hidden;">
+              <img src="/images/shimul-tea-hands.png" alt="Grounding techniques" style="width:100%;height:220px;object-fit:cover;transition:transform 0.5s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform=''">
+              <div style="position:absolute;top:1rem;left:1rem;">
+                <span style="font-family:'DM Sans',sans-serif;font-size:0.65rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;background:rgba(44,57,48,0.85);color:var(--tw-cream);padding:0.25rem 0.65rem;border-radius:999px;">Anxiety</span>
+              </div>
+            </div>
+            <div style="padding:1.5rem;display:flex;flex-direction:column;flex:1;">
+              <h3 style="color:var(--tw-forest);font-size:1.1rem;line-height:1.4;margin-bottom:0.75rem;">Five Grounding Techniques That Actually Work When Anxiety Peaks</h3>
+              <p style="color:var(--tw-text-mid);font-size:0.88rem;line-height:1.8;margin-bottom:1.25rem;flex:1;">When anxiety takes hold, your thinking mind goes offline. These five evidence-based grounding techniques bring you back to the present moment quickly and gently.</p>
+              <div style="display:flex;align-items:center;justify-content:space-between;padding-top:1rem;border-top:1px solid rgba(44,57,48,0.07);">
+                <span style="font-family:'DM Sans',sans-serif;font-size:0.75rem;color:var(--tw-text-muted);"><i class="bi bi-clock" style="margin-right:4px;"></i>5 min read</span>
+                <span style="font-family:'DM Sans',sans-serif;font-size:0.75rem;color:var(--tw-gold);font-weight:500;">Read More <i class="bi bi-arrow-right"></i></span>
+              </div>
+            </div>
           </div>
-        </div>
+        </a>
       </div>
 
-      <div class="col-md-6 col-lg-4 tw-fade tw-fade-delay-1">
-        <div class="tw-card h-100">
-          <img src="/images/virtual session.png" alt="Virtual therapy Ontario benefits" class="tw-card-img">
-          <div class="tw-card-body">
-            <span style="font-size:0.72rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--tw-gold);">Virtual Therapy &bull; Accessibility</span>
-            <h3 style="margin-top:0.5rem;font-size:1.25rem;">Is Online Therapy as Effective as In-Person? What the Research Says</h3>
-            <p style="font-size:0.88rem;">A practical look at the evidence for virtual therapy, who it works best for, and how to make the most of online sessions in Ontario.</p>
-            <span style="font-size:0.78rem;color:rgba(220,215,201,0.5);">5 min read</span>
+      <!-- Card 5 -->
+      <div class="col-md-6 col-lg-4 tw-fade blog-post-card" data-tags="culture relationships">
+        <a href="#article-intergenerational" style="text-decoration:none;display:block;height:100%;">
+          <div style="background:white;border-radius:16px;overflow:hidden;border:1px solid rgba(44,57,48,0.08);box-shadow:0 2px 16px rgba(44,57,48,0.05);height:100%;transition:transform 0.3s ease,box-shadow 0.3s ease;display:flex;flex-direction:column;" onmouseover="this.style.transform='translateY(-6px)';this.style.boxShadow='0 16px 48px rgba(44,57,48,0.12)'" onmouseout="this.style.transform='';this.style.boxShadow='0 2px 16px rgba(44,57,48,0.05)'">
+            <div style="position:relative;overflow:hidden;">
+              <img src="/images/shimul-journaling.png" alt="Intergenerational trauma" style="width:100%;height:220px;object-fit:cover;transition:transform 0.5s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform=''">
+              <div style="position:absolute;top:1rem;left:1rem;">
+                <span style="font-family:'DM Sans',sans-serif;font-size:0.65rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;background:rgba(44,57,48,0.85);color:var(--tw-cream);padding:0.25rem 0.65rem;border-radius:999px;">Culture</span>
+              </div>
+            </div>
+            <div style="padding:1.5rem;display:flex;flex-direction:column;flex:1;">
+              <h3 style="color:var(--tw-forest);font-size:1.1rem;line-height:1.4;margin-bottom:0.75rem;">Intergenerational Trauma: Carrying What Was Never Yours to Carry</h3>
+              <p style="color:var(--tw-text-mid);font-size:0.88rem;line-height:1.8;margin-bottom:1.25rem;flex:1;">Why the emotional wounds of our parents and grandparents so often become our own, and how therapy can help you understand, hold, and gently begin to release them.</p>
+              <div style="display:flex;align-items:center;justify-content:space-between;padding-top:1rem;border-top:1px solid rgba(44,57,48,0.07);">
+                <span style="font-family:'DM Sans',sans-serif;font-size:0.75rem;color:var(--tw-text-muted);"><i class="bi bi-clock" style="margin-right:4px;"></i>9 min read</span>
+                <span style="font-family:'DM Sans',sans-serif;font-size:0.75rem;color:var(--tw-gold);font-weight:500;">Read More <i class="bi bi-arrow-right"></i></span>
+              </div>
+            </div>
           </div>
-        </div>
+        </a>
       </div>
 
-      <div class="col-md-6 col-lg-4 tw-fade tw-fade-delay-2">
-        <div class="tw-card h-100">
-          <img src="/images/individual session.png" alt="First therapy session what to expect" class="tw-card-img">
-          <div class="tw-card-body">
-            <span style="font-size:0.72rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--tw-gold);">Getting Started &bull; Therapy</span>
-            <h3 style="margin-top:0.5rem;font-size:1.25rem;">What to Expect in Your First Therapy Session</h3>
-            <p style="font-size:0.88rem;">The first session is often the scariest. Here's exactly what happens, what you don't have to share, and why it's okay to just show up exactly as you are.</p>
-            <span style="font-size:0.78rem;color:rgba(220,215,201,0.5);">4 min read</span>
+      <!-- Card 6 -->
+      <div class="col-md-6 col-lg-4 tw-fade blog-post-card" data-tags="healing">
+        <a href="#article-therapy" style="text-decoration:none;display:block;height:100%;">
+          <div style="background:white;border-radius:16px;overflow:hidden;border:1px solid rgba(44,57,48,0.08);box-shadow:0 2px 16px rgba(44,57,48,0.05);height:100%;transition:transform 0.3s ease,box-shadow 0.3s ease;display:flex;flex-direction:column;" onmouseover="this.style.transform='translateY(-6px)';this.style.boxShadow='0 16px 48px rgba(44,57,48,0.12)'" onmouseout="this.style.transform='';this.style.boxShadow='0 2px 16px rgba(44,57,48,0.05)'">
+            <div style="position:relative;overflow:hidden;">
+              <img src="/images/shimul-mindful-walk.png" alt="Starting therapy" style="width:100%;height:220px;object-fit:cover;transition:transform 0.5s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform=''">
+              <div style="position:absolute;top:1rem;left:1rem;">
+                <span style="font-family:'DM Sans',sans-serif;font-size:0.65rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;background:rgba(44,57,48,0.85);color:var(--tw-cream);padding:0.25rem 0.65rem;border-radius:999px;">Healing</span>
+              </div>
+            </div>
+            <div style="padding:1.5rem;display:flex;flex-direction:column;flex:1;">
+              <h3 style="color:var(--tw-forest);font-size:1.1rem;line-height:1.4;margin-bottom:0.75rem;">How to Know When You Are Ready to Start Therapy</h3>
+              <p style="color:var(--tw-text-mid);font-size:0.88rem;line-height:1.8;margin-bottom:1.25rem;flex:1;">You do not need to be in crisis to benefit from therapy. Here are the quiet signs that suggest therapy might help you, and how to take that first gentle step forward.</p>
+              <div style="display:flex;align-items:center;justify-content:space-between;padding-top:1rem;border-top:1px solid rgba(44,57,48,0.07);">
+                <span style="font-family:'DM Sans',sans-serif;font-size:0.75rem;color:var(--tw-text-muted);"><i class="bi bi-clock" style="margin-right:4px;"></i>6 min read</span>
+                <span style="font-family:'DM Sans',sans-serif;font-size:0.75rem;color:var(--tw-gold);font-weight:500;">Read More <i class="bi bi-arrow-right"></i></span>
+              </div>
+            </div>
           </div>
-        </div>
+        </a>
       </div>
 
     </div>
   </div>
 </section>
 
-<!-- NEWSLETTER / CTA -->
-<section class="tw-section-ivory">
-  <div class="container text-center tw-fade" style="max-width:600px;">
-    <span class="tw-section-label">Stay Connected</span>
-    <h2 style="color:var(--tw-forest);">Ready to start your<br><em style="color:var(--tw-gold);">own journey?</em></h2>
+<!-- CTA -->
+<section class="tw-section-dark">
+  <div class="container text-center tw-fade" style="max-width:620px;">
+    <span class="tw-section-label">Ready to Take the Next Step?</span>
+    <h2>Reading about healing is a start.<br><em style="color:var(--tw-gold);">Experiencing it is another.</em></h2>
     <hr class="tw-divider">
-    <p style="color:var(--tw-text-mid);max-width:460px;margin:0 auto 2rem;">Reading about therapy is the first step. Taking it is the next. Book your free 15-minute consultation with Shimul today.</p>
-    <a href="https://twishcare.myndweb.app/shimul/booking" target="_blank" rel="noopener" class="btn-tw-dark">Book Free Consult</a>
+    <p style="max-width:480px;margin:1.25rem auto 2rem;">If any of these articles resonated with you, Shimul would love to hear your story. Book a free 15-minute consultation, no commitment required.</p>
+    <a href="https://twishcare.myndweb.app/shimul/booking" target="_blank" rel="noopener" class="btn-tw-primary">Book Free 15-Min Consult</a>
   </div>
 </section>
+
+<script>
+function filterPosts(tag) {
+  const cards = document.querySelectorAll('.blog-post-card');
+  const btns = document.querySelectorAll('[id^="filter-"]');
+  btns.forEach(b => {
+    b.style.background = 'transparent';
+    b.style.color = 'var(--tw-forest)';
+    b.style.borderColor = 'rgba(44,57,48,0.2)';
+  });
+  const active = document.getElementById('filter-' + tag);
+  if (active) { active.style.background = 'var(--tw-forest)'; active.style.color = 'white'; active.style.borderColor = 'var(--tw-forest)'; }
+  cards.forEach(card => {
+    const tags = card.getAttribute('data-tags') || '';
+    card.style.display = (tag === 'all' || tags.includes(tag)) ? 'block' : 'none';
+  });
+}
+</script>
