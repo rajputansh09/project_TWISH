@@ -1,20 +1,16 @@
 require('dotenv').config();
 const express = require('express');
-const nodemailer = require('nodemailer');
 const session = require('express-session');
 const path = require('path');
-const fs = require('fs');
 
 const app = express();
-const PORT = process.env.PORT || 3000;
-const BASE_URL = process.env.BASE_URL || 'https://twishcare-ca.onrender.com';
+const BASE_URL = process.env.BASE_URL || 'https://twishcare.ca';
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public'), {
   maxAge: '7d',
   etag: true,
-  lastModified: true,
   setHeaders: (res, filePath) => {
     if (filePath.match(/\.(jpg|jpeg|png|gif|webp|svg|ico)$/i)) {
       res.setHeader('Cache-Control', 'public, max-age=604800, immutable');
@@ -27,7 +23,7 @@ app.use(session({
   secret: process.env.SESSION_SECRET || 'twish-secret-2025',
   resave: false,
   saveUninitialized: false,
-  cookie: { secure: false, maxAge: 24 * 60 * 60 * 1000 }
+  cookie: { secure: process.env.NODE_ENV === 'production', maxAge: 24 * 60 * 60 * 1000 }
 }));
 
 app.set('view engine', 'ejs');
@@ -40,31 +36,24 @@ function renderPage(res, partial, locals = {}) {
   });
 }
 
-const transporter = nodemailer.createTransport({
-  service: 'gmail',
-  auth: { user: process.env.EMAIL_USER, pass: process.env.EMAIL_PASS }
-});
-
-// Serve sitemap.xml
+// Sitemap
 app.get('/sitemap.xml', (req, res) => {
   res.header('Content-Type', 'application/xml');
-  const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
+  res.send(`<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>${BASE_URL}/home</loc><lastmod>2025-05-23</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>
-  <url><loc>${BASE_URL}/about</loc><lastmod>2025-05-23</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>${BASE_URL}/services</loc><lastmod>2025-05-23</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>${BASE_URL}/contact</loc><lastmod>2025-05-23</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>${BASE_URL}/blog</loc><lastmod>2025-05-23</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
-</urlset>`;
-  res.send(sitemap);
+  <url><loc>${BASE_URL}/home</loc><lastmod>2025-05-24</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>${BASE_URL}/about</loc><lastmod>2025-05-24</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>${BASE_URL}/services</loc><lastmod>2025-05-24</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>${BASE_URL}/contact</loc><lastmod>2025-05-24</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>${BASE_URL}/blog</loc><lastmod>2025-05-24</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+</urlset>`);
 });
 
-// Serve robots.txt
+// Robots
 app.get('/robots.txt', (req, res) => {
   res.header('Content-Type', 'text/plain');
   res.send(`User-agent: *
 Allow: /
-Disallow: /signin
 Disallow: /admin
 Sitemap: ${BASE_URL}/sitemap.xml
 
@@ -90,86 +79,93 @@ User-agent: ClaudeBot
 Allow: /`);
 });
 
-app.get(['/', '/home'], (req, res) => {
-  renderPage(res, 'home', {
-    currentPage: 'home',
-    canonicalUrl: BASE_URL + '/home',
-    pageTitle: 'Twish — Registered Psychotherapist in Mississauga and Markham | Shimul Rajput',
-    metaDesc: 'Twish — Registered Psychotherapist Shimul Rajput offers individual therapy, couples therapy, and virtual therapy in Mississauga, Markham, and across Canada. Sessions in English, Hindi, and Punjabi. Book a free 15-minute consultation today. CRPO #18680.'
-  });
-});
+// Pages
+app.get(['/', '/home'], (req, res) => renderPage(res, 'home', {
+  currentPage: 'home', canonicalUrl: BASE_URL + '/home',
+  pageTitle: 'Twish — Registered Psychotherapist in Mississauga and Markham | Shimul Rajput',
+  metaDesc: 'Twish — Registered Psychotherapist Shimul Rajput offers individual therapy, couples therapy, and virtual therapy in Mississauga, Markham, and across Canada. Sessions in English, Hindi, and Punjabi. Book a free 15-minute consultation today. CRPO #18680.'
+}));
 
-app.get('/about', (req, res) => {
-  renderPage(res, 'about', {
-    currentPage: 'about',
-    canonicalUrl: BASE_URL + '/about',
-    pageTitle: 'About Shimul Rajput — Registered Psychotherapist Mississauga and Markham | Twish',
-    metaDesc: 'Meet Shimul Rajput, Registered Psychotherapist (Qualifying) CRPO #18680. MACP from Yorkville University. Offering therapy in English, Hindi, and Punjabi in Mississauga, Markham, and virtually across Canada.'
-  });
-});
+app.get('/about', (req, res) => renderPage(res, 'about', {
+  currentPage: 'about', canonicalUrl: BASE_URL + '/about',
+  pageTitle: 'About Shimul Rajput — Registered Psychotherapist Mississauga and Markham | Twish',
+  metaDesc: 'Meet Shimul Rajput, Registered Psychotherapist (Qualifying) CRPO #18680. MACP from Yorkville University. Therapy in English, Hindi, and Punjabi in Mississauga, Markham, and virtually across Canada.'
+}));
 
-app.get('/services', (req, res) => {
-  renderPage(res, 'services', {
-    currentPage: 'services',
-    canonicalUrl: BASE_URL + '/services',
-    pageTitle: 'Therapy Services — Individual, Couples and Virtual Therapy | Twish Mississauga Markham',
-    metaDesc: 'Individual therapy $150, couples therapy $250, and free 15-minute consultation. Serving Mississauga, Markham, and virtually across Canada. CBT, DBT, EFCT, trauma-informed care. Sessions in English, Hindi, Punjabi. CRPO registered therapist.'
-  });
-});
+app.get('/services', (req, res) => renderPage(res, 'services', {
+  currentPage: 'services', canonicalUrl: BASE_URL + '/services',
+  pageTitle: 'Therapy Services — Individual, Couples and Virtual Therapy | Twish Mississauga Markham',
+  metaDesc: 'Individual therapy $150, couples therapy $250, and free 15-minute consultation. Serving Mississauga, Markham, and virtually across Canada. CBT, DBT, EFCT, trauma-informed care. CRPO registered.'
+}));
 
-app.get('/blog', (req, res) => {
-  renderPage(res, 'blog', {
-    currentPage: 'blog',
-    canonicalUrl: BASE_URL + '/blog',
-    pageTitle: 'Mental Health Blog — Anxiety, Trauma, Burnout and Therapy Insights | Twish',
-    metaDesc: 'Mental health articles by Shimul Rajput, Registered Psychotherapist. Topics include anxiety, depression, trauma recovery, burnout, cultural identity, couples therapy, and South Asian mental health in Canada.'
-  });
-});
+app.get('/blog', (req, res) => renderPage(res, 'blog', {
+  currentPage: 'blog', canonicalUrl: BASE_URL + '/blog',
+  pageTitle: 'Mental Health Blog — Anxiety, Trauma, Burnout and Therapy Insights | Twish',
+  metaDesc: 'Mental health articles by Shimul Rajput, Registered Psychotherapist. Topics include anxiety, depression, trauma recovery, burnout, cultural identity, and couples therapy.'
+}));
 
-app.get('/contact', (req, res) => {
-  renderPage(res, 'contact', {
-    currentPage: 'contact',
-    canonicalUrl: BASE_URL + '/contact',
-    pageTitle: 'Contact Twish — Book a Therapy Session in Mississauga or Markham | Shimul Rajput',
-    metaDesc: 'Contact Shimul Rajput at Twish Therapy. Two locations: 365 Prince of Wales Dr Mississauga and 10 Villa Ada Drive Markham. Virtual therapy across Canada. Book your free 15-minute consultation. Call (647) 616-5744.',
-    email: process.env.CONTACT_EMAIL || 'rajputshimul@gmail.com',
-    phone: '(647) 616-5744',
-    address: '365 Prince of Wales Dr, Mississauga, ON L5B 0G6'
-  });
-});
+app.get('/contact', (req, res) => renderPage(res, 'contact', {
+  currentPage: 'contact', canonicalUrl: BASE_URL + '/contact',
+  pageTitle: 'Contact Twish — Book a Therapy Session in Mississauga or Markham | Shimul Rajput',
+  metaDesc: 'Contact Shimul Rajput at Twish Therapy. Two locations: 365 Prince of Wales Dr Mississauga and 10 Villa Ada Drive Markham. Virtual therapy across Canada. Book your free 15-minute consultation.'
+}));
 
-app.get('/signin', (req, res) => {
-  renderPage(res, 'signIn', {
-    currentPage: '',
-    canonicalUrl: BASE_URL + '/signin',
-    pageTitle: 'Sign In — Twish Admin'
-  });
-});
-
+// Contact form — Brevo API
 app.post('/send-message', async (req, res) => {
   const { name, email, subject, message } = req.body;
   if (!name || !email || !message) return res.status(400).json({ error: 'Missing required fields' });
+  
   try {
-    await transporter.sendMail({
-      from: '"Twish Website" <' + process.env.EMAIL_USER + '>',
-      to: process.env.CONTACT_EMAIL || 'rajputshimul@gmail.com',
-      replyTo: email,
-      subject: '[Twish] ' + (subject || 'New message from ' + name),
-      html: '<h2>New message from Twish website</h2><p><strong>Name:</strong> ' + name + '</p><p><strong>Email:</strong> ' + email + '</p><p><strong>Subject:</strong> ' + subject + '</p><p><strong>Message:</strong><br>' + message.replace(/\n/g, '<br>') + '</p>'
+    const response = await fetch('https://api.brevo.com/v3/smtp/email', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'api-key': process.env.BREVO_API_KEY
+      },
+      body: JSON.stringify({
+        sender: { name: 'Twish Website', email: 'rajputshimul@gmail.com' },
+        to: [{ email: 'rajputshimul@gmail.com', name: 'Shimul Rajput' }],
+        replyTo: { email: email, name: name },
+        subject: '[Twish] ' + (subject || 'New message from ' + name),
+        htmlContent: `
+          <div style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto;">
+            <div style="background:#2C3930;padding:24px;text-align:center;">
+              <h2 style="color:#DCD7C9;margin:0;font-size:20px;">New Message from Twish Website</h2>
+            </div>
+            <div style="padding:24px;background:#f9f9f9;border:1px solid #eee;">
+              <p style="margin:0 0 12px;"><strong>Name:</strong> ${name}</p>
+              <p style="margin:0 0 12px;"><strong>Email:</strong> ${email}</p>
+              <p style="margin:0 0 12px;"><strong>Subject:</strong> ${subject || 'No subject'}</p>
+              <p style="margin:0 0 8px;"><strong>Message:</strong></p>
+              <div style="background:white;padding:16px;border-radius:8px;border:1px solid #ddd;">
+                <p style="margin:0;white-space:pre-wrap;">${message}</p>
+              </div>
+            </div>
+            <div style="background:#2C3930;padding:16px;text-align:center;">
+              <p style="color:#A27B5C;margin:0;font-size:12px;">Twish — Therapy with Shimul | twishcare.ca</p>
+            </div>
+          </div>`
+      })
     });
-    res.status(200).json({ success: true });
+
+    if (response.ok) {
+      res.status(200).json({ success: true });
+    } else {
+      const err = await response.json();
+      console.error('Brevo error:', err);
+      res.status(500).json({ error: 'Failed to send message' });
+    }
   } catch (err) {
     console.error('Email error:', err.message);
     res.status(500).json({ error: 'Failed to send message' });
   }
 });
 
-app.post('/admin-login', (req, res) => {
-  const { password } = req.body;
-  if (password === process.env.ADMIN_PASSWORD) { req.session.isAdmin = true; res.redirect('/blog'); }
-  else res.redirect('/signin?error=1');
-});
+// Only listen when running locally, not on Vercel
+if (process.env.NODE_ENV !== 'production') {
+  const PORT = process.env.PORT || 3000;
+  app.listen(PORT, () => console.log('Twish running on port ' + PORT));
+}
 
-app.get('/admin-logout', (req, res) => { req.session.destroy(); res.redirect('/home'); });
-
-app.listen(PORT, () => console.log('Twish running on port ' + PORT));
+module.exports = app;
