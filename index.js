@@ -75,6 +75,12 @@ app.get('/blog', (req, res) => rp(res, 'blog', {
   metaDesc: 'Mental health articles by Shimul Rajput, Registered Psychotherapist. Anxiety, depression, trauma recovery, burnout, cultural identity, and couples therapy.'
 }));
 
+app.get('/blog/understanding-anxiety', (req, res) => rp(res, 'blog-understanding-anxiety', {
+  currentPage: 'blog', canonicalUrl: BASE + '/blog/understanding-anxiety',
+  pageTitle: 'Understanding Anxiety: Why Your Body Thinks You Are in Danger | Twish',
+  metaDesc: 'Anxiety is your nervous system doing its job, sometimes too well. Learn what is actually happening in your body and how therapy can help you find calm again.'
+}));
+
 app.get('/contact', (req, res) => rp(res, 'contact', {
   currentPage: 'contact', canonicalUrl: BASE + '/contact',
   pageTitle: 'Contact Twish — Book a Therapy Session in Mississauga or Markham | Shimul Rajput',
