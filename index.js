@@ -93,6 +93,12 @@ app.get('/blog/four-patterns-damage-relationships', (req, res) => rp(res, 'blog-
   metaDesc: 'Criticism, contempt, defensiveness, and stonewalling. Research shows these four communication patterns predict relationship breakdown with startling accuracy. Learn to recognize them before they do lasting damage.'
 }));
 
+app.get('/blog/intergenerational-trauma', (req, res) => rp(res, 'blog-intergenerational-trauma', {
+  currentPage: 'blog', canonicalUrl: BASE + '/blog/intergenerational-trauma',
+  pageTitle: 'Intergenerational Trauma: Carrying What Was Never Yours to Carry | Twish',
+  metaDesc: 'Why the emotional wounds of our parents and grandparents so often become our own, and how therapy can help you understand, hold, and gently begin to release them.'
+}));
+
 app.get('/contact', (req, res) => rp(res, 'contact', {
   currentPage: 'contact', canonicalUrl: BASE + '/contact',
   pageTitle: 'Contact Twish — Book a Therapy Session in Mississauga or Markham | Shimul Rajput',
