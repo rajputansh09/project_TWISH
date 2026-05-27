@@ -65,12 +65,72 @@ h3 { font-size: clamp(1.3rem, 2vw, 1.8rem); }
 h4 { font-size: 1.15rem; }
 p  { font-size: 1rem; line-height: 1.85; margin-bottom: 1.25rem; }
 
-/* --- Scroll Animations --- */
-.tw-fade { opacity: 0; transform: translateY(28px); transition: opacity 0.65s ease, transform 0.65s ease; }
-.tw-fade.tw-visible { opacity: 1; transform: translateY(0); }
-.tw-fade-delay-1 { transition-delay: 0.12s; }
-.tw-fade-delay-2 { transition-delay: 0.24s; }
-.tw-fade-delay-3 { transition-delay: 0.36s; }
+/* ============================================
+   IMAGE LOADING — skeleton shimmer + fade in
+   ============================================ */
+@keyframes tw-img-skeleton {
+  0%   { background-position: 200% center; }
+  100% { background-position: -200% center; }
+}
+img:not([src=""]):not(.tw-loaded) {
+  background: linear-gradient(90deg, #e8e3da 25%, #f0ece4 50%, #e8e3da 75%);
+  background-size: 200% 100%;
+  animation: tw-img-skeleton 1.4s ease infinite;
+}
+img {
+  opacity: 0;
+  transition: opacity 0.45s ease;
+}
+img.tw-loaded {
+  opacity: 1;
+  animation: none;
+  background: none;
+}
+
+/* ============================================
+   SCROLL ANIMATIONS — Enhanced
+   ============================================ */
+.tw-fade {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.55s cubic-bezier(0.22,1,0.36,1), transform 0.55s cubic-bezier(0.22,1,0.36,1);
+  will-change: opacity, transform;
+}
+.tw-fade.tw-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.tw-fade-delay-1 { transition-delay: 0.1s; }
+.tw-fade-delay-2 { transition-delay: 0.2s; }
+.tw-fade-delay-3 { transition-delay: 0.3s; }
+.tw-fade-delay-4 { transition-delay: 0.4s; }
+
+/* Fade from left */
+.tw-fade-left {
+  opacity: 0;
+  transform: translateX(-36px);
+  transition: opacity 0.6s cubic-bezier(0.22,1,0.36,1), transform 0.6s cubic-bezier(0.22,1,0.36,1);
+  will-change: opacity, transform;
+}
+.tw-fade-left.tw-visible { opacity: 1; transform: translateX(0); }
+
+/* Fade from right */
+.tw-fade-right {
+  opacity: 0;
+  transform: translateX(36px);
+  transition: opacity 0.6s cubic-bezier(0.22,1,0.36,1), transform 0.6s cubic-bezier(0.22,1,0.36,1);
+  will-change: opacity, transform;
+}
+.tw-fade-right.tw-visible { opacity: 1; transform: translateX(0); }
+
+/* Scale up */
+.tw-fade-scale {
+  opacity: 0;
+  transform: scale(0.93);
+  transition: opacity 0.55s cubic-bezier(0.22,1,0.36,1), transform 0.55s cubic-bezier(0.22,1,0.36,1);
+  will-change: opacity, transform;
+}
+.tw-fade-scale.tw-visible { opacity: 1; transform: scale(1); }
 
 /* ============================================
    NAVBAR — White, like CertCanada
@@ -88,7 +148,7 @@ p  { font-size: 1rem; line-height: 1.85; margin-bottom: 1.25rem; }
 .tw-navbar .navbar-brand img { height: 44px; width: auto; }
 
 .tw-navbar .nav-link {
-  font-family: 'DM Sans', system-ui, sans-serif;
+  font-family: 'Lora', Georgia, serif !important;
   font-size: 0.82rem;
   font-weight: 500;
   letter-spacing: 0.08em;
@@ -122,20 +182,20 @@ p  { font-size: 1rem; line-height: 1.85; margin-bottom: 1.25rem; }
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%2844%2C57%2C48%2C0.8%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
 }
 
-/* Book button — warm brown, white text */
+/* Book button */
 .tw-nav-book {
   display: inline-block;
-  font-family: var(--ff-body);
-  font-size: 0.78rem;
+  font-family: 'DM Sans', system-ui, sans-serif !important;
+  font-size: 0.82rem !important;
   font-weight: 500;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
+  letter-spacing: 0.1em !important;
+  text-transform: uppercase !important;
   color: var(--tw-white) !important;
   background: var(--tw-gold);
   padding: 0.52rem 1.4rem;
   border-radius: var(--radius-xl);
   border: 2px solid var(--tw-gold);
-  transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
+  transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease, transform 0.25s cubic-bezier(0.22,1,0.36,1), box-shadow 0.25s ease;
   cursor: pointer;
   text-decoration: none;
 }
@@ -143,31 +203,27 @@ p  { font-size: 1rem; line-height: 1.85; margin-bottom: 1.25rem; }
   background: var(--tw-gold-lt);
   border-color: var(--tw-gold-lt);
   color: var(--tw-white) !important;
-  transform: translateY(-1px);
-  box-shadow: 0 4px 14px rgba(162,123,92,0.35);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(162,123,92,0.35);
 }
 
-
-/* Footer book button — force exact same behaviour as navbar, override .tw-footer * transition */
 .tw-footer .tw-nav-book {
-  transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease, transform 0.2s ease !important;
+  transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease, transform 0.25s cubic-bezier(0.22,1,0.36,1) !important;
   display: inline-block !important;
 }
 .tw-footer .tw-nav-book:hover {
   background: var(--tw-gold-lt) !important;
   border-color: var(--tw-gold-lt) !important;
   color: var(--tw-white) !important;
-  transform: translateY(-1px) !important;
-  box-shadow: 0 4px 14px rgba(162,123,92,0.35) !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 6px 18px rgba(162,123,92,0.35) !important;
 }
 
-/* Active page indicator replaced */
-/* Active page indicator — pure gold underbar */
+/* Active page indicator */
 .tw-nav-active {
   color: var(--tw-gold) !important;
   font-weight: 500;
 }
-/* Underbar for regular nav links */
 .tw-nav-active:not(.dropdown-toggle)::after {
   transform: scaleX(1) !important;
   background: #A27B5C !important;
@@ -176,20 +232,17 @@ p  { font-size: 1rem; line-height: 1.85; margin-bottom: 1.25rem; }
   border: none !important;
   width: auto !important;
 }
-/* Underbar for dropdown-toggle (Services) — use a box-shadow trick instead
-   because ::after is taken by Bootstrap's caret arrow */
 .tw-nav-active.dropdown-toggle {
   box-shadow: inset 0 -2.5px 0 0 #A27B5C;
   padding-bottom: 0.5rem !important;
 }
 .tw-nav-active.dropdown-toggle::after {
-  /* Keep Bootstrap's caret but force gold colour */
   border-top-color: var(--tw-gold) !important;
   border-bottom-color: var(--tw-gold) !important;
 }
 
 /* ============================================
-   SECTION BACKGROUNDS — Alternating rhythm
+   SECTION BACKGROUNDS
    ============================================ */
 .tw-section-dark  { background: var(--tw-forest);    padding: 5rem 0; }
 .tw-section-darker{ background: var(--tw-forest-dk); padding: 5rem 0; }
@@ -197,7 +250,6 @@ p  { font-size: 1rem; line-height: 1.85; margin-bottom: 1.25rem; }
 .tw-section-ivory { background: var(--tw-ivory);     padding: 5rem 0; }
 .tw-section-cream { background: var(--tw-cream);     padding: 5rem 0; }
 
-/* Text colours per background */
 .tw-section-dark  h1, .tw-section-dark  h2, .tw-section-dark  h3, .tw-section-dark  h4,
 .tw-section-darker h1,.tw-section-darker h2,.tw-section-darker h3,.tw-section-darker h4 { color: var(--tw-cream); }
 .tw-section-dark  p, .tw-section-darker p { color: rgba(220,215,201,0.85); }
@@ -227,7 +279,6 @@ p  { font-size: 1rem; line-height: 1.85; margin-bottom: 1.25rem; }
   background: radial-gradient(ellipse, rgba(162,123,92,0.07) 0%, transparent 70%);
   pointer-events: none;
 }
-font-family: 'DM Sans', system-ui, sans-serif;
 .tw-hero-eyebrow {
   display: inline-flex;
   align-items: center;
@@ -269,7 +320,7 @@ font-family: 'DM Sans', system-ui, sans-serif;
 }
 
 /* ============================================
-   STATS STRIP — CertCanada style
+   STATS STRIP
    ============================================ */
 .tw-stats {
   background: var(--tw-forest-dk);
@@ -281,7 +332,9 @@ font-family: 'DM Sans', system-ui, sans-serif;
   text-align: center;
   padding: 0.5rem 1rem;
   position: relative;
+  transition: transform 0.3s cubic-bezier(0.22,1,0.36,1);
 }
+.tw-stat-item:hover { transform: translateY(-4px); }
 .tw-stat-item:not(:last-child)::after {
   content: '';
   position: absolute;
@@ -290,7 +343,7 @@ font-family: 'DM Sans', system-ui, sans-serif;
   background: rgba(162,123,92,0.3);
 }
 .tw-stat-number {
-  font-family: var(--ff-heading);
+  font-family: 'Lora', Georgia, serif !important;
   font-size: clamp(2.4rem, 4vw, 3.2rem);
   font-weight: 600;
   color: var(--tw-gold);
@@ -314,37 +367,8 @@ font-family: 'DM Sans', system-ui, sans-serif;
 }
 
 /* ============================================
-   CARDS — on white/ivory backgrounds
+   CARDS — Dark
    ============================================ */
-.tw-card-light {
-  background: var(--tw-white);
-  border: 1px solid rgba(44,57,48,0.08);
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-  transition: var(--transition);
-  height: 100%;
-  box-shadow: var(--shadow-card);
-}
-.tw-card-light:hover {
-  transform: translateY(-6px);
-  border-color: rgba(162,123,92,0.3);
-  box-shadow: var(--shadow-gold);
-}
-.tw-card-light .tw-card-img {
-  width: 100%; height: 220px; object-fit: cover;
-}
-.tw-card-light .tw-card-body { padding: 1.75rem; }
-.tw-card-light .tw-card-body h3 { color: var(--tw-forest); font-size: 1.4rem; margin-bottom: 0.5rem; }
-.tw-card-light .tw-card-body p  { color: var(--tw-text-mid); font-size: 0.9rem; margin-bottom: 1.25rem; }
-.tw-card-price   { font-family: var(--ff-heading); font-size: 1.7rem; color: var(--tw-gold); font-weight: 600; margin-bottom: 0.1rem; }
-.tw-card-duration{ font-size: 0.75rem; color: var(--tw-text-muted); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.75rem; }
-
-
-/* ============================================
-   REDESIGNED CARDS — Premium dark glass style
-   ============================================ */
-
-/* Dark card — on dark green backgrounds */
 .tw-card-dark {
   background: linear-gradient(145deg, rgba(63,79,68,0.9) 0%, rgba(44,57,48,0.95) 100%);
   border: 1px solid rgba(162,123,92,0.15);
@@ -375,27 +399,15 @@ font-family: 'DM Sans', system-ui, sans-serif;
   z-index: 1;
 }
 .tw-card-dark .tw-card-body h3,
-.tw-card-dark .tw-card-body h4 {
-  color: var(--tw-cream);
-  margin-bottom: 0.6rem;
-  font-size: 1.35rem;
-}
-.tw-card-dark .tw-card-body p {
-  color: rgba(220,215,201,0.72);
-  font-size: 0.9rem;
-  line-height: 1.8;
-}
+.tw-card-dark .tw-card-body h4 { color: var(--tw-cream); margin-bottom: 0.6rem; font-size: 1.35rem; }
+.tw-card-dark .tw-card-body p { color: rgba(220,215,201,0.72); font-size: 0.9rem; line-height: 1.8; }
 
-/* Icon container for info cards */
 .tw-card-icon {
-  width: 52px;
-  height: 52px;
+  width: 52px; height: 52px;
   border-radius: 14px;
   background: rgba(162,123,92,0.12);
   border: 1px solid rgba(162,123,92,0.25);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: flex; align-items: center; justify-content: center;
   margin-bottom: 1.25rem;
   font-size: 1.4rem;
   color: var(--tw-gold);
@@ -406,15 +418,19 @@ font-family: 'DM Sans', system-ui, sans-serif;
   border-color: rgba(162,123,92,0.45);
 }
 
-/* Light card — on white/ivory backgrounds */
+/* ============================================
+   CARDS — Light
+   ============================================ */
 .tw-card-light {
   background: var(--tw-white);
   border: 1px solid rgba(44,57,48,0.07);
+  border-top: 3px solid var(--tw-gold) !important;
   border-radius: var(--radius-lg);
   overflow: hidden;
   transition: transform 0.35s cubic-bezier(0.22,1,0.36,1), box-shadow 0.35s ease, border-color 0.35s ease;
   height: 100%;
   position: relative;
+  box-shadow: 0 4px 24px rgba(162,123,92,0.12), 0 1px 4px rgba(44,57,48,0.08) !important;
 }
 .tw-card-light::after {
   content: '';
@@ -428,31 +444,30 @@ font-family: 'DM Sans', system-ui, sans-serif;
 .tw-card-light:hover {
   transform: translateY(-7px);
   border-color: rgba(162,123,92,0.25);
-  box-shadow: 0 20px 50px rgba(44,57,48,0.1), 0 4px 16px rgba(162,123,92,0.12);
+  box-shadow: 0 20px 50px rgba(44,57,48,0.1), 0 4px 16px rgba(162,123,92,0.18) !important;
 }
 .tw-card-light:hover::after { opacity: 1; }
 .tw-card-light .tw-card-img {
-  width: 100%;
-  height: 220px;
-  object-fit: cover;
-  transition: transform 0.5s ease;
+  width: 100%; height: 220px; object-fit: cover;
+  transition: transform 0.5s cubic-bezier(0.22,1,0.36,1);
 }
 .tw-card-light:hover .tw-card-img { transform: scale(1.04); }
 .tw-card-light .tw-card-body { padding: 1.75rem; }
-.tw-card-light .tw-card-body h3 {
-  color: var(--tw-forest);
-  font-size: 1.4rem;
-  margin-bottom: 0.5rem;
-}
-.tw-card-light .tw-card-body p { color: var(--tw-text-mid); font-size: 0.9rem; margin-bottom: 1.25rem; }
+.tw-card-light .tw-card-body h3 { color: var(--tw-forest); font-size: 1.4rem; margin-bottom: 0.5rem; }
+.tw-card-light .tw-card-body p  { color: var(--tw-text-mid); font-size: 0.9rem; margin-bottom: 1.25rem; }
+.tw-card-price   { font-family: 'Lora', Georgia, serif !important; font-size: 1.7rem; color: var(--tw-gold); font-weight: 600; margin-bottom: 0.1rem; }
+.tw-card-duration{ font-size: 0.75rem; color: var(--tw-text-muted); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.75rem; }
 
-/* Approach cards on white bg */
+/* ============================================
+   APPROACH CARDS
+   ============================================ */
 .tw-approach-card {
   background: var(--tw-white);
-  border: 1px solid rgba(44,57,48,0.07);
+  border: 1px solid rgba(44,57,48,0.08);
   border-top: 3px solid var(--tw-gold);
   border-radius: 0 0 var(--radius-md) var(--radius-md);
   padding: 1.75rem;
+  box-shadow: var(--shadow-card);
   transition: transform 0.35s cubic-bezier(0.22,1,0.36,1), box-shadow 0.35s ease;
   height: 100%;
   position: relative;
@@ -469,88 +484,111 @@ font-family: 'DM Sans', system-ui, sans-serif;
   box-shadow: 0 16px 40px rgba(44,57,48,0.1), 0 4px 12px rgba(162,123,92,0.1);
 }
 .tw-approach-card h4 { color: var(--tw-forest); margin-bottom: 0.5rem; font-size: 1.1rem; }
-.tw-approach-card p { color: var(--tw-text-mid); font-size: 0.88rem; margin: 0; line-height: 1.75; }
+.tw-approach-card p  { color: var(--tw-text-mid); font-size: 0.88rem; margin: 0; line-height: 1.75; }
 
 /* ============================================
-   BUTTONS
+   BUTTONS — Enhanced hover lift
    ============================================ */
 .btn-tw-primary {
   display: inline-block;
   background: var(--tw-gold);
   color: var(--tw-white);
-  font-family: var(--ff-body);
-  font-size: 0.82rem;
+  font-family: 'DM Sans', system-ui, sans-serif !important;
+  font-size: 0.82rem !important;
   font-weight: 500;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
+  letter-spacing: 0.1em !important;
+  text-transform: uppercase !important;
   padding: 0.78rem 2rem;
   border-radius: var(--radius-xl);
   border: 2px solid var(--tw-gold);
   cursor: pointer;
-  transition: var(--transition);
+  transition: background 0.25s ease, color 0.25s ease, transform 0.25s cubic-bezier(0.22,1,0.36,1), box-shadow 0.25s ease;
 }
-.btn-tw-primary:hover { background: transparent; color: var(--tw-gold); }
+.btn-tw-primary:hover {
+  background: transparent;
+  color: var(--tw-gold);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 28px rgba(162,123,92,0.25);
+}
 
 .btn-tw-outline-light {
   display: inline-block;
   background: transparent;
   color: var(--tw-cream);
-  font-family: var(--ff-body);
-  font-size: 0.82rem;
+  font-family: 'DM Sans', system-ui, sans-serif !important;
+  font-size: 0.82rem !important;
   font-weight: 500;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
+  letter-spacing: 0.1em !important;
+  text-transform: uppercase !important;
   padding: 0.78rem 2rem;
   border-radius: var(--radius-xl);
   border: 1.5px solid rgba(220,215,201,0.5);
   cursor: pointer;
-  transition: var(--transition);
+  transition: background 0.25s ease, color 0.25s ease, transform 0.25s cubic-bezier(0.22,1,0.36,1), box-shadow 0.25s ease;
 }
-.btn-tw-outline-light:hover { background: var(--tw-cream); color: var(--tw-forest); border-color: var(--tw-cream); }
+.btn-tw-outline-light:hover {
+  background: var(--tw-cream);
+  color: var(--tw-forest);
+  border-color: var(--tw-cream);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(220,215,201,0.2);
+}
 
 .btn-tw-outline-dark {
   display: inline-block;
   background: transparent;
   color: var(--tw-forest);
-  font-family: var(--ff-body);
-  font-size: 0.82rem;
+  font-family: 'DM Sans', system-ui, sans-serif !important;
+  font-size: 0.82rem !important;
   font-weight: 500;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
+  letter-spacing: 0.1em !important;
+  text-transform: uppercase !important;
   padding: 0.78rem 2rem;
   border-radius: var(--radius-xl);
   border: 1.5px solid var(--tw-forest);
   cursor: pointer;
-  transition: var(--transition);
+  transition: background 0.25s ease, color 0.25s ease, transform 0.25s cubic-bezier(0.22,1,0.36,1), box-shadow 0.25s ease;
 }
-.btn-tw-outline-dark:hover { background: var(--tw-forest); color: var(--tw-cream); }
+.btn-tw-outline-dark:hover {
+  background: var(--tw-forest);
+  color: var(--tw-cream);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(44,57,48,0.2);
+}
 
 .btn-tw-forest {
   display: inline-block;
   background: var(--tw-forest);
   color: var(--tw-cream);
-  font-family: var(--ff-body);
-  font-size: 0.82rem;
+  font-family: 'DM Sans', system-ui, sans-serif !important;
+  font-size: 0.82rem !important;
   font-weight: 500;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
+  letter-spacing: 0.1em !important;
+  text-transform: uppercase !important;
   padding: 0.78rem 2rem;
   border-radius: var(--radius-xl);
   border: 2px solid var(--tw-forest);
   cursor: pointer;
-  transition: var(--transition);
+  transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease, transform 0.25s cubic-bezier(0.22,1,0.36,1), box-shadow 0.25s ease;
 }
-.btn-tw-forest:hover { background: var(--tw-gold); border-color: var(--tw-gold); color: var(--tw-white); }
+.btn-tw-forest:hover {
+  background: var(--tw-gold);
+  border-color: var(--tw-gold);
+  color: var(--tw-white);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 28px rgba(162,123,92,0.3);
+}
 
 /* ============================================
    SECTION LABEL & DIVIDER
    ============================================ */
 .tw-section-label {
-  font-family: 'DM Sans', system-ui, sans-serif;
-  font-size: 0.72rem;
-  font-weight: 500;
-  letter-spacing: 0.25em;
-  text-transform: uppercase;
+  font-family: 'DM Sans', system-ui, sans-serif !important;
+  font-size: 0.72rem !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.25em !important;
+  text-transform: uppercase !important;
+  line-height: 1.5 !important;
   color: var(--tw-gold);
   margin-bottom: 0.75rem;
   display: block;
@@ -564,7 +602,7 @@ font-family: 'DM Sans', system-ui, sans-serif;
 .tw-divider-left { margin-left: 0; }
 
 /* ============================================
-   TESTIMONIALS — on white background
+   TESTIMONIALS
    ============================================ */
 .tw-testimonial {
   background: var(--tw-ivory);
@@ -586,7 +624,7 @@ font-family: 'DM Sans', system-ui, sans-serif;
 .tw-testimonial cite { font-size: 0.82rem; color: var(--tw-gold); font-style: normal; letter-spacing: 0.05em; }
 
 /* ============================================
-   FOUNDER / SERVICE IMAGES
+   FOUNDER IMAGE
    ============================================ */
 .tw-founder-img {
   border-radius: var(--radius-lg);
@@ -598,12 +636,59 @@ font-family: 'DM Sans', system-ui, sans-serif;
 }
 
 /* ============================================
+   GALLERY IMAGES
+   ============================================ */
+.tw-gallery-img {
+  border: 2px solid rgba(162,123,92,0.35);
+  box-shadow: 0 4px 20px rgba(162,123,92,0.12), 0 1px 6px rgba(44,57,48,0.08);
+  transition: transform 0.4s cubic-bezier(0.22,1,0.36,1), box-shadow 0.4s ease, border-color 0.4s ease;
+}
+.tw-gallery-img:hover {
+  transform: scale(1.03);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.18);
+  border-color: rgba(162,123,92,0.6);
+}
+
+/* ============================================
    CAROUSEL
    ============================================ */
 .carousel-item img { height: 440px; object-fit: cover; border-radius: var(--radius-md); }
 .carousel-caption { background: rgba(26,35,32,0.7); border-radius: var(--radius-sm); padding: 0.75rem 1.25rem; }
 .carousel-caption h5 { font-family: var(--ff-heading); color: var(--tw-cream); font-size: 1.4rem; margin-bottom: 0.25rem; }
 .carousel-caption p  { color: rgba(220,215,201,0.85); font-size: 0.9rem; margin: 0; }
+
+#twishCarousel .carousel-caption {
+  background: linear-gradient(to top, rgba(26,35,32,0.92) 0%, rgba(26,35,32,0.4) 70%, transparent 100%);
+  left: 0; right: 0; bottom: 0;
+  padding: 2.5rem 2rem 2rem;
+  text-align: left;
+}
+#twishCarousel .carousel-caption h5 {
+  font-family: 'Cormorant Garamond', Georgia, serif !important;
+  font-size: 1.6rem; font-weight: 500;
+  color: var(--tw-cream); margin-bottom: 0.4rem; text-shadow: none;
+}
+#twishCarousel .carousel-caption p {
+  font-family: 'Lora', Georgia, serif !important;
+  font-size: 0.9rem; color: rgba(220,215,201,0.75); margin: 0; text-shadow: none;
+}
+#twishCarousel .carousel-indicators [data-bs-target] {
+  background-color: var(--tw-gold); width: 24px; height: 3px; border-radius: 2px; opacity: 0.45;
+}
+#twishCarousel .carousel-indicators .active { opacity: 1; width: 40px; }
+#twishCarousel .carousel-control-prev,
+#twishCarousel .carousel-control-next {
+  width: 48px; height: 48px;
+  background: rgba(162,123,92,0.2);
+  border: 1px solid rgba(162,123,92,0.4);
+  border-radius: 50%;
+  top: 50%; transform: translateY(-50%);
+  bottom: auto; opacity: 1;
+}
+#twishCarousel .carousel-control-prev { left: 1.25rem; }
+#twishCarousel .carousel-control-next { right: 1.25rem; }
+#twishCarousel .carousel-control-prev:hover,
+#twishCarousel .carousel-control-next:hover { background: rgba(162,123,92,0.45); }
 
 /* ============================================
    CONTACT FORM
@@ -620,11 +705,7 @@ font-family: 'DM Sans', system-ui, sans-serif;
   width: 100%;
 }
 .tw-form-control::placeholder { color: var(--tw-text-muted); }
-.tw-form-control:focus {
-  outline: none;
-  border-color: var(--tw-gold);
-  box-shadow: 0 0 0 3px rgba(162,123,92,0.1);
-}
+.tw-form-control:focus { outline: none; border-color: var(--tw-gold); box-shadow: 0 0 0 3px rgba(162,123,92,0.1); }
 label.tw-label {
   font-family: 'DM Sans', system-ui, sans-serif;
   font-size: 0.75rem;
@@ -676,32 +757,29 @@ label.tw-label {
   color: rgba(220,215,201,0.35);
 }
 
-
-/* Footer book button — stable gold, no text shift */
 .tw-footer-book-btn {
   display: inline-block;
   background: #A27B5C;
   color: #FFFFFF !important;
-  font-family: var(--ff-body);
-  font-size: 0.78rem;
+  font-family: 'DM Sans', system-ui, sans-serif !important;
+  font-size: 0.78rem !important;
   font-weight: 500;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
+  letter-spacing: 0.1em !important;
+  text-transform: uppercase !important;
   padding: 0.65rem 1.5rem;
   border-radius: var(--radius-xl);
   border: 2px solid #A27B5C;
   text-decoration: none;
   text-align: center;
   line-height: 1;
-  transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
-  transform: none !important;
+  transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, transform 0.25s cubic-bezier(0.22,1,0.36,1);
 }
 .tw-footer-book-btn:hover {
   background: #C4956A;
   border-color: #C4956A;
   color: #FFFFFF !important;
-  box-shadow: 0 4px 16px rgba(162,123,92,0.35);
-  transform: none !important;
+  box-shadow: 0 6px 18px rgba(162,123,92,0.35);
+  transform: translateY(-2px);
 }
 
 /* ============================================
@@ -714,23 +792,6 @@ label.tw-label {
    ============================================ */
 .tw-gold-border-bottom { border-bottom: 1px solid rgba(162,123,92,0.2); }
 .tw-gold-border-top    { border-top:    1px solid rgba(162,123,92,0.2); }
-
-/* ============================================
-   APPROACH CARDS (on white bg)
-   ============================================ */
-.tw-approach-card {
-  border: 1px solid rgba(44,57,48,0.08);
-  border-top: 3px solid var(--tw-gold);
-  border-radius: 0 0 var(--radius-md) var(--radius-md);
-  padding: 1.75rem;
-  background: var(--tw-white);
-  box-shadow: var(--shadow-card);
-  transition: var(--transition);
-  height: 100%;
-}
-.tw-approach-card:hover { box-shadow: var(--shadow-gold); transform: translateY(-4px); }
-.tw-approach-card h4 { color: var(--tw-forest); margin-bottom: 0.5rem; }
-.tw-approach-card p  { color: var(--tw-text-mid); font-size: 0.88rem; margin: 0; }
 
 /* ============================================
    UTILITY BADGES
@@ -765,92 +826,63 @@ label.tw-label {
 }
 
 /* ============================================
-   RESPONSIVE
+   BLOG CARDS
    ============================================ */
-@media (max-width: 991px) {
-  .tw-navbar .navbar-collapse { background: var(--tw-white); padding: 1rem; border-top: 1px solid rgba(44,57,48,0.08); }
-  .tw-stat-item:not(:last-child)::after { display: none; }
+.tw-blog-card {
+  background: white;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(44,57,48,0.08);
+  box-shadow: 0 2px 16px rgba(44,57,48,0.05);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.35s cubic-bezier(0.22,1,0.36,1), box-shadow 0.35s ease;
+  cursor: pointer;
 }
-@media (max-width: 768px) {
-  .tw-hero { min-height: auto; padding: 4rem 0; }
-  .tw-section-dark,.tw-section-white,.tw-section-ivory,.tw-section-cream { padding: 3.5rem 0; }
-  .tw-stats { padding: 2.5rem 0; }
-  .tw-stat-number { font-size: 2.2rem; }
-  .carousel-item img { height: 280px; }
+.tw-blog-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 50px rgba(44,57,48,0.12), 0 4px 16px rgba(162,123,92,0.1);
+  border-color: rgba(162,123,92,0.3);
 }
-@media (max-width: 480px) {
-  h1 { font-size: 2rem; }
-  h2 { font-size: 1.6rem; }
+.tw-blog-card-img-wrap { position: relative; overflow: hidden; }
+.tw-blog-card-img {
+  width: 100%; height: 220px; object-fit: cover;
+  transition: transform 0.5s cubic-bezier(0.22,1,0.36,1);
+  display: block;
 }
-/* ============================================
-   HERO ANIMATIONS
-   ============================================ */
-
-@keyframes tw-fade-up {
-  0%   { opacity: 0; transform: translateY(50px); }
-  100% { opacity: 1; transform: translateY(0); }
+.tw-blog-card:hover .tw-blog-card-img { transform: scale(1.05); }
+.tw-blog-badge {
+  position: absolute; top: 1rem; left: 1rem;
+  font-family: 'DM Sans', system-ui, sans-serif !important;
+  font-size: 0.65rem; font-weight: 600;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  background: rgba(44,57,48,0.88);
+  color: var(--tw-cream);
+  padding: 0.25rem 0.7rem;
+  border-radius: 999px;
+  backdrop-filter: blur(4px);
 }
-@keyframes tw-slide-right {
-  0%   { opacity: 0; transform: translateX(60px); }
-  100% { opacity: 1; transform: translateX(0); }
+.tw-blog-card-body { padding: 1.5rem; display: flex; flex-direction: column; flex: 1; }
+.tw-blog-card-body h3 { color: var(--tw-forest); font-size: 1.05rem; line-height: 1.4; margin-bottom: 0.75rem; }
+.tw-blog-card-body p  { color: var(--tw-text-mid); font-size: 0.88rem; line-height: 1.8; margin-bottom: 1.25rem; flex: 1; }
+.tw-blog-card-footer {
+  display: flex; align-items: center; justify-content: space-between;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(44,57,48,0.07);
+  font-family: 'DM Sans', system-ui, sans-serif !important;
+  font-size: 0.75rem; color: var(--tw-text-muted);
 }
-@keyframes tw-float {
-  0%, 100% { transform: translateY(0px); }
-  50%       { transform: translateY(-14px); }
-}
-
-/* Start hidden, animate in */
-.tw-anim-1,
-.tw-anim-2,
-.tw-anim-3,
-.tw-anim-4,
-.tw-anim-5 {
-  opacity: 0;
-  animation-fill-mode: forwards;
-  animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
-  animation-duration: 0.8s;
-  animation-name: tw-fade-up;
-}
-
-.tw-anim-1 { animation-delay: 0.15s; }
-.tw-anim-2 { animation-delay: 0.4s; }
-.tw-anim-3 { animation-delay: 0.65s; }
-.tw-anim-4 { animation-delay: 0.85s; }
-.tw-anim-5 { animation-delay: 1.05s; }
-
-.tw-anim-img {
-  opacity: 0;
-  animation: tw-slide-right 1s cubic-bezier(0.22, 1, 0.36, 1) 0.25s forwards;
-}
-
-.tw-float {
-  animation: tw-float 5s ease-in-out infinite;
-  animation-delay: 1.5s;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .tw-anim-1, .tw-anim-2, .tw-anim-3,
-  .tw-anim-4, .tw-anim-5, .tw-anim-img {
-    animation: none;
-    opacity: 1;
-  }
-  .tw-float { animation: none; }
-}
-
+.tw-blog-read-more { color: var(--tw-gold) !important; font-weight: 500; }
 
 /* ============================================
-   STATIC CARDS — zero hover effect
-   Cards without clickable links stay completely
-   still on hover. No lift, no glow, no change.
+   STATIC CARDS — zero hover
    ============================================ */
-
 .tw-card-dark.tw-card-static,
 .tw-card-light.tw-card-static,
 .tw-approach-card.tw-card-static,
 .tw-faq-card,
-.tw-testimonial.tw-card-static {
-  cursor: default;
-}
+.tw-testimonial.tw-card-static { cursor: default; }
 
 .tw-card-dark.tw-card-static:hover {
   transform: none !important;
@@ -868,22 +900,10 @@ label.tw-label {
   box-shadow: 0 4px 20px rgba(44,57,48,0.07), 0 1px 6px rgba(162,123,92,0.08) !important;
   border-color: rgba(162,123,92,0.2) !important;
 }
-.tw-card-light.tw-card-static:hover::after {
-  opacity: 0 !important;
-}
-.tw-card-light.tw-card-static:hover .tw-card-img {
-  transform: none !important;
-}
-
-
-
-
-
-
-.tw-approach-card.tw-card-static:hover {
-  transform: none !important;
-  box-shadow: none !important;
-}
+.tw-card-light.tw-card-static:hover::after { opacity: 0 !important; }
+.tw-card-light.tw-card-static:hover .tw-card-img { transform: none !important; }
+.tw-approach-card.tw-card-static:hover { transform: none !important; box-shadow: none !important; }
+.tw-testimonial.tw-card-static:hover { transform: none !important; box-shadow: none !important; }
 
 .tw-faq-card {
   background: var(--tw-ivory);
@@ -895,228 +915,71 @@ label.tw-label {
   cursor: default;
   transition: none;
 }
-.tw-faq-card:hover {
-  transform: none !important;
-  box-shadow: none !important;
-}
-.tw-faq-card h4 {
-  color: var(--tw-forest);
-  font-size: 1rem;
-  margin-bottom: 0.75rem;
-}
-.tw-faq-card p {
-  color: var(--tw-text-mid);
-  font-size: 0.88rem;
-  margin: 0;
-  line-height: 1.8;
-}
-
-.tw-testimonial.tw-card-static:hover {
-  transform: none !important;
-  box-shadow: none !important;
-}
-
-
-/* ===== ABSOLUTE FINAL OVERRIDES — nothing beats these ===== */
-.tw-hero-eyebrow {
-  font-family: 'DM Sans', system-ui, sans-serif !important;
-  font-size: 0.72rem !important;
-  font-weight: 500 !important;
-  letter-spacing: 0.22em !important;
-  text-transform: uppercase !important;
-  line-height: 1.5 !important;
-}
-.tw-section-label {
-  font-family: 'DM Sans', system-ui, sans-serif !important;
-  font-size: 0.72rem !important;
-  font-weight: 500 !important;
-  letter-spacing: 0.25em !important;
-  text-transform: uppercase !important;
-  line-height: 1.5 !important;
-}
-.tw-nav-book,
-.btn-tw-primary,
-.btn-tw-outline-light,
-.btn-tw-outline-dark,
-.btn-tw-forest,
-.tw-footer-book-btn {
-  font-family: 'DM Sans', system-ui, sans-serif !important;
-  font-size: 0.82rem !important;
-  letter-spacing: 0.1em !important;
-  text-transform: uppercase !important;
-  line-height: 1 !important;
-}
-
-
-/* ===== NUMERICAL VALUES — all Lora ===== */
-.tw-stat-number,
-.tw-card-price {
-  font-family: 'Lora', Georgia, serif !important;
-}
-
-
-/* ===== NAVBAR — Lora for all links and book button ===== */
-.tw-navbar .nav-link,
-.tw-navbar .dropdown-item,
-.tw-nav-book {
-  font-family: 'Lora', Georgia, serif !important;
-}
-
-
-/* ===== SERVICE CARDS — brown accent, stand out ===== */
-.tw-card-light {
-  border-top: 3px solid var(--tw-gold) !important;
-  border-left: none !important;
-  box-shadow: 0 4px 24px rgba(162,123,92,0.12), 0 1px 4px rgba(44,57,48,0.08) !important;
-}
-.tw-card-light:not(.tw-card-static):hover {
-  box-shadow: 0 12px 40px rgba(162,123,92,0.22), 0 4px 12px rgba(44,57,48,0.1) !important;
-  border-top-color: var(--tw-gold-lt) !important;
-}
-
-/* ===== COMMUNITY GALLERY IMAGES — gold border + glow ===== */
-.tw-gallery-img {
-  border: 2px solid rgba(162,123,92,0.35);
-  box-shadow: 0 4px 20px rgba(162,123,92,0.12), 0 1px 6px rgba(44,57,48,0.08);
-  transition: box-shadow 0.3s ease, border-color 0.3s ease;
-}
-
+.tw-faq-card:hover { transform: none !important; box-shadow: none !important; }
+.tw-faq-card h4 { color: var(--tw-forest); font-size: 1rem; margin-bottom: 0.75rem; }
+.tw-faq-card p  { color: var(--tw-text-mid); font-size: 0.88rem; margin: 0; line-height: 1.8; }
 
 /* ============================================
-   BLOG CARDS
+   HERO ANIMATIONS
    ============================================ */
-.tw-blog-card {
-  background: white;
-  border-radius: 16px;
-  overflow: hidden;
-  border: 1px solid rgba(44,57,48,0.08);
-  box-shadow: 0 2px 16px rgba(44,57,48,0.05);
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  transition: transform 0.3s cubic-bezier(0.22,1,0.36,1), box-shadow 0.3s ease;
-  cursor: pointer;
+@keyframes tw-fade-up {
+  0%   { opacity: 0; transform: translateY(40px); }
+  100% { opacity: 1; transform: translateY(0); }
 }
-.tw-blog-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 20px 50px rgba(44,57,48,0.12), 0 4px 16px rgba(162,123,92,0.1);
-  border-color: rgba(162,123,92,0.3);
+@keyframes tw-slide-right {
+  0%   { opacity: 0; transform: translateX(50px); }
+  100% { opacity: 1; transform: translateX(0); }
 }
-.tw-blog-card-img-wrap {
-  position: relative;
-  overflow: hidden;
-}
-.tw-blog-card-img {
-  width: 100%;
-  height: 220px;
-  object-fit: cover;
-  transition: transform 0.5s ease;
-  display: block;
-}
-.tw-blog-card:hover .tw-blog-card-img {
-  transform: scale(1.05);
-}
-.tw-blog-badge {
-  position: absolute;
-  top: 1rem;
-  left: 1rem;
-  font-family: 'DM Sans', system-ui, sans-serif !important;
-  font-size: 0.65rem;
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  background: rgba(44,57,48,0.88);
-  color: var(--tw-cream);
-  padding: 0.25rem 0.7rem;
-  border-radius: 999px;
-  backdrop-filter: blur(4px);
-}
-.tw-blog-card-body {
-  padding: 1.5rem;
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-}
-.tw-blog-card-body h3 {
-  color: var(--tw-forest);
-  font-size: 1.05rem;
-  line-height: 1.4;
-  margin-bottom: 0.75rem;
-}
-.tw-blog-card-body p {
-  color: var(--tw-text-mid);
-  font-size: 0.88rem;
-  line-height: 1.8;
-  margin-bottom: 1.25rem;
-  flex: 1;
-}
-.tw-blog-card-footer {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding-top: 1rem;
-  border-top: 1px solid rgba(44,57,48,0.07);
-  font-family: 'DM Sans', system-ui, sans-serif !important;
-  font-size: 0.75rem;
-  color: var(--tw-text-muted);
-}
-.tw-blog-read-more {
-  color: var(--tw-gold) !important;
-  font-weight: 500;
-  transition: gap 0.2s ease;
+@keyframes tw-float {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-10px); }
 }
 
+.tw-anim-1,
+.tw-anim-2,
+.tw-anim-3,
+.tw-anim-4,
+.tw-anim-5 {
+  opacity: 0;
+  animation-fill-mode: forwards;
+  animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+  animation-duration: 0.7s;
+  animation-name: tw-fade-up;
+}
+.tw-anim-1 { animation-delay: 0.05s; }
+.tw-anim-2 { animation-delay: 0.2s; }
+.tw-anim-3 { animation-delay: 0.35s; }
+.tw-anim-4 { animation-delay: 0.5s; }
+.tw-anim-5 { animation-delay: 0.65s; }
+
+.tw-anim-img {
+  opacity: 0;
+  animation: tw-slide-right 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.1s forwards;
+}
+.tw-float { animation: tw-float 5s ease-in-out infinite; animation-delay: 1.5s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .tw-anim-1, .tw-anim-2, .tw-anim-3,
+  .tw-anim-4, .tw-anim-5, .tw-anim-img { animation: none; opacity: 1; }
+  .tw-float { animation: none; }
+  img { opacity: 1 !important; transition: none !important; }
+}
 
 /* ============================================
-   CAROUSEL — premium styled
+   RESPONSIVE
    ============================================ */
-#twishCarousel .carousel-caption {
-  background: linear-gradient(to top, rgba(26,35,32,0.92) 0%, rgba(26,35,32,0.4) 70%, transparent 100%);
-  left: 0; right: 0; bottom: 0;
-  padding: 2.5rem 2rem 2rem;
-  text-align: left;
+@media (max-width: 991px) {
+  .tw-navbar .navbar-collapse { background: var(--tw-white); padding: 1rem; border-top: 1px solid rgba(44,57,48,0.08); }
+  .tw-stat-item:not(:last-child)::after { display: none; }
 }
-#twishCarousel .carousel-caption h5 {
-  font-family: 'Cormorant Garamond', Georgia, serif !important;
-  font-size: 1.6rem;
-  font-weight: 500;
-  color: var(--tw-cream);
-  margin-bottom: 0.4rem;
-  text-shadow: none;
+@media (max-width: 768px) {
+  .tw-hero { min-height: auto; padding: 4rem 0; }
+  .tw-section-dark,.tw-section-white,.tw-section-ivory,.tw-section-cream { padding: 3.5rem 0; }
+  .tw-stats { padding: 2.5rem 0; }
+  .tw-stat-number { font-size: 2.2rem; }
+  .carousel-item img { height: 280px; }
 }
-#twishCarousel .carousel-caption p {
-  font-family: 'Lora', Georgia, serif !important;
-  font-size: 0.9rem;
-  color: rgba(220,215,201,0.75);
-  margin: 0;
-  text-shadow: none;
-}
-#twishCarousel .carousel-indicators [data-bs-target] {
-  background-color: var(--tw-gold);
-  width: 24px;
-  height: 3px;
-  border-radius: 2px;
-  opacity: 0.45;
-}
-#twishCarousel .carousel-indicators .active {
-  opacity: 1;
-  width: 40px;
-}
-#twishCarousel .carousel-control-prev,
-#twishCarousel .carousel-control-next {
-  width: 48px;
-  height: 48px;
-  background: rgba(162,123,92,0.2);
-  border: 1px solid rgba(162,123,92,0.4);
-  border-radius: 50%;
-  top: 50%;
-  transform: translateY(-50%);
-  bottom: auto;
-  opacity: 1;
-}
-#twishCarousel .carousel-control-prev { left: 1.25rem; }
-#twishCarousel .carousel-control-next { right: 1.25rem; }
-#twishCarousel .carousel-control-prev:hover,
-#twishCarousel .carousel-control-next:hover {
-  background: rgba(162,123,92,0.45);
+@media (max-width: 480px) {
+  h1 { font-size: 2rem; }
+  h2 { font-size: 1.6rem; }
 }
