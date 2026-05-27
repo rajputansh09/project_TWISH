@@ -99,6 +99,12 @@ app.get('/blog/intergenerational-trauma', (req, res) => rp(res, 'blog-intergener
   metaDesc: 'Why the emotional wounds of our parents and grandparents so often become our own, and how therapy can help you understand, hold, and gently begin to release them.'
 }));
 
+app.get('/blog/when-to-start-therapy', (req, res) => rp(res, 'blog-when-to-start-therapy', {
+  currentPage: 'blog', canonicalUrl: BASE + '/blog/when-to-start-therapy',
+  pageTitle: 'How to Know When You Are Ready to Start Therapy | Twish',
+  metaDesc: 'You do not need to be in crisis to benefit from therapy. Here are the quiet signs that suggest therapy might help, and how to take that first gentle step forward.'
+}));
+
 app.get('/contact', (req, res) => rp(res, 'contact', {
   currentPage: 'contact', canonicalUrl: BASE + '/contact',
   pageTitle: 'Contact Twish — Book a Therapy Session in Mississauga or Markham | Shimul Rajput',
