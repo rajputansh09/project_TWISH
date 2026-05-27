@@ -81,6 +81,12 @@ app.get('/blog/understanding-anxiety', (req, res) => rp(res, 'blog-understanding
   metaDesc: 'Anxiety is your nervous system doing its job, sometimes too well. Learn what is actually happening in your body and how therapy can help you find calm again.'
 }));
 
+app.get('/blog/burnout-is-not-laziness', (req, res) => rp(res, 'blog-burnout-is-not-laziness', {
+  currentPage: 'blog', canonicalUrl: BASE + '/blog/burnout-is-not-laziness',
+  pageTitle: 'Burnout Is Not Laziness: What Your Exhaustion Is Really Telling You | Twish',
+  metaDesc: 'Chronic exhaustion, cynicism, and a growing sense of ineffectiveness. Understanding the real signs of burnout and how therapy can help you recover your sense of self.'
+}));
+
 app.get('/contact', (req, res) => rp(res, 'contact', {
   currentPage: 'contact', canonicalUrl: BASE + '/contact',
   pageTitle: 'Contact Twish — Book a Therapy Session in Mississauga or Markham | Shimul Rajput',
