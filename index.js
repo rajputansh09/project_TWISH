@@ -87,6 +87,12 @@ app.get('/blog/burnout-is-not-laziness', (req, res) => rp(res, 'blog-burnout-is-
   metaDesc: 'Chronic exhaustion, cynicism, and a growing sense of ineffectiveness. Understanding the real signs of burnout and how therapy can help you recover your sense of self.'
 }));
 
+app.get('/blog/four-patterns-damage-relationships', (req, res) => rp(res, 'blog-four-patterns-damage-relationships', {
+  currentPage: 'blog', canonicalUrl: BASE + '/blog/four-patterns-damage-relationships',
+  pageTitle: 'The Four Patterns That Quietly Damage Relationships | Twish',
+  metaDesc: 'Criticism, contempt, defensiveness, and stonewalling. Research shows these four communication patterns predict relationship breakdown with startling accuracy. Learn to recognize them before they do lasting damage.'
+}));
+
 app.get('/contact', (req, res) => rp(res, 'contact', {
   currentPage: 'contact', canonicalUrl: BASE + '/contact',
   pageTitle: 'Contact Twish — Book a Therapy Session in Mississauga or Markham | Shimul Rajput',
