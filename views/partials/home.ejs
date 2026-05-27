@@ -37,13 +37,52 @@
 <div class="tw-stats">
   <div class="container">
     <div class="row text-center g-0">
-      <div class="col-6 col-md-3 tw-stat-item tw-fade"><div class="tw-stat-number">4+</div><div class="tw-stat-label">Years of Experience</div><div class="tw-stat-sub">Clinical Practice</div></div>
-      <div class="col-6 col-md-3 tw-stat-item tw-fade tw-fade-delay-1"><div class="tw-stat-number">3</div><div class="tw-stat-label">Languages Offered</div><div class="tw-stat-sub">EN &bull; HI &bull; PA</div></div>
-      <div class="col-6 col-md-3 tw-stat-item tw-fade tw-fade-delay-2"><div class="tw-stat-number">15</div><div class="tw-stat-label">Min Free Consult</div><div class="tw-stat-sub">No Obligation</div></div>
-      <div class="col-6 col-md-3 tw-stat-item tw-fade tw-fade-delay-3"><div class="tw-stat-number">100%</div><div class="tw-stat-label">Culturally Sensitive</div><div class="tw-stat-sub">BIPOC Affirming</div></div>
+      <div class="col-6 col-md-3 tw-stat-item tw-fade"><div class="tw-stat-number" data-count="4" data-suffix="+">0</div><div class="tw-stat-label">Years of Experience</div><div class="tw-stat-sub">Clinical Practice</div></div>
+      <div class="col-6 col-md-3 tw-stat-item tw-fade tw-fade-delay-1"><div class="tw-stat-number" data-count="3" data-suffix="">0</div><div class="tw-stat-label">Languages Offered</div><div class="tw-stat-sub">EN &bull; HI &bull; PA</div></div>
+      <div class="col-6 col-md-3 tw-stat-item tw-fade tw-fade-delay-2"><div class="tw-stat-number" data-count="15" data-suffix="">0</div><div class="tw-stat-label">Min Free Consult</div><div class="tw-stat-sub">No Obligation</div></div>
+      <div class="col-6 col-md-3 tw-stat-item tw-fade tw-fade-delay-3"><div class="tw-stat-number" data-count="100" data-suffix="%">0</div><div class="tw-stat-label">Culturally Sensitive</div><div class="tw-stat-sub">BIPOC Affirming</div></div>
     </div>
   </div>
 </div>
+
+<script>
+(function(){
+  var animated=false;
+  function animateStats(){
+    if(animated)return;
+    var els=document.querySelectorAll('.tw-stat-number[data-count]');
+    if(!els.length)return;
+    animated=true;
+    els.forEach(function(el){
+      var target=parseInt(el.getAttribute('data-count'));
+      var suffix=el.getAttribute('data-suffix')||'';
+      var duration=1800;
+      var start=null;
+      function step(ts){
+        if(!start)start=ts;
+        var progress=Math.min((ts-start)/duration,1);
+        var ease=1-Math.pow(1-progress,3);
+        el.textContent=Math.floor(ease*target)+suffix;
+        if(progress<1)requestAnimationFrame(step);
+        else el.textContent=target+suffix;
+      }
+      requestAnimationFrame(step);
+    });
+  }
+  function checkVisible(){
+    var el=document.querySelector('.tw-stat-item');
+    if(!el)return false;
+    var rect=el.getBoundingClientRect();
+    return rect.top<window.innerHeight&&rect.bottom>0;
+  }
+  window.addEventListener('load',function(){
+    if(checkVisible())animateStats();
+  });
+  window.addEventListener('scroll',function(){
+    if(checkVisible())animateStats();
+  },{passive:true});
+})();
+</script>
 
 <!-- MENTAL HEALTH IN CANADA — context section -->
 <section class="tw-section-white">
