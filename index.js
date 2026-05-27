@@ -105,6 +105,12 @@ app.get('/blog/when-to-start-therapy', (req, res) => rp(res, 'blog-when-to-start
   metaDesc: 'You do not need to be in crisis to benefit from therapy. Here are the quiet signs that suggest therapy might help, and how to take that first gentle step forward.'
 }));
 
+app.get('/blog/mental-health-south-asian-community', (req, res) => rp(res, 'blog-mental-health-south-asian-community', {
+  currentPage: 'blog', canonicalUrl: BASE + '/blog/mental-health-south-asian-community',
+  pageTitle: 'Mental Health in the South Asian Community: Breaking the Silence | Twish',
+  metaDesc: 'Stigma, shame, and the pressure to stay strong. Why mental health is often the hardest conversation in South Asian families, and what it means to finally have it.'
+}));
+
 app.get('/contact', (req, res) => rp(res, 'contact', {
   currentPage: 'contact', canonicalUrl: BASE + '/contact',
   pageTitle: 'Contact Twish — Book a Therapy Session in Mississauga or Markham | Shimul Rajput',
