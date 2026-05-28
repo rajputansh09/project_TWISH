@@ -111,6 +111,10 @@ app.get('/blog/mental-health-south-asian-community', (req, res) => rp(res, 'blog
   metaDesc: 'Stigma, shame, and the pressure to stay strong. Why mental health is often the hardest conversation in South Asian families, and what it means to finally have it.'
 }));
 
+app.get('/llms.txt', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public/llms.txt'));
+});
+
 app.get('/contact', (req, res) => rp(res, 'contact', {
   currentPage: 'contact', canonicalUrl: BASE + '/contact',
   pageTitle: 'Contact Twish — Book a Therapy Session in Mississauga or Markham | Shimul Rajput',
