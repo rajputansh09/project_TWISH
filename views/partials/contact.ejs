@@ -12,18 +12,61 @@
 <section class="tw-section-white">
   <div class="container">
     <div class="row g-5">
-      <div class="col-lg-7 tw-fade">
-        <h3 style="margin-bottom:0.25rem;">Send a Message</h3>
-        <p style="font-size:0.9rem;color:var(--tw-text-muted);margin-bottom:2rem;">Shimul personally reads every message and responds within one to two business days.</p>
-        <form id="contactForm" method="POST" action="/send-message">
-          <div class="mb-4"><label class="tw-label" for="name">Full Name</label><input type="text" class="tw-form-control" id="name" name="name" placeholder="Your name" required></div>
-          <div class="mb-4"><label class="tw-label" for="email">Email Address</label><input type="email" class="tw-form-control" id="email" name="email" placeholder="you@example.com" required></div>
-          <div class="mb-4"><label class="tw-label" for="subject">Subject</label><input type="text" class="tw-form-control" id="subject" name="subject" placeholder="How can Shimul help?" required></div>
-          <div class="mb-4"><label class="tw-label" for="message">Your Message</label><textarea class="tw-form-control" id="message" name="message" rows="5" placeholder="Share what is on your mind..." required></textarea></div>
-          <button type="submit" class="btn-tw-forest">Send Message</button>
-          <p id="responseMsg" style="display:none;color:var(--tw-gold);font-size:0.9rem;margin-top:1rem;">Thank you for reaching out. Shimul will be in touch soon.</p>
-        </form>
+
+      <!-- LEFT: FORM + WHAT HAPPENS NEXT -->
+      <div class="col-lg-7 tw-fade" style="display:flex;flex-direction:column;gap:2.5rem;">
+
+        <!-- CONTACT FORM -->
+        <div>
+          <h3 style="margin-bottom:0.25rem;">Send a Message</h3>
+          <p style="font-size:0.9rem;color:var(--tw-text-muted);margin-bottom:2rem;">Shimul personally reads every message and responds within one to two business days.</p>
+          <form id="contactForm" method="POST" action="/send-message">
+            <div class="mb-4"><label class="tw-label" for="name">Full Name</label><input type="text" class="tw-form-control" id="name" name="name" placeholder="Your name" required></div>
+            <div class="mb-4"><label class="tw-label" for="email">Email Address</label><input type="email" class="tw-form-control" id="email" name="email" placeholder="you@example.com" required></div>
+            <div class="mb-4"><label class="tw-label" for="subject">Subject</label><input type="text" class="tw-form-control" id="subject" name="subject" placeholder="How can Shimul help?" required></div>
+            <div class="mb-4"><label class="tw-label" for="message">Your Message</label><textarea class="tw-form-control" id="message" name="message" rows="5" placeholder="Share what is on your mind..." required></textarea></div>
+            <button type="submit" class="btn-tw-forest">Send Message</button>
+            <p id="responseMsg" style="display:none;color:var(--tw-gold);font-size:0.9rem;margin-top:1rem;">Thank you for reaching out. Shimul will be in touch soon.</p>
+          </form>
+        </div>
+
+        <!-- WHAT HAPPENS NEXT -->
+        <div style="background:var(--tw-ivory);border-radius:20px;padding:2.25rem;border:1px solid rgba(44,57,48,0.08);">
+          <p style="font-family:'DM Sans',sans-serif;font-size:0.72rem;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:var(--tw-gold);margin-bottom:1.25rem;">What Happens Next</p>
+          <div style="display:flex;flex-direction:column;gap:1.25rem;">
+            <div style="display:flex;gap:1.25rem;align-items:flex-start;">
+              <div style="width:36px;height:36px;border-radius:50%;background:var(--tw-forest);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:'Lora',Georgia,serif;color:var(--tw-gold);font-weight:600;font-size:0.95rem;">1</div>
+              <div>
+                <p style="font-family:'DM Sans',sans-serif;font-weight:600;color:var(--tw-forest);margin:0 0 0.2rem;font-size:0.92rem;">Shimul reviews your message</p>
+                <p style="font-size:0.85rem;color:var(--tw-text-mid);margin:0;line-height:1.7;">She personally reads every message and responds warmly within one to two business days.</p>
+              </div>
+            </div>
+            <div style="display:flex;gap:1.25rem;align-items:flex-start;">
+              <div style="width:36px;height:36px;border-radius:50%;background:var(--tw-forest);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:'Lora',Georgia,serif;color:var(--tw-gold);font-weight:600;font-size:0.95rem;">2</div>
+              <div>
+                <p style="font-family:'DM Sans',sans-serif;font-weight:600;color:var(--tw-forest);margin:0 0 0.2rem;font-size:0.92rem;">Free 15-minute consultation</p>
+                <p style="font-size:0.85rem;color:var(--tw-text-mid);margin:0;line-height:1.7;">A gentle, no-pressure conversation to see if working together feels like the right fit. No commitment required.</p>
+              </div>
+            </div>
+            <div style="display:flex;gap:1.25rem;align-items:flex-start;">
+              <div style="width:36px;height:36px;border-radius:50%;background:var(--tw-forest);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:'Lora',Georgia,serif;color:var(--tw-gold);font-weight:600;font-size:0.95rem;">3</div>
+              <div>
+                <p style="font-family:'DM Sans',sans-serif;font-weight:600;color:var(--tw-forest);margin:0 0 0.2rem;font-size:0.92rem;">Your first session</p>
+                <p style="font-size:0.85rem;color:var(--tw-text-mid);margin:0;line-height:1.7;">In-person in Mississauga or Markham, or virtually from wherever you are in Canada. At a time that suits you.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- PULL QUOTE -->
+        <div style="border-left:4px solid var(--tw-gold);padding:1.5rem 2rem;background:var(--tw-forest);border-radius:0 16px 16px 0;">
+          <p style="font-family:'Cormorant Garamond',Georgia,serif;font-size:1.35rem;font-style:italic;color:var(--tw-cream);margin:0 0 0.75rem;line-height:1.6;">"You don't have to have it all figured out to take the first step. Reaching out is enough."</p>
+          <span style="font-family:'DM Sans',sans-serif;font-size:0.72rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--tw-gold);">Shimul Rajput, Registered Psychotherapist</span>
+        </div>
+
       </div>
+
+      <!-- RIGHT: CONTACT INFO -->
       <div class="col-lg-5 tw-fade tw-fade-delay-1">
         <h3 style="margin-bottom:2rem;">Contact Information</h3>
         <div style="display:flex;flex-direction:column;gap:1.25rem;margin-bottom:2rem;">
@@ -38,7 +81,7 @@
               </p>
             </div>
           </div>
-<div style="display:flex;gap:1rem;align-items:center;">
+          <div style="display:flex;gap:1rem;align-items:center;">
             <div style="width:44px;height:44px;border-radius:50%;background:rgba(44,57,48,0.07);border:1px solid rgba(44,57,48,0.12);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><i class="bi bi-telephone" style="color:var(--tw-gold);font-size:1.1rem;"></i></div>
             <div><p style="font-size:0.72rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--tw-gold);margin-bottom:0.2rem;">Phone</p><a href="tel:+16476165744" style="color:var(--tw-text-mid);font-size:0.88rem;">(647) 616-5744</a></div>
           </div>
@@ -51,82 +94,36 @@
             <div><p style="font-size:0.72rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--tw-gold);margin-bottom:0.2rem;">Availability</p><p style="margin-bottom:0;font-size:0.88rem;color:var(--tw-text-mid);">Wednesday 10am to 8pm<br>Thursday 12pm to 9pm<br>Friday 10am to 6pm</p></div>
           </div>
         </div>
+
         <iframe class="tw-map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2886.5!2d-79.638!3d43.5847!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x882b47027ef0f285%3A0x0!2s365+Prince+of+Wales+Dr%2C+Mississauga%2C+ON+L5B+0G6!5e0!3m2!1sen!2sca!4v1" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Twish Mississauga location"></iframe>
+
         <div style="margin-top:1.5rem;">
           <p style="font-size:0.72rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--tw-gold);margin-bottom:0.75rem;">Follow Shimul</p>
-          <div class="tw-social-links" style="">
+          <div class="tw-social-links">
             <a href="https://www.instagram.com/twishcare/" target="_blank" rel="noopener" aria-label="Instagram" style="border-color:rgba(44,57,48,0.2);color:var(--tw-forest);"><i class="bi bi-instagram"></i></a>
             <a href="https://www.facebook.com/profile.php?id=61579022499287" target="_blank" rel="noopener" aria-label="Facebook" style="border-color:rgba(44,57,48,0.2);color:var(--tw-forest);"><i class="bi bi-facebook"></i></a>
             <a href="https://www.linkedin.com/company/twish-therapy-with-shimul/" target="_blank" rel="noopener" aria-label="LinkedIn" style="border-color:rgba(44,57,48,0.2);color:var(--tw-forest);"><i class="bi bi-linkedin"></i></a>
             <a href="https://www.tiktok.com/@twishtherapywithshimul" target="_blank" rel="noopener" aria-label="TikTok" style="border-color:rgba(44,57,48,0.2);color:var(--tw-forest);"><i class="bi bi-tiktok"></i></a>
           </div>
         </div>
+
         <div style="margin-top:2rem;padding:1.5rem;background:var(--tw-ivory);border:1px solid rgba(44,57,48,0.08);border-radius:16px;">
           <p style="font-size:0.85rem;color:var(--tw-forest);font-weight:500;margin-bottom:0.5rem;">Ready to book directly?</p>
           <p style="font-size:0.85rem;margin-bottom:1rem;color:var(--tw-text-mid);">Start with a free 15-minute consultation, no commitment required.</p>
           <a href="https://twishcare.myndweb.app/shimul/booking" target="_blank" rel="noopener" class="btn-tw-forest" style="font-size:0.78rem;">Book Free Consult</a>
         </div>
       </div>
+
     </div>
   </div>
 </section>
 
-<!-- FAQ -->
+<!-- FAQ — single, clean section -->
 <section class="tw-section-ivory">
   <div class="container">
     <div class="text-center mb-5 tw-fade">
       <span class="tw-section-label">Common Questions</span>
       <h2>Before you reach out, <em style="color:var(--tw-gold);">here are some answers</em></h2>
-      <hr class="tw-divider">
-    </div>
-    <div class="row g-4 tw-fade">
-      <div class="col-md-6">
-        <div class="tw-approach-card tw-card-static h-100">
-          <h4>How do I know if therapy is right for me?</h4>
-          <p>If you are asking that question, it probably is. Therapy is not only for people in crisis. It is for anyone who wants to understand themselves better, work through something that feels stuck, or simply have a dedicated space to process life. You do not need to be at a breaking point to benefit from therapy.</p>
-        </div>
-      </div>
-      <div class="col-md-6">
-        <div class="tw-approach-card tw-card-static h-100">
-          <h4>Does insurance cover psychotherapy in Ontario?</h4>
-          <p>Many extended health benefit plans and Employee Assistance Programs (EAPs) cover sessions with a Registered Psychotherapist. The coverage amount varies by plan. Check with your insurance provider before your first session to understand what you are entitled to. Shimul can provide receipts formatted for insurance submission.</p>
-        </div>
-      </div>
-      <div class="col-md-6">
-        <div class="tw-approach-card tw-card-static h-100">
-          <h4>What is the difference between a psychotherapist and a psychologist?</h4>
-          <p>Both are regulated mental health professionals in Ontario. Psychologists typically have doctoral-level training and can provide psychological assessments and diagnoses. Registered Psychotherapists are regulated by CRPO and specialize in therapeutic treatment. For most people seeking talk therapy and emotional support, a Registered Psychotherapist is an excellent, and often more accessible, choice.</p>
-        </div>
-      </div>
-      <div class="col-md-6">
-        <div class="tw-approach-card tw-card-static h-100">
-          <h4>How long does therapy typically take?</h4>
-          <p>There is no single answer. Some people find that six to ten sessions gives them what they need. Others benefit from longer-term ongoing support. The timeline depends entirely on your goals, the nature of what you are working through, and the pace that feels right for you. Shimul will revisit this with you regularly throughout your work together.</p>
-        </div>
-      </div>
-      <div class="col-md-6">
-        <div class="tw-approach-card tw-card-static h-100">
-          <h4>Is everything I say completely confidential?</h4>
-          <p>Yes, with a small number of legally required exceptions. Shimul is bound by CRPO ethical guidelines and Ontario privacy law to maintain strict confidentiality. The only exceptions are situations where there is imminent risk of harm to yourself or someone else, or where disclosure is required by court order. These exceptions will be explained clearly in your intake documents.</p>
-        </div>
-      </div>
-      <div class="col-md-6">
-        <div class="tw-approach-card tw-card-static h-100">
-          <h4>What if I need to cancel or reschedule?</h4>
-          <p>Life happens. Shimul simply asks for a minimum of 24 hours notice for cancellations or rescheduling. Sessions cancelled with less than 24 hours notice may be subject to the full session fee. This policy exists to respect the time of both Shimul and other clients who may need that appointment slot.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-<!-- FAQ -->
-<section class="tw-section-ivory">
-  <div class="container">
-    <div class="text-center mb-5 tw-fade">
-      <span class="tw-section-label">Before You Reach Out</span>
-      <h2>Common questions <em style="color:var(--tw-gold);">answered</em></h2>
       <hr class="tw-divider">
       <p style="max-width:520px;margin:1.25rem auto 0;">Here are the questions Shimul hears most often from people considering reaching out for the first time.</p>
     </div>
@@ -134,37 +131,37 @@
       <div class="col-md-6">
         <div class="tw-approach-card tw-card-static h-100">
           <h4>How do I know if therapy is right for me?</h4>
-          <p>If you are asking this question, it is probably already a sign. Therapy is not only for people in crisis. It is for anyone who feels stuck, overwhelmed, disconnected, or who simply wants to understand themselves better. You do not need to be at a breaking point to benefit from a compassionate, professional conversation about your life.</p>
+          <p>If you are asking that question, it probably is. Therapy is not only for people in crisis. It is for anyone who wants to understand themselves better, work through something that feels stuck, or simply have a dedicated space to process life. You do not need to be at a breaking point to benefit.</p>
         </div>
       </div>
       <div class="col-md-6">
         <div class="tw-approach-card tw-card-static h-100">
-          <h4>Does insurance cover psychotherapy?</h4>
-          <p>Many extended health benefit plans and Employee Assistance Programs cover sessions with a Registered Psychotherapist. OHIP does not cover private psychotherapy. We recommend checking with your insurance provider directly before your first session. Shimul provides properly formatted receipts for insurance submission after each session.</p>
+          <h4>Does insurance cover psychotherapy in Ontario?</h4>
+          <p>Many extended health benefit plans and Employee Assistance Programs cover sessions with a Registered Psychotherapist. OHIP does not cover private psychotherapy. Check with your provider before your first session. Shimul provides properly formatted receipts for insurance submission after each session.</p>
         </div>
       </div>
       <div class="col-md-6">
         <div class="tw-approach-card tw-card-static h-100">
-          <h4>What is the cancellation policy?</h4>
-          <p>A minimum of 24 hours notice is required for cancellations or rescheduling. Sessions cancelled with less than 24 hours notice may be subject to the full session fee. Life happens and exceptions are handled with understanding, but this policy exists to respect the time of both Shimul and other clients who may need the appointment slot.</p>
+          <h4>What is the difference between a psychotherapist and a psychologist?</h4>
+          <p>Both are regulated mental health professionals in Ontario. Psychologists typically have doctoral-level training and can provide assessments and diagnoses. Registered Psychotherapists specialize in therapeutic treatment and talk therapy. For most people seeking emotional support, a Registered Psychotherapist is an excellent and often more accessible choice.</p>
         </div>
       </div>
       <div class="col-md-6">
         <div class="tw-approach-card tw-card-static h-100">
-          <h4>Is everything I say confidential?</h4>
-          <p>Yes. Shimul is bound by CRPO ethical guidelines and Ontario privacy law to maintain strict confidentiality. The only exceptions involve imminent risk of harm to yourself or others, or a court order. All exceptions will be explained clearly in your intake documents. Your privacy and sense of safety are foundational to the work.</p>
+          <h4>How long does therapy typically take?</h4>
+          <p>There is no single answer. Some people find that six to ten sessions gives them what they need. Others benefit from longer-term support. The timeline depends entirely on your goals and the pace that feels right for you. Shimul will revisit this with you regularly throughout your work together.</p>
         </div>
       </div>
       <div class="col-md-6">
         <div class="tw-approach-card tw-card-static h-100">
-          <h4>How long does it take to get a response?</h4>
-          <p>Shimul personally reads every message and typically responds within one to two business days. If your matter is urgent or you are in distress, please contact a crisis line or your local emergency services rather than waiting for a reply. For general inquiries and bookings, you can expect a thoughtful, personal response promptly.</p>
+          <h4>Is everything I say completely confidential?</h4>
+          <p>Yes. Shimul is bound by CRPO ethical guidelines and Ontario privacy law. The only exceptions involve imminent risk of harm to yourself or others, or a court order. These exceptions are explained clearly in your intake documents before your first session. Your privacy is foundational to this work.</p>
         </div>
       </div>
       <div class="col-md-6">
         <div class="tw-approach-card tw-card-static h-100">
-          <h4>What happens after I send a message?</h4>
-          <p>Shimul will review your message and respond with a brief, warm reply. If you are interested in booking, she will either confirm a free 15-minute consultation time directly or direct you to her online booking system. From there, you are entirely in control of the pace. No pressure, no obligation, just an open door.</p>
+          <h4>What if I need to cancel or reschedule?</h4>
+          <p>Shimul simply asks for a minimum of 24 hours notice for cancellations or rescheduling. Sessions cancelled with less than 24 hours notice may be subject to the full session fee. This policy exists to respect the time of both Shimul and other clients who may need that appointment slot.</p>
         </div>
       </div>
     </div>
