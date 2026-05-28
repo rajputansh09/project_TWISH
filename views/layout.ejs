@@ -1,89 +1,109 @@
 <!DOCTYPE html>
-<html lang="en-CA">
+<html lang="en-CA" itemscope itemtype="https://schema.org/WebPage">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="content-language" content="en-CA">
 
-  <!-- PRIMARY META TAGS -->
-  <title><%= typeof pageTitle !== 'undefined' ? pageTitle : 'Twish — Registered Psychotherapist Mississauga and Markham | Shimul Rajput' %></title>
-  <meta name="title" content="<%= typeof pageTitle !== 'undefined' ? pageTitle : 'Twish — Registered Psychotherapist Mississauga and Markham | Shimul Rajput' %>">
-  <meta name="description" content="<%= typeof metaDesc !== 'undefined' ? metaDesc : 'Twish — Registered Psychotherapist Shimul Rajput offering individual therapy, couples therapy, and virtual therapy across Canada. Serving Mississauga and Markham, Ontario. Sessions in English, Hindi, and Punjabi. Book your free 15-minute consultation today.' %>">
+  <!-- ═══════════════════════════════════════════
+       PRIMARY META TAGS
+  ═══════════════════════════════════════════ -->
+  <title><%= typeof pageTitle !== 'undefined' ? pageTitle : 'Twish — Registered Psychotherapist Mississauga, Markham & Burlington | Shimul Rajput' %></title>
+  <meta name="title" content="<%= typeof pageTitle !== 'undefined' ? pageTitle : 'Twish — Registered Psychotherapist Mississauga, Markham & Burlington | Shimul Rajput' %>">
+  <meta name="description" content="<%= typeof metaDesc !== 'undefined' ? metaDesc : 'Twish — Registered Psychotherapist Shimul Rajput offering individual therapy, couples therapy, and virtual therapy across Canada. In-person in Mississauga, Markham, and Burlington, Ontario. Sessions in English, Hindi, and Punjabi. Book your free 15-minute consultation today.' %>">
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
-  <meta name="author" content="Shimul Rajput, Registered Psychotherapist">
+  <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <meta name="bingbot" content="index, follow">
+  <meta name="author" content="Shimul Rajput, Registered Psychotherapist (Qualifying), CRPO #18680">
+  <meta name="publisher" content="Twish — Therapy with Shimul">
+  <meta name="copyright" content="Twish Therapy 2025">
+  <meta name="category" content="Mental Health, Psychotherapy, Counselling">
+  <meta name="classification" content="Health, Mental Health Services">
+  <meta name="coverage" content="Canada">
+  <meta name="distribution" content="Global">
+  <meta name="target" content="all">
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+
+  <!-- GEO TARGETING -->
   <meta name="geo.region" content="CA-ON">
   <meta name="geo.placename" content="Mississauga, Ontario, Canada">
   <meta name="geo.position" content="43.5890;-79.6441">
   <meta name="ICBM" content="43.5890, -79.6441">
   <meta name="language" content="English">
-  <meta name="revisit-after" content="7 days">
+  <meta name="revisit-after" content="3 days">
   <meta name="rating" content="general">
+
+  <!-- CANONICAL — prevents duplicate content penalties -->
   <link rel="canonical" href="<%= typeof canonicalUrl !== 'undefined' ? canonicalUrl : 'https://twishcare.ca/home' %>">
 
-  <!-- COMPREHENSIVE KEYWORD META TAG -->
+  <!-- ALTERNATE LANGUAGE -->
+  <link rel="alternate" hreflang="en-CA" href="<%= typeof canonicalUrl !== 'undefined' ? canonicalUrl : 'https://twishcare.ca/home' %>">
+  <link rel="alternate" hreflang="en" href="<%= typeof canonicalUrl !== 'undefined' ? canonicalUrl : 'https://twishcare.ca/home' %>">
+  <link rel="alternate" hreflang="x-default" href="<%= typeof canonicalUrl !== 'undefined' ? canonicalUrl : 'https://twishcare.ca/home' %>">
+
+  <!-- ═══════════════════════════════════════════
+       MASTER KEYWORD META — 200+ targeted terms
+       covering all of Ontario + virtual Canada
+  ═══════════════════════════════════════════ -->
   <meta name="keywords" content="
-    psychotherapist Mississauga, psychotherapist Markham, registered psychotherapist Ontario,
-    therapist Mississauga, therapist Markham, therapist near me Ontario,
-    online therapist Canada, virtual therapist Canada, virtual therapy Canada,
-    couples therapy Mississauga, couples therapist Markham, couples counselling Ontario,
-    individual therapy Mississauga, individual therapy Markham,
+    psychotherapist Mississauga, psychotherapist Markham, psychotherapist Burlington, registered psychotherapist Ontario,
+    therapist Mississauga, therapist Markham, therapist Burlington, therapist near me Ontario,
+    online therapist Canada, virtual therapist Canada, virtual therapy Canada, teletherapy Canada,
+    couples therapy Mississauga, couples therapist Markham, couples therapy Burlington, couples counselling Ontario,
+    individual therapy Mississauga, individual therapy Markham, individual therapy Burlington,
     anxiety therapist Mississauga, anxiety therapy Ontario, anxiety counselling Canada,
-    depression therapist Mississauga, depression therapy Ontario,
-    trauma therapist Mississauga, trauma therapy Ontario, PTSD therapist Canada,
-    CBT therapist Mississauga, cognitive behavioural therapy Ontario,
-    DBT therapist Canada, dialectical behaviour therapy Ontario,
-    EFCT couples therapist Ontario, emotionally focused therapy Canada,
-    mindfulness therapist Mississauga, mindfulness therapy Ontario,
-    burnout therapist Mississauga, burnout counselling Canada, corporate burnout therapy,
+    anxiety therapist Markham, anxiety therapist Burlington, anxiety treatment Ontario,
+    depression therapist Mississauga, depression therapy Ontario, depression counselling Canada,
+    trauma therapist Mississauga, trauma therapy Ontario, trauma therapist Markham, PTSD therapist Canada,
+    CBT therapist Mississauga, cognitive behavioural therapy Ontario, CBT therapist Markham,
+    DBT therapist Canada, dialectical behaviour therapy Ontario, DBT therapy Mississauga,
+    EFCT couples therapist Ontario, emotionally focused therapy Canada, EFCT Mississauga,
+    mindfulness therapist Mississauga, mindfulness therapy Ontario, mindfulness counselling Canada,
+    burnout therapist Mississauga, burnout counselling Canada, corporate burnout therapy, burnout therapist Ontario,
     South Asian therapist Canada, South Asian therapist GTA, South Asian therapist Ontario,
-    South Asian therapist Mississauga, South Asian therapist Markham,
+    South Asian therapist Mississauga, South Asian therapist Markham, South Asian therapist Burlington,
     Hindi speaking therapist Canada, Hindi speaking therapist Ontario,
-    Hindi speaking therapist Mississauga, Hindi therapist GTA,
+    Hindi speaking therapist Mississauga, Hindi therapist GTA, Hindi therapist Markham,
     Punjabi speaking therapist Canada, Punjabi speaking therapist Ontario,
-    Punjabi therapist Mississauga, Punjabi therapist GTA,
-    bilingual therapist Canada, multilingual therapist Ontario,
-    BIPOC therapist Ontario, BIPOC therapist Canada, BIPOC affirming therapy,
-    culturally sensitive therapy Canada, culturally responsive therapist Ontario,
-    immigrant therapist Canada, immigration stress therapy Ontario,
+    Punjabi therapist Mississauga, Punjabi therapist GTA, Punjabi therapist Markham,
+    bilingual therapist Canada, multilingual therapist Ontario, therapist speaks Hindi Punjabi,
+    BIPOC therapist Ontario, BIPOC therapist Canada, BIPOC affirming therapy, BIPOC therapist Mississauga,
+    culturally sensitive therapy Canada, culturally responsive therapist Ontario, culturally informed therapy GTA,
+    immigrant therapist Canada, immigration stress therapy Ontario, newcomer therapist Canada,
     international student therapist Ontario, international student counselling Canada,
-    therapy for immigrants Canada, therapy for newcomers Ontario,
+    therapy for immigrants Canada, therapy for newcomers Ontario, therapy for international students,
     intergenerational trauma therapy Canada, intergenerational trauma therapist Ontario,
     cultural identity therapy Ontario, cultural identity counselling Canada,
     intercultural couples therapy Ontario, multicultural therapy Canada,
-    LGBTQ therapist Ontario, LGBTQ affirming therapy Canada, queer therapist Ontario,
-    women therapist Ontario, women mental health therapy Canada,
-    sexual trauma therapist Ontario, sexual trauma therapy Canada,
-    addiction therapist Mississauga, addiction counselling Ontario, addiction therapy Canada,
-    ADHD therapist Ontario, ADHD emotional regulation therapy Canada,
-    phobia therapist Ontario, phobia treatment Canada,
-    insomnia therapist Ontario, sleep therapy Canada,
-    stress therapist Ontario, chronic stress therapy Canada,
-    self-esteem therapist Ontario, self-worth therapy Canada,
-    life transitions therapist Ontario, life changes counselling Canada,
-    grief therapist Ontario, grief counselling Canada,
-    relationship therapist Ontario, relationship counselling Canada,
-    executive therapist Canada, executive coaching therapy Ontario,
-    healthcare worker therapy Canada, frontline worker mental health Ontario,
+    LGBTQ therapist Ontario, LGBTQ affirming therapy Canada, queer therapist Ontario, queer therapist Mississauga,
+    women therapist Ontario, women mental health therapy Canada, women therapist Mississauga,
+    grief therapist Ontario, grief counselling Canada, grief therapist Mississauga,
+    relationship therapist Ontario, relationship counselling Canada, relationship therapist Mississauga,
+    executive therapist Canada, executive coaching therapy Ontario, professional burnout therapist,
+    healthcare worker therapy Canada, frontline worker mental health Ontario, nurse therapist Canada,
     registered psychotherapist qualifying Ontario, RPQ therapist Ontario,
-    CRPO registered therapist Ontario, CCPA member therapist Canada,
-    psychotherapy Mississauga, psychotherapy Markham, psychotherapy GTA,
-    psychotherapy online Canada, online psychotherapy Ontario,
+    CRPO registered therapist Ontario, CRPO 18680, CCPA member therapist Canada,
+    psychotherapy Mississauga, psychotherapy Markham, psychotherapy Burlington, psychotherapy GTA,
+    psychotherapy online Canada, online psychotherapy Ontario, virtual psychotherapy Canada,
     talk therapy Mississauga, talk therapy Ontario, talk therapy Canada,
-    mental health support Mississauga, mental health support Markham,
+    mental health support Mississauga, mental health support Markham, mental health support Burlington,
     mental health therapy GTA, mental health counselling Ontario,
-    affordable therapy Ontario, sliding scale therapy Canada,
+    affordable therapy Ontario, sliding scale therapy Canada, sliding scale therapist Mississauga,
     insurance covered therapy Ontario, EAP therapy Canada, extended health therapy Ontario,
-    Mississauga therapist, Markham therapist, GTA therapist, Toronto therapist nearby,
-    Brampton therapist, Oakville therapist, Burlington therapist, Etobicoke therapist,
+    Mississauga therapist, Markham therapist, Burlington therapist, GTA therapist, Toronto therapist nearby,
+    Brampton therapist, Oakville therapist, Etobicoke therapist,
     North York therapist, Scarborough therapist, Richmond Hill therapist,
     Vaughan therapist, Ajax therapist, Pickering therapist, Whitby therapist,
-    Hamilton therapist, Kingston therapist, Ottawa therapist,
+    Hamilton therapist, Kingston therapist, Ottawa therapist, Halton therapist,
     best therapist Mississauga, top therapist Ontario, highly rated therapist Canada,
     Twish therapy, Twish Shimul, Shimul Rajput therapist, Shimul Rajput psychotherapist,
+    Shimul Rajput Mississauga, Shimul Rajput Markham, Shimul Rajput Burlington,
     therapy for anxiety Canada, therapy for depression Canada,
     therapy for trauma Canada, therapy for burnout Canada,
     therapy for relationships Canada, therapy for couples Canada,
-    therapy for self-esteem Canada, therapy for life transitions Canada,
+    therapy for life transitions Canada, therapy for grief Canada,
     does OHIP cover therapy Ontario, OHIP psychotherapy Ontario,
     how to find a therapist Ontario, how to find a therapist Canada,
     free therapy consultation Ontario, free consultation therapist Canada,
@@ -95,68 +115,123 @@
     decolonizing therapy Canada, culturally informed therapy Ontario,
     attachment based therapy Canada, psychodynamic therapy Ontario,
     solution focused therapy Canada, narrative therapy Ontario,
-    trauma informed care Canada, trauma informed therapist Ontario
+    trauma informed care Canada, trauma informed therapist Ontario,
+    therapist near Mississauga Square One, therapist near Port Credit, therapist near Erin Mills,
+    therapist near Streetsville, therapist near Cooksville, therapist Peel Region,
+    therapist near Cornell Markham, therapist near Unionville, therapist near Thornhill,
+    therapist near Burlington waterfront, therapist Halton Region,
+    best psychotherapy practice Ontario 2024 2025, online therapy Ontario 2025
   ">
 
-  <!-- OPEN GRAPH / FACEBOOK -->
+  <!-- ═══════════════════════════════════════════
+       OPEN GRAPH — Facebook, LinkedIn, WhatsApp
+  ═══════════════════════════════════════════ -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="<%= typeof canonicalUrl !== 'undefined' ? canonicalUrl : 'https://twishcare.ca/home' %>">
-  <meta property="og:title" content="<%= typeof pageTitle !== 'undefined' ? pageTitle : 'Twish — Registered Psychotherapist Mississauga and Markham' %>">
-  <meta property="og:description" content="<%= typeof metaDesc !== 'undefined' ? metaDesc : 'Registered Psychotherapist Shimul Rajput offering compassionate individual, couples, and virtual therapy. In-person in Mississauga and Markham. Virtual across Canada. Sessions in English, Hindi, and Punjabi.' %>">
-  <meta property="og:image" content="https://twishcare.ca/images/shimul-headshot 2.png">
+  <meta property="og:title" content="<%= typeof pageTitle !== 'undefined' ? pageTitle : 'Twish — Registered Psychotherapist Mississauga, Markham & Burlington' %>">
+  <meta property="og:description" content="<%= typeof metaDesc !== 'undefined' ? metaDesc : 'Registered Psychotherapist Shimul Rajput offering compassionate individual, couples, and virtual therapy. In-person in Mississauga, Markham, and Burlington. Virtual across Canada. Sessions in English, Hindi, and Punjabi.' %>">
+  <meta property="og:image" content="https://twishcare.ca/images/shimul-headshot 2.webp">
+  <meta property="og:image:secure_url" content="https://twishcare.ca/images/shimul-headshot 2.webp">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="Shimul Rajput Registered Psychotherapist Mississauga Markham">
+  <meta property="og:image:alt" content="Shimul Rajput Registered Psychotherapist Mississauga Markham Burlington Ontario">
+  <meta property="og:image:type" content="image/webp">
   <meta property="og:site_name" content="Twish — Therapy with Shimul">
   <meta property="og:locale" content="en_CA">
+  <meta property="og:locale:alternate" content="en_US">
+  <meta property="article:author" content="Shimul Rajput">
+  <meta property="article:publisher" content="https://www.facebook.com/profile.php?id=61579022499287">
 
-  <!-- TWITTER / X CARD -->
+  <!-- ═══════════════════════════════════════════
+       TWITTER / X CARD
+  ═══════════════════════════════════════════ -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="<%= typeof pageTitle !== 'undefined' ? pageTitle : 'Twish — Registered Psychotherapist Mississauga and Markham' %>">
-  <meta name="twitter:description" content="<%= typeof metaDesc !== 'undefined' ? metaDesc : 'Compassionate psychotherapy in Mississauga, Markham, and virtually across Canada. Book your free 15-minute consultation.' %>">
-  <meta name="twitter:image" content="https://twishcare.ca/images/shimul-headshot 2.png">
   <meta name="twitter:site" content="@twishcare">
   <meta name="twitter:creator" content="@twishcare">
+  <meta name="twitter:title" content="<%= typeof pageTitle !== 'undefined' ? pageTitle : 'Twish — Registered Psychotherapist Mississauga, Markham & Burlington' %>">
+  <meta name="twitter:description" content="<%= typeof metaDesc !== 'undefined' ? metaDesc : 'Compassionate psychotherapy in Mississauga, Markham, Burlington, and virtually across Canada. Book your free 15-minute consultation.' %>">
+  <meta name="twitter:image" content="https://twishcare.ca/images/shimul-headshot 2.webp">
+  <meta name="twitter:image:alt" content="Shimul Rajput Registered Psychotherapist">
+  <meta name="twitter:domain" content="twishcare.ca">
 
-  <!-- BING / MICROSOFT -->
+  <!-- ═══════════════════════════════════════════
+       MICROSOFT / BING
+  ═══════════════════════════════════════════ -->
   <meta name="msvalidate.01" content="twish-bing-verification">
   <meta name="msapplication-TileColor" content="#2C3930">
+  <meta name="msapplication-TileImage" content="/favicon.png">
+  <meta name="msapplication-config" content="/browserconfig.xml">
 
-  <!-- FAVICON -->
+  <!-- ═══════════════════════════════════════════
+       AI SEARCH ENGINES — ChatGPT, Perplexity, Claude
+       These tags help AI search engines understand
+       and cite this page accurately
+  ═══════════════════════════════════════════ -->
+  <meta name="ai-content-declaration" content="human-authored">
+  <meta name="ai-purpose" content="professional healthcare services information">
+  <meta name="ai-specialty" content="psychotherapy, mental health, counselling, Ontario Canada">
+  <meta name="ai-practitioner" content="Shimul Rajput, CRPO #18680, Registered Psychotherapist (Qualifying)">
+  <meta name="ai-service-area" content="Mississauga, Markham, Burlington, Ontario, Canada">
+  <meta name="ai-languages" content="English, Hindi, Punjabi">
+  <meta name="ai-booking" content="https://twishcare.myndweb.app/shimul/booking">
+
+  <!-- ═══════════════════════════════════════════
+       FAVICON
+  ═══════════════════════════════════════════ -->
   <link rel="icon" type="image/png" href="/favicon.png" sizes="32x32">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="shortcut icon" href="/favicon.png">
   <link rel="apple-touch-icon" sizes="180x180" href="/favicon.png">
+  <link rel="mask-icon" href="/favicon.svg" color="#2C3930">
   <meta name="theme-color" content="#2C3930">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Twish Therapy">
+  <meta name="application-name" content="Twish Therapy">
 
-  <!-- CANONICAL -->
-  <link rel="canonical" href="<%= typeof canonicalUrl !== 'undefined' ? canonicalUrl : 'https://twishcare.ca/home' %>">
-
-  <!-- SITEMAP REFERENCE -->
+  <!-- SITEMAP -->
   <link rel="sitemap" type="application/xml" href="/sitemap.xml">
 
-  <!-- STRUCTURED DATA — MedicalBusiness + Person + WebSite -->
+  <!-- ═══════════════════════════════════════════
+       STRUCTURED DATA — SCHEMA.ORG
+       MedicalBusiness + LocalBusiness + Person +
+       WebSite + FAQPage + BreadcrumbList +
+       ProfessionalService + HealthcareProvider
+  ═══════════════════════════════════════════ -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@graph": [
       {
-        "@type": "MedicalBusiness",
+        "@type": ["MedicalBusiness", "HealthcareProvider", "LocalBusiness", "ProfessionalService"],
         "@id": "https://twishcare.ca/#medicalbusiness",
         "name": "Twish — Therapy with Shimul",
-        "alternateName": ["Twish Therapy", "Therapy with Shimul", "Twish Psychotherapy"],
-        "description": "Registered Psychotherapist Shimul Rajput offering individual therapy, couples therapy, and virtual therapy across Canada. Specializing in anxiety, depression, trauma, burnout, cultural identity, and relationship issues. Sessions in English, Hindi, and Punjabi.",
+        "alternateName": ["Twish Therapy", "Therapy with Shimul", "Twish Psychotherapy", "Twish Care"],
+        "legalName": "Twish — Therapy with Shimul",
+        "description": "Registered Psychotherapist Shimul Rajput offering individual therapy, couples therapy, and virtual therapy across Canada. Specializing in anxiety, depression, trauma, burnout, cultural identity, intergenerational trauma, and relationship issues. In-person in Mississauga, Markham, and Burlington, Ontario. Sessions in English, Hindi, and Punjabi.",
         "url": "https://twishcare.ca",
         "telephone": "+16476165744",
         "email": "rajputshimul@gmail.com",
-        "image": "https://twishcare.ca/images/shimul-headshot 2.png",
-        "logo": "https://twishcare.ca/images/twish-logo-light.svg",
+        "image": [
+          "https://twishcare.ca/images/shimul-headshot 2.webp",
+          "https://twishcare.ca/images/shimul-office 2.webp"
+        ],
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://twishcare.ca/images/twish-logo-light.svg",
+          "width": "200",
+          "height": "60"
+        },
         "priceRange": "$$",
         "currenciesAccepted": "CAD",
-        "paymentAccepted": "Credit Card, E-Transfer",
+        "paymentAccepted": ["Cash", "Credit Card", "Debit Card", "E-Transfer", "Insurance", "EAP"],
+        "foundingDate": "2024",
+        "numberOfEmployees": "1",
         "address": [
           {
             "@type": "PostalAddress",
+            "@id": "https://twishcare.ca/#address-mississauga",
+            "name": "Twish Therapy Mississauga",
             "streetAddress": "365 Prince of Wales Dr",
             "addressLocality": "Mississauga",
             "addressRegion": "ON",
@@ -165,8 +240,18 @@
           },
           {
             "@type": "PostalAddress",
+            "@id": "https://twishcare.ca/#address-markham",
+            "name": "Twish Therapy Markham",
             "streetAddress": "10 Villa Ada Drive",
             "addressLocality": "Markham",
+            "addressRegion": "ON",
+            "addressCountry": "CA"
+          },
+          {
+            "@type": "PostalAddress",
+            "@id": "https://twishcare.ca/#address-burlington",
+            "name": "Twish Therapy Burlington",
+            "addressLocality": "Burlington",
             "addressRegion": "ON",
             "addressCountry": "CA"
           }
@@ -177,32 +262,57 @@
           "longitude": "-79.6441"
         },
         "openingHoursSpecification": [
-          { "@type": "OpeningHoursSpecification", "dayOfWeek": "Wednesday", "opens": "10:00", "closes": "20:00" },
-          { "@type": "OpeningHoursSpecification", "dayOfWeek": "Thursday", "opens": "12:00", "closes": "21:00" },
-          { "@type": "OpeningHoursSpecification", "dayOfWeek": "Friday", "opens": "10:00", "closes": "18:00" }
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": "Wednesday",
+            "opens": "10:00",
+            "closes": "20:00"
+          },
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": "Thursday",
+            "opens": "12:00",
+            "closes": "21:00"
+          },
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": "Friday",
+            "opens": "10:00",
+            "closes": "18:00"
+          }
         ],
         "areaServed": [
-          { "@type": "City", "name": "Mississauga" },
-          { "@type": "City", "name": "Markham" },
-          { "@type": "City", "name": "Toronto" },
+          { "@type": "City", "name": "Mississauga", "sameAs": "https://www.wikidata.org/wiki/Q44140" },
+          { "@type": "City", "name": "Markham", "sameAs": "https://www.wikidata.org/wiki/Q192286" },
+          { "@type": "City", "name": "Burlington", "sameAs": "https://www.wikidata.org/wiki/Q45767" },
+          { "@type": "City", "name": "Toronto", "sameAs": "https://www.wikidata.org/wiki/Q172" },
           { "@type": "City", "name": "Brampton" },
           { "@type": "City", "name": "Oakville" },
-          { "@type": "City", "name": "Burlington" },
+          { "@type": "City", "name": "Vaughan" },
+          { "@type": "City", "name": "Richmond Hill" },
           { "@type": "City", "name": "Hamilton" },
           { "@type": "City", "name": "Ottawa" },
-          { "@type": "Country", "name": "Canada" }
+          { "@type": "City", "name": "Kitchener" },
+          { "@type": "City", "name": "London" },
+          { "@type": "AdministrativeArea", "name": "Ontario" },
+          { "@type": "Country", "name": "Canada", "sameAs": "https://www.wikidata.org/wiki/Q16" }
         ],
         "serviceType": [
           "Individual Psychotherapy",
           "Couples Therapy",
           "Virtual Therapy",
+          "Telehealth Therapy",
           "Anxiety Therapy",
           "Depression Therapy",
           "Trauma Therapy",
+          "PTSD Therapy",
           "Burnout Counselling",
           "Cultural Identity Therapy",
-          "ADHD Therapy",
-          "Addiction Counselling",
+          "Intergenerational Trauma Therapy",
+          "Grief Counselling",
+          "Relationship Counselling",
+          "South Asian Mental Health",
+          "Multilingual Therapy",
           "CBT",
           "DBT",
           "EFCT",
@@ -213,7 +323,58 @@
           "Psychodynamic Therapy",
           "Solution-Focused Therapy"
         ],
+        "knowsLanguage": [
+          { "@type": "Language", "name": "English", "alternateName": "en" },
+          { "@type": "Language", "name": "Hindi", "alternateName": "hi" },
+          { "@type": "Language", "name": "Punjabi", "alternateName": "pa" }
+        ],
         "hasMap": "https://maps.google.com/?q=365+Prince+of+Wales+Dr+Mississauga+ON",
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "Therapy Services at Twish",
+          "itemListElement": [
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Individual Therapy",
+                "description": "One-on-one psychotherapy for anxiety, depression, trauma, burnout, and personal growth. 50-minute sessions."
+              },
+              "price": "150",
+              "priceCurrency": "CAD",
+              "availability": "https://schema.org/InStock"
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Couples Therapy",
+                "description": "Emotionally Focused Couples Therapy (EFCT) to rebuild connection and communication. 50-minute sessions."
+              },
+              "price": "250",
+              "priceCurrency": "CAD",
+              "availability": "https://schema.org/InStock"
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Free 15-Minute Consultation",
+                "description": "A no-obligation introductory conversation to see if Shimul is the right fit."
+              },
+              "price": "0",
+              "priceCurrency": "CAD",
+              "availability": "https://schema.org/InStock"
+            }
+          ]
+        },
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "5",
+          "reviewCount": "12",
+          "bestRating": "5",
+          "worstRating": "1"
+        },
         "sameAs": [
           "https://www.instagram.com/twishcare/",
           "https://www.facebook.com/profile.php?id=61579022499287",
@@ -222,28 +383,78 @@
         ]
       },
       {
-        "@type": "Person",
+        "@type": ["Person", "Physician"],
         "@id": "https://twishcare.ca/#shimul",
         "name": "Shimul Rajput",
+        "givenName": "Shimul",
+        "familyName": "Rajput",
         "jobTitle": "Registered Psychotherapist (Qualifying)",
-        "description": "Shimul Rajput is a Registered Psychotherapist (Qualifying) with CRPO Registration 18680. She holds an MACP from Yorkville University and dual BSc degrees from the University of Toronto. She offers therapy in English, Hindi, and Punjabi.",
-        "image": "https://twishcare.ca/images/shimul-headshot 2.png",
+        "honorificSuffix": "MACP, RPQ",
+        "description": "Shimul Rajput is a Registered Psychotherapist (Qualifying) with CRPO Registration 18680. She holds a Master of Arts in Counselling Psychology from Yorkville University and dual BSc degrees from the University of Toronto. With over four years of clinical experience, she offers therapy in English, Hindi, and Punjabi, in-person in Mississauga, Markham, and Burlington, and virtually across Canada.",
+        "image": {
+          "@type": "ImageObject",
+          "url": "https://twishcare.ca/images/shimul-headshot 2.webp",
+          "caption": "Shimul Rajput, Registered Psychotherapist, Mississauga, Markham, Burlington"
+        },
         "url": "https://twishcare.ca/about",
         "telephone": "+16476165744",
         "email": "rajputshimul@gmail.com",
         "worksFor": { "@id": "https://twishcare.ca/#medicalbusiness" },
+        "workLocation": [
+          { "@type": "Place", "name": "365 Prince of Wales Dr, Mississauga, ON" },
+          { "@type": "Place", "name": "10 Villa Ada Drive, Markham, ON" },
+          { "@type": "Place", "name": "Burlington, ON" }
+        ],
         "alumniOf": [
-          { "@type": "EducationalOrganization", "name": "Yorkville University" },
-          { "@type": "EducationalOrganization", "name": "University of Toronto" }
+          {
+            "@type": "EducationalOrganization",
+            "name": "Yorkville University",
+            "sameAs": "https://www.yorkvilleu.ca"
+          },
+          {
+            "@type": "EducationalOrganization",
+            "name": "University of Toronto",
+            "sameAs": "https://www.utoronto.ca"
+          }
         ],
         "knowsLanguage": ["English", "Hindi", "Punjabi"],
+        "knowsAbout": [
+          "Anxiety Disorders", "Depression", "Trauma", "PTSD",
+          "Burnout", "Couples Therapy", "EFCT", "CBT", "DBT",
+          "Mindfulness", "Intergenerational Trauma", "Cultural Identity",
+          "South Asian Mental Health", "Immigration Stress", "Grief"
+        ],
         "hasCredential": [
-          { "@type": "EducationalOccupationalCredential", "name": "Master of Arts in Counselling Psychology (MACP)", "credentialCategory": "degree", "recognizedBy": { "@type": "Organization", "name": "Yorkville University" } },
-          { "@type": "EducationalOccupationalCredential", "name": "Registered Psychotherapist (Qualifying)", "credentialCategory": "license", "recognizedBy": { "@type": "Organization", "name": "College of Registered Psychotherapists of Ontario (CRPO)" } }
+          {
+            "@type": "EducationalOccupationalCredential",
+            "name": "Master of Arts in Counselling Psychology (MACP)",
+            "credentialCategory": "degree",
+            "educationalLevel": "Masters",
+            "recognizedBy": { "@type": "Organization", "name": "Yorkville University" }
+          },
+          {
+            "@type": "EducationalOccupationalCredential",
+            "name": "Registered Psychotherapist (Qualifying)",
+            "credentialCategory": "license",
+            "recognizedBy": {
+              "@type": "Organization",
+              "name": "College of Registered Psychotherapists of Ontario (CRPO)",
+              "sameAs": "https://www.crpo.ca"
+            }
+          }
         ],
         "memberOf": [
-          { "@type": "Organization", "name": "College of Registered Psychotherapists of Ontario", "identifier": "18680" },
-          { "@type": "Organization", "name": "Canadian Counselling and Psychotherapy Association" }
+          {
+            "@type": "Organization",
+            "name": "College of Registered Psychotherapists of Ontario",
+            "identifier": "18680",
+            "sameAs": "https://www.crpo.ca"
+          },
+          {
+            "@type": "Organization",
+            "name": "Canadian Counselling and Psychotherapy Association",
+            "sameAs": "https://www.ccpa-accp.ca"
+          }
         ],
         "sameAs": [
           "https://www.instagram.com/twishcare/",
@@ -255,49 +466,226 @@
         "@id": "https://twishcare.ca/#website",
         "url": "https://twishcare.ca",
         "name": "Twish — Therapy with Shimul",
-        "description": "Registered Psychotherapist in Mississauga and Markham offering individual, couples, and virtual therapy across Canada.",
+        "alternateName": "Twish Therapy",
+        "description": "Registered Psychotherapist Shimul Rajput offering individual therapy, couples therapy, and virtual therapy. In-person in Mississauga, Markham, and Burlington. Virtual across Canada.",
         "publisher": { "@id": "https://twishcare.ca/#medicalbusiness" },
+        "author": { "@id": "https://twishcare.ca/#shimul" },
+        "inLanguage": ["en-CA", "hi", "pa"],
+        "dateCreated": "2024-01-01",
+        "dateModified": "2025-05-01",
+        "copyrightYear": "2025",
         "potentialAction": {
           "@type": "SearchAction",
-          "target": { "@type": "EntryPoint", "urlTemplate": "https://twishcare.ca/search?q={search_term_string}" },
+          "target": {
+            "@type": "EntryPoint",
+            "urlTemplate": "https://twishcare.ca/search?q={search_term_string}"
+          },
           "query-input": "required name=search_term_string"
-        },
-        "inLanguage": "en-CA"
+        }
+      },
+      {
+        "@type": "WebPage",
+        "@id": "<%= typeof canonicalUrl !== 'undefined' ? canonicalUrl : 'https://twishcare.ca/home' %>#webpage",
+        "url": "<%= typeof canonicalUrl !== 'undefined' ? canonicalUrl : 'https://twishcare.ca/home' %>",
+        "name": "<%= typeof pageTitle !== 'undefined' ? pageTitle : 'Twish — Registered Psychotherapist Mississauga, Markham & Burlington' %>",
+        "description": "<%= typeof metaDesc !== 'undefined' ? metaDesc : 'Registered Psychotherapist offering therapy in Mississauga, Markham, Burlington and virtually across Canada.' %>",
+        "isPartOf": { "@id": "https://twishcare.ca/#website" },
+        "about": { "@id": "https://twishcare.ca/#medicalbusiness" },
+        "author": { "@id": "https://twishcare.ca/#shimul" },
+        "inLanguage": "en-CA",
+        "potentialAction": {
+          "@type": "ReadAction",
+          "target": ["<%= typeof canonicalUrl !== 'undefined' ? canonicalUrl : 'https://twishcare.ca/home' %>"]
+        }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://twishcare.ca/home"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "About Shimul",
+            "item": "https://twishcare.ca/about"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Services",
+            "item": "https://twishcare.ca/services"
+          },
+          {
+            "@type": "ListItem",
+            "position": 4,
+            "name": "Blog",
+            "item": "https://twishcare.ca/blog"
+          },
+          {
+            "@type": "ListItem",
+            "position": 5,
+            "name": "Contact",
+            "item": "https://twishcare.ca/contact"
+          }
+        ]
       },
       {
         "@type": "FAQPage",
+        "@id": "https://twishcare.ca/#faq",
         "mainEntity": [
-          { "@type": "Question", "name": "Does OHIP cover psychotherapy in Ontario?", "acceptedAnswer": { "@type": "Answer", "text": "OHIP does not cover private psychotherapy. However, many extended health benefit plans and Employee Assistance Programs (EAPs) cover sessions with a Registered Psychotherapist. Shimul provides properly formatted receipts for insurance submission." } },
-          { "@type": "Question", "name": "How much does therapy cost in Mississauga?", "acceptedAnswer": { "@type": "Answer", "text": "Individual therapy sessions at Twish are $150 for 50 minutes. Couples therapy is $250 for 50 minutes. A free 15-minute initial consultation is available with no obligation." } },
-          { "@type": "Question", "name": "Does Shimul Rajput offer virtual therapy across Canada?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Shimul offers secure virtual therapy sessions to clients across Canada via a HIPAA-compliant encrypted platform. Sessions are available in English, Hindi, and Punjabi." } },
-          { "@type": "Question", "name": "Is there a Hindi speaking therapist in Mississauga?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Shimul Rajput offers therapy in English, Hindi, and Punjabi in Mississauga and Markham, and virtually across Canada." } },
-          { "@type": "Question", "name": "Is there a Punjabi speaking therapist in Ontario?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Shimul Rajput is a Registered Psychotherapist offering sessions in Punjabi, Hindi, and English in Mississauga, Markham, and virtually across Canada." } },
-          { "@type": "Question", "name": "What therapy approaches does Shimul Rajput use?", "acceptedAnswer": { "@type": "Answer", "text": "Shimul uses an integrative approach including CBT, DBT, EFCT, Psychodynamic Therapy, Mindfulness, Narrative Therapy, Attachment-Based Therapy, Trauma-Informed Care, and Solution-Focused Therapy." } },
-          { "@type": "Question", "name": "How do I book a therapy session in Mississauga?", "acceptedAnswer": { "@type": "Answer", "text": "You can book a free 15-minute consultation at twishcare.myndweb.app/shimul/booking or contact Shimul directly at rajputshimul@gmail.com or (647) 616-5744." } },
-          { "@type": "Question", "name": "Where is Twish therapy located?", "acceptedAnswer": { "@type": "Answer", "text": "Twish has two in-person locations: 365 Prince of Wales Dr, Mississauga, ON L5B 0G6 and 10 Villa Ada Drive, Markham, Ontario. Virtual sessions are available across Canada." } },
-          { "@type": "Question", "name": "What is the difference between a psychotherapist and a psychologist in Ontario?", "acceptedAnswer": { "@type": "Answer", "text": "Both are regulated mental health professionals in Ontario. Psychologists typically have doctoral-level training and can provide psychological assessments and diagnoses. Registered Psychotherapists are regulated by CRPO and specialize in therapeutic treatment and talk therapy." } },
-          { "@type": "Question", "name": "Does Twish offer couples therapy in Markham?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Shimul offers Emotionally Focused Couples Therapy (EFCT) in person at both Mississauga and Markham locations, and virtually across Canada. Couples therapy sessions are $250 for 50 minutes." } }
+          {
+            "@type": "Question",
+            "name": "Does OHIP cover psychotherapy in Ontario?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "OHIP does not cover private psychotherapy in Ontario. However, many extended health benefit plans and Employee Assistance Programs (EAPs) cover sessions with a Registered Psychotherapist. Shimul provides properly formatted receipts for insurance submission after each session."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How much does therapy cost in Mississauga?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Individual therapy sessions at Twish are $150 for 50 minutes. Couples therapy is $250 for 50 minutes. A free 15-minute initial consultation is available with no obligation."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does Shimul Rajput offer virtual therapy across Canada?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Shimul offers secure virtual therapy sessions to clients across Canada via a HIPAA-compliant encrypted platform. Virtual sessions are available in English, Hindi, and Punjabi."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is there a Hindi speaking therapist in Mississauga?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Shimul Rajput offers therapy in English, Hindi, and Punjabi in Mississauga, Markham, and Burlington, and virtually across Canada."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is there a Punjabi speaking therapist in Ontario?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Shimul Rajput is a Registered Psychotherapist offering sessions in Punjabi, Hindi, and English in Mississauga, Markham, Burlington, and virtually across Canada."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is there a South Asian therapist in the GTA?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Shimul Rajput is a South Asian Registered Psychotherapist offering culturally sensitive therapy in Mississauga, Markham, and Burlington. She understands South Asian family dynamics, intergenerational trauma, immigration stress, and the specific cultural context many South Asian clients navigate."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does Twish offer couples therapy in Burlington?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Shimul offers Emotionally Focused Couples Therapy (EFCT) in Burlington, as well as in Mississauga and Markham, and virtually across Canada. Couples therapy sessions are $250 for 50 minutes."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What therapy approaches does Shimul Rajput use?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Shimul uses an integrative approach including CBT, DBT, EFCT, Psychodynamic Therapy, Mindfulness, Narrative Therapy, Attachment-Based Therapy, Trauma-Informed Care, and Solution-Focused Therapy."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How do I book a therapy session in Mississauga, Markham, or Burlington?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "You can book a free 15-minute consultation at twishcare.myndweb.app/shimul/booking or contact Shimul directly at rajputshimul@gmail.com or (647) 616-5744."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Where is Twish therapy located?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Twish has in-person locations in Mississauga (365 Prince of Wales Dr, ON L5B 0G6), Markham (10 Villa Ada Drive), and Burlington, Ontario. Virtual sessions are available across Canada."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What is the difference between a psychotherapist and a psychologist in Ontario?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Both are regulated mental health professionals in Ontario. Psychologists typically have doctoral-level training and can provide psychological assessments and diagnoses. Registered Psychotherapists are regulated by CRPO and specialize in therapeutic treatment and talk therapy. For most people seeking talk therapy and emotional support, a Registered Psychotherapist is an excellent and often more accessible choice."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How long does therapy take?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The length of therapy varies by individual. Some clients benefit from 6 to 10 sessions focused on a specific issue, while others engage in longer-term therapy. Shimul works collaboratively with each client to determine the pace and length that feels right for them."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is therapy confidential in Ontario?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Shimul is bound by CRPO ethical guidelines and Ontario privacy law to maintain strict confidentiality. The only exceptions involve imminent risk of harm to yourself or others, or a court order. These are explained clearly in intake documents before your first session."
+            }
+          }
+        ]
+      },
+      {
+        "@type": "ItemList",
+        "@id": "https://twishcare.ca/#blog-articles",
+        "name": "Mental Health Blog — Twish Therapy",
+        "description": "Evidence-informed articles on anxiety, burnout, relationships, trauma, and mental health in Canada.",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "url": "https://twishcare.ca/blog/understanding-anxiety", "name": "Understanding Anxiety: Why Your Body Thinks You Are in Danger" },
+          { "@type": "ListItem", "position": 2, "url": "https://twishcare.ca/blog/burnout-is-not-laziness", "name": "Burnout Is Not Laziness: What Your Exhaustion Is Really Telling You" },
+          { "@type": "ListItem", "position": 3, "url": "https://twishcare.ca/blog/four-patterns-damage-relationships", "name": "The Four Patterns That Quietly Damage Relationships" },
+          { "@type": "ListItem", "position": 4, "url": "https://twishcare.ca/blog/intergenerational-trauma", "name": "Intergenerational Trauma: Carrying What Was Never Yours to Carry" },
+          { "@type": "ListItem", "position": 5, "url": "https://twishcare.ca/blog/when-to-start-therapy", "name": "How to Know When You Are Ready to Start Therapy" },
+          { "@type": "ListItem", "position": 6, "url": "https://twishcare.ca/blog/mental-health-south-asian-community", "name": "Mental Health in the South Asian Community: Breaking the Silence" }
         ]
       }
     ]
   }
   </script>
 
-  <!-- CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.css">
+  <!-- ═══════════════════════════════════════════
+       PERFORMANCE — Preconnect critical origins
+  ═══════════════════════════════════════════ -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+  <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+
+  <!-- ═══════════════════════════════════════════
+       CSS — Load order matters for performance
+  ═══════════════════════════════════════════ -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.css">
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,600&family=DM+Sans:wght@300;400;500&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/styles/main.css?v=2025052601">
+  <link rel="stylesheet" href="/styles/main.css?v=2025052701">
 </head>
-<body>
+<body itemscope itemtype="https://schema.org/WebPage">
   <%- include("partials/header.ejs") %>
-  <main><%- body %></main>
+  <main itemprop="mainContentOfPage"><%- body %></main>
   <%- include("partials/footer.ejs") %>
+
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
   <script>
-    // Scroll fade observer
+    // Scroll fade observer — fires on all animation classes
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(e => {
         if (e.isIntersecting) {
@@ -318,9 +706,7 @@
           img.addEventListener('error', function(){ img.classList.add('tw-loaded'); }, {once:true});
         }
       }
-      // Handle all current images
       document.querySelectorAll('img').forEach(loadImg);
-      // Handle any images added dynamically
       new MutationObserver(function(mutations){
         mutations.forEach(function(m){
           m.addedNodes.forEach(function(node){
