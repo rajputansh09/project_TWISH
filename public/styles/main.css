@@ -484,6 +484,20 @@ label.tw-label { font-family: 'DM Sans', system-ui, sans-serif; font-size: 0.75r
   .tw-hero > div:last-child > img { position: absolute !important; inset: 0 !important; width: 100% !important; height: 100% !important; object-fit: cover !important; opacity: 1 !important; }
   .tw-hero > div:last-child > div[style*="position:absolute;bottom"] { bottom: 1rem !important; left: 1rem !important; right: 1rem !important; }
 
+   /* Fix hero text invisible on mobile — forces animations to complete */
+  .tw-hero-text-panel .tw-anim-1,
+  .tw-hero-text-panel .tw-anim-2,
+  .tw-hero-text-panel .tw-anim-3,
+  .tw-hero-text-panel .tw-anim-4,
+  .tw-hero-text-panel .tw-anim-5 {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+    animation: none !important;
+  }
+
+  /* Hide quote card on mobile — it covers the hero image completely */
+  .tw-hero-quote { display: none !important; }
+
   /* Force hero animations to complete on mobile */
   .tw-hero .tw-anim-1,.tw-hero .tw-anim-2,.tw-hero .tw-anim-3,.tw-hero .tw-anim-4,.tw-hero .tw-anim-5 {
     animation: tw-fade-up 0.5s cubic-bezier(0.22,1,0.36,1) 0.1s forwards !important;
