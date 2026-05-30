@@ -26,7 +26,6 @@
             <div class="mb-4"><label class="tw-label" for="subject">Subject</label><input type="text" class="tw-form-control" id="subject" name="subject" placeholder="How can Shimul help?" required></div>
             <div class="mb-4"><label class="tw-label" for="message">Your Message</label><textarea class="tw-form-control" id="message" name="message" rows="5" placeholder="Share what is on your mind..." required></textarea></div>
             <button type="submit" class="btn-tw-forest">Send Message</button>
-            <p id="responseMsg" style="display:none;color:var(--tw-gold);font-size:0.9rem;margin-top:1rem;">Thank you for reaching out. Shimul will be in touch soon.</p>
           </form>
         </div>
 
@@ -162,14 +161,113 @@
   </div>
 </section>
 
+<!-- Beautiful success overlay -->
+<div id="tw-success-overlay" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(26,35,32,0.65);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);align-items:center;justify-content:center;">
+  <div id="tw-success-card" style="background:var(--tw-white);border-radius:24px;padding:3rem 2.5rem;max-width:460px;width:90%;text-align:center;box-shadow:0 24px 64px rgba(0,0,0,0.25);transform:scale(0.85) translateY(20px);opacity:0;transition:transform 0.45s cubic-bezier(0.22,1,0.36,1),opacity 0.45s ease;">
+
+    <!-- Icon -->
+    <div style="width:72px;height:72px;border-radius:50%;background:rgba(162,123,92,0.1);border:2px solid rgba(162,123,92,0.25);display:flex;align-items:center;justify-content:center;margin:0 auto 1.5rem;font-size:2rem;">🌿</div>
+
+    <!-- Heading -->
+    <h3 style="font-family:'Cormorant Garamond',Georgia,serif;font-size:2rem;font-weight:500;color:var(--tw-forest);margin:0 0 0.75rem;letter-spacing:0.02em;">Message Sent</h3>
+
+    <!-- Divider -->
+    <div style="width:40px;height:2px;background:var(--tw-gold);margin:0 auto 1.25rem;border-radius:2px;"></div>
+
+    <!-- Body -->
+    <p style="font-family:'Lora',Georgia,serif;font-size:0.95rem;color:var(--tw-text-mid);line-height:1.85;margin:0 0 0.5rem;">Thank you for reaching out. Shimul personally reads every message and will be in touch within one to two business days.</p>
+    <p style="font-family:'DM Sans',sans-serif;font-size:0.78rem;color:var(--tw-text-muted);margin:0 0 2rem;letter-spacing:0.04em;">A confirmation has been sent to your email.</p>
+
+    <!-- Progress bar -->
+    <div style="height:3px;background:rgba(44,57,48,0.08);border-radius:2px;overflow:hidden;margin-bottom:1.5rem;">
+      <div id="tw-progress-bar" style="height:100%;width:100%;background:linear-gradient(90deg,var(--tw-gold),var(--tw-gold-lt));border-radius:2px;transition:width linear;"></div>
+    </div>
+
+    <!-- Close button -->
+    <button onclick="closeTwSuccess()" style="font-family:'DM Sans',sans-serif;font-size:0.78rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;background:var(--tw-forest);color:var(--tw-cream);border:none;padding:0.75rem 2.25rem;border-radius:999px;cursor:pointer;transition:background 0.25s ease;">Close</button>
+
+  </div>
+</div>
+
 <script>
+var twCloseTimer = null;
+
+window.closeTwSuccess = function() {
+  const overlay = document.getElementById('tw-success-overlay');
+  const card = document.getElementById('tw-success-card');
+  card.style.transform = 'scale(0.9) translateY(10px)';
+  card.style.opacity = '0';
+  if (twCloseTimer) { clearTimeout(twCloseTimer); twCloseTimer = null; }
+  setTimeout(function(){ overlay.style.display = 'none'; }, 400);
+};
+
+function showTwSuccess() {
+  const overlay = document.getElementById('tw-success-overlay');
+  const card    = document.getElementById('tw-success-card');
+  const bar     = document.getElementById('tw-progress-bar');
+  const DURATION = 4000; // 4 seconds
+
+  // Reset
+  card.style.transform = 'scale(0.85) translateY(20px)';
+  card.style.opacity = '0';
+  bar.style.transition = 'none';
+  bar.style.width = '100%';
+
+  // Show overlay
+  overlay.style.display = 'flex';
+
+  // Animate card in
+  requestAnimationFrame(function(){
+    requestAnimationFrame(function(){
+      card.style.transform = 'scale(1) translateY(0)';
+      card.style.opacity = '1';
+
+      // Start progress bar draining
+      setTimeout(function(){
+        bar.style.transition = 'width ' + DURATION + 'ms linear';
+        bar.style.width = '0%';
+      }, 50);
+    });
+  });
+
+  // Auto close after DURATION
+  twCloseTimer = setTimeout(function(){
+    closeTwSuccess();
+  }, DURATION);
+}
+
 document.getElementById('contactForm').addEventListener('submit', async function(e) {
   e.preventDefault();
-  const formData = { name: this.name.value, email: this.email.value, subject: this.subject.value, message: this.message.value };
+  const formData = {
+    name: this.name.value,
+    email: this.email.value,
+    subject: this.subject.value,
+    message: this.message.value
+  };
+
+  const btn = this.querySelector('button[type="submit"]');
+  const originalText = btn.textContent;
+  btn.textContent = 'Sending...';
+  btn.disabled = true;
+
   try {
-    const res = await fetch('/send-message', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(formData) });
-    const msg = document.getElementById('responseMsg');
-    if (res.ok) { msg.style.display = 'block'; this.reset(); }
-  } catch(err) { console.error(err); }
+    const res = await fetch('/send-message', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(formData)
+    });
+    if (res.ok) {
+      this.reset();
+      showTwSuccess();
+    } else {
+      alert('Something went wrong. Please try again.');
+    }
+  } catch(err) {
+    console.error(err);
+    alert('Something went wrong. Please try again.');
+  } finally {
+    btn.textContent = originalText;
+    btn.disabled = false;
+  }
 });
 </script>
