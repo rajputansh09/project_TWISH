@@ -543,7 +543,7 @@ app.post('/send-message', async (req, res) => {
               <tr>
                 <td align="center">
                   <p style="margin:0 0 16px;font-family:'Georgia',serif;font-size:14px;color:#4A4A45;">If you would like to book directly, your free consultation is just one click away:</p>
-                  <a href="https://twishcare.myndweb.app/shimul/booking" style="display:inline-block;background:#A27B5C;color:#ffffff;font-family:'Georgia',serif;font-size:12px;font-weight:500;letter-spacing:0.15em;text-transform:uppercase;padding:14px 32px;border-radius:999px;text-decoration:none;">Book Free 15-Min Consult</a>
+                  <a href="https://twishcare.kindred.site/providers/shimul_rajput/booking" style="display:inline-block;background:#A27B5C;color:#ffffff;font-family:'Georgia',serif;font-size:12px;font-weight:500;letter-spacing:0.15em;text-transform:uppercase;padding:14px 32px;border-radius:999px;text-decoration:none;">Book Free 15-Min Consult</a>
                 </td>
               </tr>
             </table>
