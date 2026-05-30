@@ -458,7 +458,7 @@
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
   <script>
-    // Scroll fade observer
+// Scroll fade observer — fires on all animation classes
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(e => {
         if (e.isIntersecting) {
@@ -468,6 +468,16 @@
       });
     }, { threshold: 0.08 });
     document.querySelectorAll('.tw-fade, .tw-fade-left, .tw-fade-right, .tw-fade-scale').forEach(el => observer.observe(el));
+
+    // Safety net — force all fade elements visible after 1.5s
+    // Fixes mobile Safari where IntersectionObserver sometimes does not fire
+    window.addEventListener('load', function(){
+      setTimeout(function(){
+        document.querySelectorAll('.tw-fade, .tw-fade-left, .tw-fade-right, .tw-fade-scale').forEach(function(el){
+          el.classList.add('tw-visible');
+        });
+      }, 1500);
+    });
 
     // Image loading — skeleton shimmer + smooth fade in
     // Fixes white page on mobile (images stuck at opacity:0)
