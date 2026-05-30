@@ -55,8 +55,7 @@ function rp(res, partial, locals = {}) {
 }
 
 // ═══════════════════════════════════════════
-// SITEMAP — all pages including blog articles
-// Google crawls based on priority + changefreq
+// SITEMAP
 // ═══════════════════════════════════════════
 app.get('/sitemap.xml', (req, res) => {
   res.header('Content-Type', 'application/xml');
@@ -140,7 +139,7 @@ app.get('/sitemap.xml', (req, res) => {
 });
 
 // ═══════════════════════════════════════════
-// ROBOTS.TXT — all major search + AI bots
+// ROBOTS.TXT
 // ═══════════════════════════════════════════
 app.get('/robots.txt', (req, res) => {
   res.header('Content-Type', 'text/plain');
@@ -280,7 +279,7 @@ LLMs: ${BASE}/llms.txt`);
 });
 
 // ═══════════════════════════════════════════
-// LLMS.TXT — AI-readable practitioner summary
+// LLMS.TXT
 // ═══════════════════════════════════════════
 app.get('/llms.txt', (req, res) => {
   res.header('Content-Type', 'text/plain');
@@ -374,10 +373,15 @@ app.get('/blog/mental-health-south-asian-community', (req, res) => rp(res, 'blog
 // ═══════════════════════════════════════════
 app.post('/send-message', async (req, res) => {
   const { name, email, subject, message } = req.body;
+
+  // ── Honeypot — silently block bots ──
+  if (req.body.website) return res.status(200).json({ success: true });
+
   if (!name || !email || !message) return res.status(400).json({ error: 'Missing fields' });
+
   try {
 
-    // ── EMAIL 1: Notification to Shimul (beautified) ──
+    // ── EMAIL 1: Notification to Shimul ──
     const toShimul = await fetch('https://api.brevo.com/v3/smtp/email', {
       method: 'POST',
       headers: {
@@ -491,52 +495,39 @@ app.post('/send-message', async (req, res) => {
             <p style="margin:0 0 20px;font-family:'Georgia',serif;font-size:16px;color:#4A4A45;line-height:1.8;">Reaching out takes courage, and I want you to know your message has been received.</p>
             <p style="margin:0 0 28px;font-family:'Georgia',serif;font-size:16px;color:#4A4A45;line-height:1.8;">I personally read every message and will be in touch within <strong style="color:#2C3930;">one to two business days</strong>. In the meantime, please know that taking this step, however small it might feel, matters.</p>
 
-          <!-- What happens next -->
+            <!-- What happens next -->
             <table width="100%" cellpadding="0" cellspacing="0" style="margin-bottom:32px;">
               <tr>
                 <td style="background:#f4efe6;border-radius:12px;padding:28px;border-left:4px solid #A27B5C;">
                   <p style="margin:0 0 20px;font-family:'Georgia',serif;font-size:11px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:#A27B5C;">What Happens Next</p>
-
-                  <!-- Step 1 -->
                   <table width="100%" cellpadding="0" cellspacing="0" style="margin-bottom:16px;">
                     <tr>
                       <td width="36" valign="top" style="padding-top:2px;">
                         <div style="width:28px;height:28px;background:#2C3930;border-radius:14px;text-align:center;line-height:28px;font-family:'Georgia',serif;color:#A27B5C;font-size:13px;font-weight:600;display:inline-block;">1</div>
                       </td>
-                      <td style="font-family:'Georgia',serif;font-size:14px;color:#4A4A45;line-height:1.75;padding-left:8px;">
-                        Shimul reviews your message and responds warmly within 1 to 2 business days.
-                      </td>
+                      <td style="font-family:'Georgia',serif;font-size:14px;color:#4A4A45;line-height:1.75;padding-left:8px;">Shimul reviews your message and responds warmly within 1 to 2 business days.</td>
                     </tr>
                   </table>
-
-                  <!-- Step 2 -->
                   <table width="100%" cellpadding="0" cellspacing="0" style="margin-bottom:16px;">
                     <tr>
                       <td width="36" valign="top" style="padding-top:2px;">
                         <div style="width:28px;height:28px;background:#2C3930;border-radius:14px;text-align:center;line-height:28px;font-family:'Georgia',serif;color:#A27B5C;font-size:13px;font-weight:600;display:inline-block;">2</div>
                       </td>
-                      <td style="font-family:'Georgia',serif;font-size:14px;color:#4A4A45;line-height:1.75;padding-left:8px;">
-                        You will be invited to a free 15-minute consultation, no commitment, no pressure.
-                      </td>
+                      <td style="font-family:'Georgia',serif;font-size:14px;color:#4A4A45;line-height:1.75;padding-left:8px;">You will be invited to a free 15-minute consultation, no commitment, no pressure.</td>
                     </tr>
                   </table>
-
-                  <!-- Step 3 -->
                   <table width="100%" cellpadding="0" cellspacing="0">
                     <tr>
                       <td width="36" valign="top" style="padding-top:2px;">
                         <div style="width:28px;height:28px;background:#2C3930;border-radius:14px;text-align:center;line-height:28px;font-family:'Georgia',serif;color:#A27B5C;font-size:13px;font-weight:600;display:inline-block;">3</div>
                       </td>
-                      <td style="font-family:'Georgia',serif;font-size:14px;color:#4A4A45;line-height:1.75;padding-left:8px;">
-                        Your first session in Mississauga, Markham, Burlington, or virtually across Canada.
-                      </td>
+                      <td style="font-family:'Georgia',serif;font-size:14px;color:#4A4A45;line-height:1.75;padding-left:8px;">Your first session in Mississauga, Markham, Burlington, or virtually across Canada.</td>
                     </tr>
                   </table>
-
                 </td>
               </tr>
             </table>
-            
+
             <!-- Quote -->
             <table width="100%" cellpadding="0" cellspacing="0" style="margin-bottom:32px;">
               <tr>
