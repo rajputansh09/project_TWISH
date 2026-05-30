@@ -561,10 +561,21 @@ label.tw-label { font-family: 'DM Sans', system-ui, sans-serif; font-size: 0.75r
   #twishCarousel .carousel-control-prev { left: 0.5rem; }
   #twishCarousel .carousel-control-next { right: 0.5rem; }
 
-  /* Gallery — clean 2 column */
+/* Gallery — clean 2 column with centered last image */
   .tw-gallery-img { height: 160px !important; }
   .row.g-3.tw-fade > div:nth-child(2) .tw-gallery-img { height: 72px !important; }
   .row.g-3.tw-fade > div:nth-child(2) > div { gap: 0.5rem !important; }
+  .row.g-3.tw-fade > div:nth-child(3) {
+    width: 100% !important;
+    max-width: 100% !important;
+    flex: 0 0 100% !important;
+    display: flex !important;
+    justify-content: center !important;
+  }
+  .row.g-3.tw-fade > div:nth-child(3) .tw-gallery-img {
+    width: 50% !important;
+    height: 160px !important;
+  }
 
   /* Founder */
   .tw-founder-img { max-height: 340px; }
