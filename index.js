@@ -4,7 +4,7 @@ const session = require('express-session');
 const path = require('path');
 
 const app = express();
-const BASE = process.env.BASE_URL || 'https://twishcare.ca';
+const BASE = 'https://twishcare.ca';
 const TODAY = new Date().toISOString().split('T')[0];
 
 // ═══════════════════════════════════════════
