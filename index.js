@@ -489,43 +489,60 @@ app.post('/send-message', async (req, res) => {
         <tr>
           <td style="padding:40px;">
             <p style="margin:0 0 20px;font-family:'Georgia',serif;font-size:16px;color:#4A4A45;line-height:1.8;">Reaching out takes courage, and I want you to know your message has been received.</p>
-            <p style="margin:0 0 28px;font-family:'Georgia',serif;font-size:16px;color:#4A4A45;line-height:1.8;">I personally read every message and will be in touch within <strong style="color:#2C3930;">one to two business days</strong>. In the meantime, please know that taking this step — however small it might feel — matters.</p>
+            <p style="margin:0 0 28px;font-family:'Georgia',serif;font-size:16px;color:#4A4A45;line-height:1.8;">I personally read every message and will be in touch within <strong style="color:#2C3930;">one to two business days</strong>. In the meantime, please know that taking this step, however small it might feel, matters.</p>
 
-            <!-- What happens next -->
+          <!-- What happens next -->
             <table width="100%" cellpadding="0" cellspacing="0" style="margin-bottom:32px;">
               <tr>
                 <td style="background:#f4efe6;border-radius:12px;padding:28px;border-left:4px solid #A27B5C;">
                   <p style="margin:0 0 20px;font-family:'Georgia',serif;font-size:11px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:#A27B5C;">What Happens Next</p>
-                  <table width="100%" cellpadding="0" cellspacing="0">
-                    <tr><td style="padding-bottom:16px;vertical-align:top;">
-                      <table cellpadding="0" cellspacing="0"><tr>
-                        <td style="width:28px;height:28px;min-width:28px;background:#2C3930;border-radius:50%;text-align:center;vertical-align:middle;font-family:'Georgia',serif;color:#A27B5C;font-size:13px;font-weight:600;">1</td>
-                        <td style="padding-left:14px;font-family:'Georgia',serif;font-size:14px;color:#4A4A45;line-height:1.7;">Shimul reviews your message and responds warmly within 1 to 2 business days.</td>
-                      </tr></table>
-                    </td></tr>
-                    <tr><td style="padding-bottom:16px;vertical-align:top;">
-                      <table cellpadding="0" cellspacing="0"><tr>
-                        <td style="width:28px;height:28px;min-width:28px;background:#2C3930;border-radius:50%;text-align:center;vertical-align:middle;font-family:'Georgia',serif;color:#A27B5C;font-size:13px;font-weight:600;">2</td>
-                        <td style="padding-left:14px;font-family:'Georgia',serif;font-size:14px;color:#4A4A45;line-height:1.7;">You will be invited to a free 15-minute consultation — no commitment, no pressure.</td>
-                      </tr></table>
-                    </td></tr>
-                    <tr><td style="vertical-align:top;">
-                      <table cellpadding="0" cellspacing="0"><tr>
-                        <td style="width:28px;height:28px;min-width:28px;background:#2C3930;border-radius:50%;text-align:center;vertical-align:middle;font-family:'Georgia',serif;color:#A27B5C;font-size:13px;font-weight:600;">3</td>
-                        <td style="padding-left:14px;font-family:'Georgia',serif;font-size:14px;color:#4A4A45;line-height:1.7;">Your first session — in Mississauga, Markham, Burlington, or virtually across Canada.</td>
-                      </tr></table>
-                    </td></tr>
+
+                  <!-- Step 1 -->
+                  <table width="100%" cellpadding="0" cellspacing="0" style="margin-bottom:16px;">
+                    <tr>
+                      <td width="36" valign="top" style="padding-top:2px;">
+                        <div style="width:28px;height:28px;background:#2C3930;border-radius:14px;text-align:center;line-height:28px;font-family:'Georgia',serif;color:#A27B5C;font-size:13px;font-weight:600;display:inline-block;">1</div>
+                      </td>
+                      <td style="font-family:'Georgia',serif;font-size:14px;color:#4A4A45;line-height:1.75;padding-left:8px;">
+                        Shimul reviews your message and responds warmly within 1 to 2 business days.
+                      </td>
+                    </tr>
                   </table>
+
+                  <!-- Step 2 -->
+                  <table width="100%" cellpadding="0" cellspacing="0" style="margin-bottom:16px;">
+                    <tr>
+                      <td width="36" valign="top" style="padding-top:2px;">
+                        <div style="width:28px;height:28px;background:#2C3930;border-radius:14px;text-align:center;line-height:28px;font-family:'Georgia',serif;color:#A27B5C;font-size:13px;font-weight:600;display:inline-block;">2</div>
+                      </td>
+                      <td style="font-family:'Georgia',serif;font-size:14px;color:#4A4A45;line-height:1.75;padding-left:8px;">
+                        You will be invited to a free 15-minute consultation, no commitment, no pressure.
+                      </td>
+                    </tr>
+                  </table>
+
+                  <!-- Step 3 -->
+                  <table width="100%" cellpadding="0" cellspacing="0">
+                    <tr>
+                      <td width="36" valign="top" style="padding-top:2px;">
+                        <div style="width:28px;height:28px;background:#2C3930;border-radius:14px;text-align:center;line-height:28px;font-family:'Georgia',serif;color:#A27B5C;font-size:13px;font-weight:600;display:inline-block;">3</div>
+                      </td>
+                      <td style="font-family:'Georgia',serif;font-size:14px;color:#4A4A45;line-height:1.75;padding-left:8px;">
+                        Your first session in Mississauga, Markham, Burlington, or virtually across Canada.
+                      </td>
+                    </tr>
+                  </table>
+
                 </td>
               </tr>
             </table>
-
+            
             <!-- Quote -->
             <table width="100%" cellpadding="0" cellspacing="0" style="margin-bottom:32px;">
               <tr>
                 <td style="border-top:1px solid rgba(162,123,92,0.3);border-bottom:1px solid rgba(162,123,92,0.3);padding:24px 0;text-align:center;">
                   <p style="margin:0;font-family:'Georgia',serif;font-size:18px;font-style:italic;color:#2C3930;line-height:1.6;">"You don't have to have it all figured out<br>to take the first step."</p>
-                  <p style="margin:12px 0 0;font-family:'Georgia',serif;font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:#A27B5C;">Shimul Rajput</p>
+                  <p style="margin:12px 0 0;font-family:'Georgia',serif;font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:#A27B5C;"> — Shimul Rajput</p>
                 </td>
               </tr>
             </table>
