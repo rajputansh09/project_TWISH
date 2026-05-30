@@ -376,7 +376,9 @@ app.post('/send-message', async (req, res) => {
   const { name, email, subject, message } = req.body;
   if (!name || !email || !message) return res.status(400).json({ error: 'Missing fields' });
   try {
-    const r = await fetch('https://api.brevo.com/v3/smtp/email', {
+
+    // ── EMAIL 1: Notification to Shimul (beautified) ──
+    const toShimul = await fetch('https://api.brevo.com/v3/smtp/email', {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
@@ -387,29 +389,183 @@ app.post('/send-message', async (req, res) => {
         sender: { name: 'Twish Website', email: 'rajputshimul@gmail.com' },
         to: [{ email: 'rajputshimul@gmail.com', name: 'Shimul Rajput' }],
         replyTo: { email, name },
-        subject: '[Twish] ' + (subject || 'New message from ' + name),
+        subject: '🌿 New Message via Twish — ' + (subject || 'General Inquiry') + ' from ' + name,
         htmlContent: `
-          <div style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto;">
-            <div style="background:#2C3930;padding:24px;text-align:center;">
-              <h2 style="color:#DCD7C9;margin:0;">New Message from Twish Website</h2>
-            </div>
-            <div style="padding:24px;background:#f9f9f9;">
-              <p><strong>Name:</strong> ${name}</p>
-              <p><strong>Email:</strong> ${email}</p>
-              <p><strong>Subject:</strong> ${subject || 'No subject'}</p>
-              <p><strong>Message:</strong></p>
-              <div style="background:white;padding:16px;border-radius:8px;border:1px solid #ddd;white-space:pre-wrap;">${message}</div>
-            </div>
-            <div style="background:#2C3930;padding:16px;text-align:center;">
-              <p style="color:#A27B5C;margin:0;font-size:12px;">Twish — Therapy with Shimul | twishcare.ca</p>
-            </div>
-          </div>`
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"></head>
+<body style="margin:0;padding:0;background:#f4efe6;font-family:'Georgia',serif;">
+  <table width="100%" cellpadding="0" cellspacing="0" style="background:#f4efe6;padding:40px 20px;">
+    <tr><td align="center">
+      <table width="600" cellpadding="0" cellspacing="0" style="max-width:600px;width:100%;background:#ffffff;border-radius:16px;overflow:hidden;box-shadow:0 4px 24px rgba(44,57,48,0.1);">
+        <tr>
+          <td style="background:#2C3930;padding:32px 40px;text-align:center;">
+            <p style="margin:0;font-family:'Georgia',serif;font-size:11px;font-weight:500;letter-spacing:0.25em;text-transform:uppercase;color:#A27B5C;">Twish — Therapy with Shimul</p>
+            <h1 style="margin:12px 0 0;font-family:'Georgia',serif;font-size:26px;font-weight:400;color:#DCD7C9;letter-spacing:0.02em;">New Message Received</h1>
+          </td>
+        </tr>
+        <tr><td style="height:3px;background:linear-gradient(90deg,#A27B5C,#C4956A);"></td></tr>
+        <tr>
+          <td style="padding:40px;">
+            <p style="margin:0 0 24px;font-family:'Georgia',serif;font-size:15px;color:#4A4A45;line-height:1.7;">Hi Shimul, someone has reached out through your website. Here are their details:</p>
+            <table width="100%" cellpadding="0" cellspacing="0" style="margin-bottom:16px;">
+              <tr>
+                <td width="48%" style="background:#f4efe6;border-radius:10px;padding:16px 20px;vertical-align:top;">
+                  <p style="margin:0 0 4px;font-family:'Georgia',serif;font-size:10px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:#A27B5C;">Name</p>
+                  <p style="margin:0;font-family:'Georgia',serif;font-size:15px;color:#2C3930;font-weight:600;">${name}</p>
+                </td>
+                <td width="4%"></td>
+                <td width="48%" style="background:#f4efe6;border-radius:10px;padding:16px 20px;vertical-align:top;">
+                  <p style="margin:0 0 4px;font-family:'Georgia',serif;font-size:10px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:#A27B5C;">Email</p>
+                  <p style="margin:0;font-family:'Georgia',serif;font-size:15px;color:#2C3930;"><a href="mailto:${email}" style="color:#A27B5C;text-decoration:none;">${email}</a></p>
+                </td>
+              </tr>
+            </table>
+            <table width="100%" cellpadding="0" cellspacing="0" style="margin-bottom:16px;">
+              <tr>
+                <td style="background:#f4efe6;border-radius:10px;padding:16px 20px;">
+                  <p style="margin:0 0 4px;font-family:'Georgia',serif;font-size:10px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:#A27B5C;">Subject</p>
+                  <p style="margin:0;font-family:'Georgia',serif;font-size:15px;color:#2C3930;">${subject || 'No subject provided'}</p>
+                </td>
+              </tr>
+            </table>
+            <table width="100%" cellpadding="0" cellspacing="0" style="margin-bottom:32px;">
+              <tr>
+                <td style="background:#2C3930;border-radius:10px;padding:24px;">
+                  <p style="margin:0 0 8px;font-family:'Georgia',serif;font-size:10px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:#A27B5C;">Their Message</p>
+                  <p style="margin:0;font-family:'Georgia',serif;font-size:15px;color:#DCD7C9;line-height:1.8;white-space:pre-wrap;">${message}</p>
+                </td>
+              </tr>
+            </table>
+            <table width="100%" cellpadding="0" cellspacing="0">
+              <tr>
+                <td align="center">
+                  <a href="mailto:${email}?subject=Re: ${subject || 'Your message to Twish'}" style="display:inline-block;background:#A27B5C;color:#ffffff;font-family:'Georgia',serif;font-size:13px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;padding:14px 32px;border-radius:999px;text-decoration:none;">Reply to ${name}</a>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+        <tr>
+          <td style="background:#1A2320;padding:24px 40px;text-align:center;">
+            <p style="margin:0;font-family:'Georgia',serif;font-size:11px;color:rgba(220,215,201,0.4);letter-spacing:0.1em;">twishcare.ca &bull; (647) 616-5744 &bull; rajputshimul@gmail.com</p>
+          </td>
+        </tr>
+      </table>
+    </td></tr>
+  </table>
+</body>
+</html>`
       })
     });
-    if (r.ok) return res.status(200).json({ success: true });
-    const e = await r.json();
-    console.error('Brevo error:', e);
+
+    // ── EMAIL 2: Confirmation to the sender ──
+    const toSender = await fetch('https://api.brevo.com/v3/smtp/email', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'api-key': process.env.BREVO_API_KEY
+      },
+      body: JSON.stringify({
+        sender: { name: 'Shimul Rajput — Twish', email: 'rajputshimul@gmail.com' },
+        to: [{ email, name }],
+        subject: 'Thank you for reaching out — Twish',
+        htmlContent: `
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"></head>
+<body style="margin:0;padding:0;background:#f4efe6;font-family:'Georgia',serif;">
+  <table width="100%" cellpadding="0" cellspacing="0" style="background:#f4efe6;padding:40px 20px;">
+    <tr><td align="center">
+      <table width="600" cellpadding="0" cellspacing="0" style="max-width:600px;width:100%;background:#ffffff;border-radius:16px;overflow:hidden;box-shadow:0 4px 24px rgba(44,57,48,0.1);">
+        <tr>
+          <td style="background:#2C3930;padding:40px;text-align:center;">
+            <p style="margin:0 0 8px;font-family:'Georgia',serif;font-size:11px;font-weight:500;letter-spacing:0.25em;text-transform:uppercase;color:#A27B5C;">Twish — Therapy with Shimul</p>
+            <h1 style="margin:0;font-family:'Georgia',serif;font-size:28px;font-weight:400;color:#DCD7C9;letter-spacing:0.02em;">Thank you, ${name}.</h1>
+          </td>
+        </tr>
+        <tr><td style="height:3px;background:linear-gradient(90deg,#A27B5C,#C4956A);"></td></tr>
+        <tr>
+          <td style="padding:40px;">
+            <p style="margin:0 0 20px;font-family:'Georgia',serif;font-size:16px;color:#4A4A45;line-height:1.8;">Reaching out takes courage, and I want you to know your message has been received.</p>
+            <p style="margin:0 0 28px;font-family:'Georgia',serif;font-size:16px;color:#4A4A45;line-height:1.8;">I personally read every message and will be in touch within <strong style="color:#2C3930;">one to two business days</strong>. In the meantime, please know that taking this step — however small it might feel — matters.</p>
+
+            <!-- What happens next -->
+            <table width="100%" cellpadding="0" cellspacing="0" style="margin-bottom:32px;">
+              <tr>
+                <td style="background:#f4efe6;border-radius:12px;padding:28px;border-left:4px solid #A27B5C;">
+                  <p style="margin:0 0 20px;font-family:'Georgia',serif;font-size:11px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:#A27B5C;">What Happens Next</p>
+                  <table width="100%" cellpadding="0" cellspacing="0">
+                    <tr><td style="padding-bottom:16px;vertical-align:top;">
+                      <table cellpadding="0" cellspacing="0"><tr>
+                        <td style="width:28px;height:28px;min-width:28px;background:#2C3930;border-radius:50%;text-align:center;vertical-align:middle;font-family:'Georgia',serif;color:#A27B5C;font-size:13px;font-weight:600;">1</td>
+                        <td style="padding-left:14px;font-family:'Georgia',serif;font-size:14px;color:#4A4A45;line-height:1.7;">Shimul reviews your message and responds warmly within 1 to 2 business days.</td>
+                      </tr></table>
+                    </td></tr>
+                    <tr><td style="padding-bottom:16px;vertical-align:top;">
+                      <table cellpadding="0" cellspacing="0"><tr>
+                        <td style="width:28px;height:28px;min-width:28px;background:#2C3930;border-radius:50%;text-align:center;vertical-align:middle;font-family:'Georgia',serif;color:#A27B5C;font-size:13px;font-weight:600;">2</td>
+                        <td style="padding-left:14px;font-family:'Georgia',serif;font-size:14px;color:#4A4A45;line-height:1.7;">You will be invited to a free 15-minute consultation — no commitment, no pressure.</td>
+                      </tr></table>
+                    </td></tr>
+                    <tr><td style="vertical-align:top;">
+                      <table cellpadding="0" cellspacing="0"><tr>
+                        <td style="width:28px;height:28px;min-width:28px;background:#2C3930;border-radius:50%;text-align:center;vertical-align:middle;font-family:'Georgia',serif;color:#A27B5C;font-size:13px;font-weight:600;">3</td>
+                        <td style="padding-left:14px;font-family:'Georgia',serif;font-size:14px;color:#4A4A45;line-height:1.7;">Your first session — in Mississauga, Markham, Burlington, or virtually across Canada.</td>
+                      </tr></table>
+                    </td></tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+
+            <!-- Quote -->
+            <table width="100%" cellpadding="0" cellspacing="0" style="margin-bottom:32px;">
+              <tr>
+                <td style="border-top:1px solid rgba(162,123,92,0.3);border-bottom:1px solid rgba(162,123,92,0.3);padding:24px 0;text-align:center;">
+                  <p style="margin:0;font-family:'Georgia',serif;font-size:18px;font-style:italic;color:#2C3930;line-height:1.6;">"You don't have to have it all figured out<br>to take the first step."</p>
+                  <p style="margin:12px 0 0;font-family:'Georgia',serif;font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:#A27B5C;">Shimul Rajput</p>
+                </td>
+              </tr>
+            </table>
+
+            <!-- Book button -->
+            <table width="100%" cellpadding="0" cellspacing="0" style="margin-bottom:32px;">
+              <tr>
+                <td align="center">
+                  <p style="margin:0 0 16px;font-family:'Georgia',serif;font-size:14px;color:#4A4A45;">If you would like to book directly, your free consultation is just one click away:</p>
+                  <a href="https://twishcare.myndweb.app/shimul/booking" style="display:inline-block;background:#A27B5C;color:#ffffff;font-family:'Georgia',serif;font-size:12px;font-weight:500;letter-spacing:0.15em;text-transform:uppercase;padding:14px 32px;border-radius:999px;text-decoration:none;">Book Free 15-Min Consult</a>
+                </td>
+              </tr>
+            </table>
+
+            <!-- Sign off -->
+            <p style="margin:0;font-family:'Georgia',serif;font-size:15px;color:#4A4A45;line-height:1.9;">With warmth,<br><strong style="color:#2C3930;font-size:17px;">Shimul Rajput</strong><br><span style="font-size:12px;color:#A27B5C;letter-spacing:0.1em;text-transform:uppercase;">Registered Psychotherapist (Qualifying) &bull; CRPO #18680</span></p>
+          </td>
+        </tr>
+
+        <!-- Footer -->
+        <tr>
+          <td style="background:#1A2320;padding:28px 40px;text-align:center;">
+            <p style="margin:0 0 6px;font-family:'Georgia',serif;font-size:13px;color:rgba(220,215,201,0.6);">Mississauga &bull; Markham &bull; Burlington &bull; Virtual across Canada</p>
+            <p style="margin:0;font-family:'Georgia',serif;font-size:11px;color:rgba(220,215,201,0.3);letter-spacing:0.08em;">twishcare.ca &bull; (647) 616-5744</p>
+          </td>
+        </tr>
+      </table>
+    </td></tr>
+  </table>
+</body>
+</html>`
+      })
+    });
+
+    if (toShimul.ok && toSender.ok) return res.status(200).json({ success: true });
+    const e1 = toShimul.ok ? null : await toShimul.json();
+    const e2 = toSender.ok ? null : await toSender.json();
+    console.error('Brevo error:', e1 || e2);
     res.status(500).json({ error: 'Failed to send message' });
+
   } catch (e) {
     console.error('Email error:', e.message);
     res.status(500).json({ error: 'Failed to send message' });
