@@ -290,7 +290,11 @@ app.get('/llms.txt', (req, res) => {
 // ═══════════════════════════════════════════
 // PAGE ROUTES
 // ═══════════════════════════════════════════
-app.get(['/', '/home'], (req, res) => rp(res, 'home', {
+
+// ── Root redirect — fixes Google 404 on twishcare.ca/ ──
+app.get('/', (req, res) => res.redirect(301, '/home'));
+
+app.get('/home', (req, res) => rp(res, 'home', {
   currentPage: 'home',
   canonicalUrl: BASE + '/home',
   pageTitle: 'Twish — Registered Psychotherapist in Mississauga, Markham & Burlington | Shimul Rajput',
