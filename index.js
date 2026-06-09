@@ -19,6 +19,14 @@ app.use((req, res, next) => {
   next();
 });
 
+// ── Force non-www — fixes Google redirect error ──
+app.use((req, res, next) => {
+  if (req.headers.host && req.headers.host.startsWith('www.')) {
+    return res.redirect(301, 'https://twishcare.ca' + req.url);
+  }
+  next();
+});
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
